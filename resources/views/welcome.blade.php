@@ -243,7 +243,7 @@
                         <div class="w-10 h-[1.5px] bg-zinc-300"></div>
                     </div>
                     <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 leading-[1.18]">
-                        Solusi Digital yang Dirancang dengan Tujuan.
+                        SANGGA.
                     </h2>
                     <p class="text-base text-zinc-600 leading-relaxed">
                         Kami tidak sekadar membuat tampilan yang menarik. Kami membangun ekosistem digital terstruktur yang memposisikan brand Anda sebagai pemimpin di industri Anda.
