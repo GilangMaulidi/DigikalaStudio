@@ -15,6 +15,21 @@ html {
     font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
 }
 
+.whatsapp-float {
+    position: fixed;
+    right: max(1.5rem, env(safe-area-inset-right));
+    bottom: max(1.5rem, env(safe-area-inset-bottom));
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    background-color: #25d366;
+    color: #fff;
+}
+
+.whatsapp-float:hover {
+    background-color: #20bd5a;
+}
+
 /* Custom subtle scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
@@ -30,4 +45,3 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: #3f3f46;
 }
-
