@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Digikala Studio — Premium Digital Agency | Website, Landing Page & UI/UX Design</title>
-    <meta name="description" content="Digikala Studio adalah creative digital agency terkemuka. Ferdi merancang website strategis, landing page berkonversi tinggi, dan desain UI/UX berkarakter yang membuat brand Anda lebih bernilai.">
+    <meta name="description" content="Digikala Studio adalah creative digital agency terkemuka. Kami merancang website strategis, landing page berkonversi tinggi, dan desain UI/UX berkarakter yang membuat brand Anda lebih bernilai.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -243,7 +243,7 @@
                         <div class="w-10 h-[1.5px] bg-zinc-300"></div>
                     </div>
                     <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 leading-[1.18]">
-                        SANGGA.
+                        Solusi Digital yang Dirancang dengan Tujuan.
                     </h2>
                     <p class="text-base text-zinc-600 leading-relaxed">
                         Kami tidak sekadar membuat tampilan yang menarik. Kami membangun ekosistem digital terstruktur yang memposisikan brand Anda sebagai pemimpin di industri Anda.
@@ -978,7 +978,7 @@
                                 </div>
                                 <h3 class="text-lg font-bold text-white">Desain Wireframe & Prototipe</h3>
                                 <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                                    Eksplorasi visual UI/UX dalam Figma. Ferdi gacor alur interaksi intuitif yang selaras sempurna dengan identitas brand Anda.
+                                    Eksplorasi visual UI/UX dalam Figma. Kami merancang alur interaksi intuitif yang selaras sempurna dengan identitas brand Anda.
                                 </p>
                             </div>
                             <div class="pt-4 border-t border-zinc-800/60 mt-4 text-[11px] text-zinc-500">
