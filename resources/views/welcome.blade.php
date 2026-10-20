@@ -89,7 +89,7 @@
                     </div>
 
                     <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-white tracking-tight leading-[1.12]">
-                        Kami Merancang Website yang Membuat Brand Anda Lebih Bernilai
+                        Ferdi Merancang Website yang Membuat Brand Anda Lebih Bernilai
                     </h1>
 
                     <p class="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-xl font-normal">
