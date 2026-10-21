@@ -177,191 +177,396 @@
         <!-- =======================================================================
              3. PORTOFOLIO (Sticky Scroll Pinning / Section Pinning)
              ======================================================================= -->
+        <!-- =======================================================================
+             3. PORTOFOLIO (Cascading Stacked Showcase & Category Filter)
+             ======================================================================= -->
         <section class="portfolio-section" id="portofolio">
             <div class="container">
                 <div class="portfolio-layout">
                     
-                    {{-- Area Kiri: Terkunci / Diam (Sticky Pinning) saat pengguna scroll --}}
-                    <div class="portfolio-pinned-sidebar">
+                    {{-- SISI KIRI: Sidebar Kategori & Filter Navigasi --}}
+                    <aside class="portfolio-pinned-sidebar">
+                        <span class="sidebar-badge">SHOWCASE</span>
                         <h2 class="sidebar-title">Portofolio</h2>
                         <p class="sidebar-desc">
                             Karya-karya terpilih yang dirancang dengan presisi kode dan visual berkelas tinggi untuk berbagai industri.
                         </p>
 
-                        <div class="portfolio-categories-list">
-                            <div class="cat-item active" data-category="all">
-                                <span>Semua Proyek</span>
-                                <span class="cat-dot"></span>
-                            </div>
-                            <div class="cat-item" data-category="saas">
-                                <span>Platform SaaS & Web App</span>
-                                <span class="cat-dot"></span>
-                            </div>
-                            <div class="cat-item" data-category="branding">
-                                <span>E-Commerce & Branding</span>
-                                <span class="cat-dot"></span>
-                            </div>
-                            <div class="cat-item" data-category="academic">
-                                <span>Sistem Riset & Edukasi</span>
-                                <span class="cat-dot"></span>
-                            </div>
+                        <div class="portfolio-categories-list" role="tablist" aria-label="Filter Portofolio">
+                            <button type="button" class="cat-item active" data-category="all" role="tab" aria-selected="true">
+                                <span class="cat-label">Semua Proyek</span>
+                                <div class="cat-meta">
+                                    <span class="cat-count">6</span>
+                                    <span class="cat-dot"></span>
+                                </div>
+                            </button>
+                            <button type="button" class="cat-item" data-category="saas" role="tab" aria-selected="false">
+                                <span class="cat-label">Platform SaaS & Web App</span>
+                                <div class="cat-meta">
+                                    <span class="cat-count">2</span>
+                                    <span class="cat-dot"></span>
+                                </div>
+                            </button>
+                            <button type="button" class="cat-item" data-category="branding" role="tab" aria-selected="false">
+                                <span class="cat-label">E-Commerce & Branding</span>
+                                <div class="cat-meta">
+                                    <span class="cat-count">1</span>
+                                    <span class="cat-dot"></span>
+                                </div>
+                            </button>
+                            <button type="button" class="cat-item" data-category="academic" role="tab" aria-selected="false">
+                                <span class="cat-label">Sistem Riset & Edukasi</span>
+                                <div class="cat-meta">
+                                    <span class="cat-count">3</span>
+                                    <span class="cat-dot"></span>
+                                </div>
+                            </button>
                         </div>
 
-                        <div style="margin-top: 10px;">
+                        <div class="sidebar-cta-wrap">
                             <a href="#kolaborasi" class="btn btn-outline btn-sm">Konsultasi Desain Serupa →</a>
                         </div>
+                    </aside>
+
+                    {{-- SISI KANAN: Cascading Stacked Cards Showcase --}}
+                    <div class="portfolio-showcase-stage">
+                        
+                        <!-- Header Kontrol Showcase: Kategori Aktif, Counter, & Tombol Navigasi Tangga -->
+                        <div class="showcase-nav-bar">
+                            <div class="showcase-category-tag">
+                                <span class="indicator-live-dot"></span>
+                                <span id="activeCategoryName">Semua Proyek</span>
+                            </div>
+                            <div class="showcase-nav-controls">
+                                <span class="showcase-counter" id="showcaseCounter">01 / 06</span>
+                                <div class="showcase-nav-arrows">
+                                    <button type="button" class="btn-stack-nav" id="prevCardBtn" aria-label="Proyek Sebelumnya" title="Lihat Proyek Sebelumnya">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                    </button>
+                                    <button type="button" class="btn-stack-nav" id="nextCardBtn" aria-label="Proyek Selanjutnya" title="Lihat Proyek Selanjutnya">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wadah Bertingkat Tangga / Cascading Stacked Cards -->
+                        <div class="portfolio-stack-wrapper pb-16" id="portfolioStackWrapper">
+                            
+                            <!-- ========================================== -->
+                            <!-- CARD 1: Lunar Analytics (SaaS) -->
+                            <!-- ========================================== -->
+                            <article class="portfolio-card stacked-card" data-category="saas" data-index="0">
+                                <!-- Top Browser Chrome Mockup -->
+                                <div class="mockup-browser-header">
+                                    <div class="mockup-dots">
+                                        <span class="mockup-dot red"></span>
+                                        <span class="mockup-dot yellow"></span>
+                                        <span class="mockup-dot green"></span>
+                                    </div>
+                                    <div class="mockup-address-bar">
+                                        <span class="lock-icon">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                        </span>
+                                        <span class="address-text">lunar-analytics.enterprise.app</span>
+                                    </div>
+                                    <span class="mockup-window-tag">SaaS Platform</span>
+                                </div>
+
+                                <div class="portfolio-card-img-wrap">
+                                    <img src="{{ asset('images/portfolio1.jpg') }}" alt="Lunar Analytics Platform SaaS" loading="lazy">
+                                </div>
+
+                                <div class="portfolio-card-meta">
+                                    <div class="card-tags">
+                                        <span class="tag-pill">SaaS Platform</span>
+                                        <span class="tag-pill">Laravel & React</span>
+                                        <span class="tag-pill">Dark Mode UI</span>
+                                    </div>
+                                    <h3>Lunar Analytics — High Scale Intelligence Dashboard</h3>
+                                    <p>Platform analitik data enterprise dengan visualisasi real-time, arsitektur microservices, dan antarmuka gelap yang ergonomis untuk pengguna intensif.</p>
+                                </div>
+
+                                <!-- Floating Bottom Action Bar (Uncut CTA & Status) -->
+                                <div class="card-bottom-bar backdrop-blur-md">
+                                    <div class="bottom-bar-info">
+                                        <span class="badge-status">
+                                            <span class="status-dot"></span>
+                                            Tahun 2026
+                                        </span>
+                                    </div>
+                                    <div class="bottom-bar-action">
+                                        <a href="#kolaborasi" class="btn-card-action">
+                                            <span>Eksplorasi Proyek</span>
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- ========================================== -->
+                            <!-- CARD 2: Sistem Administrasi Seragam TU SMP (Academic) -->
+                            <!-- ========================================== -->
+                            <article class="portfolio-card stacked-card" data-category="academic" data-index="1">
+                                <!-- Top Browser Chrome Mockup -->
+                                <div class="mockup-browser-header">
+                                    <div class="mockup-dots">
+                                        <span class="mockup-dot red"></span>
+                                        <span class="mockup-dot yellow"></span>
+                                        <span class="mockup-dot green"></span>
+                                    </div>
+                                    <div class="mockup-address-bar">
+                                        <span class="lock-icon">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                        </span>
+                                        <span class="address-text">sim-seragam.smpn3rajadesa.sch.id</span>
+                                    </div>
+                                    <span class="mockup-window-tag">Academic System</span>
+                                </div>
+
+                                <div class="portfolio-card-img-wrap">
+                                    <img src="{{ asset('images/portfolio2.jpg') }}" alt="Sistem Informasi Administrasi Tata Usaha Seragam" loading="lazy">
+                                </div>
+
+                                <div class="portfolio-card-meta">
+                                    <div class="card-tags">
+                                        <span class="tag-pill">Laravel</span>
+                                        <span class="tag-pill">MySql</span>
+                                        <span class="tag-pill">Api WhatsApp</span>
+                                    </div>
+                                    <h3>Sistem Informasi Administrasi Tata Usaha Seragam — WhatsApp Gateway - QrCode Pengambilan</h3>
+                                    
+                                    <p id="desc-card-2" class="collapsible-text">
+                                        Tugas akhir ini berfokus pada pengembangan sistem informasi berbasis website untuk mempermudah dan meningkatkan efisiensi proses administrasi seragam siswa di SMP Negeri 3 Rajadesa. Sistem ini memiliki dua jenis pengguna, yaitu Tata Usaha (TU) dan siswa. Siswa dapat mengajukan kebutuhan seragam serta memantau status pengajuannya, sedangkan petugas TU dapat mengelola data siswa, memeriksa dan menyetujui pengajuan, serta mengelola laporan administrasi. Sistem ini juga terintegrasi dengan WhatsApp Gateway menggunakan Fonnte untuk mengirimkan notifikasi, dilengkapi QR Code dinamis untuk mendukung proses pengambilan seragam, serta fitur impor data siswa melalui Excel dan ekspor laporan. Pengembangan sistem menggunakan metode Waterfall, sedangkan pengujiannya menggunakan Black Box Testing dengan teknik Equivalence Partitioning terhadap 48 skenario pengujian, dengan hasil 100% valid berdasarkan skenario yang diuji.
+                                    </p>
+
+                                    <span class="btn-read-more" onclick="toggleReadMore('desc-card-2', this)">Baca Selengkapnya ↓</span>
+                                </div>
+
+                                <!-- Floating Bottom Action Bar -->
+                                <div class="card-bottom-bar backdrop-blur-md">
+                                    <div class="bottom-bar-info">
+                                        <span class="badge-status">
+                                            <span class="status-dot"></span>
+                                            Tahun 2026
+                                        </span>
+                                    </div>
+                                    <div class="bottom-bar-action">
+                                        <a href="#kolaborasi" class="btn-card-action">
+                                            <span>Eksplorasi Proyek</span>
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- ========================================== -->
+                            <!-- CARD 3: Ken's Coffee House (Branding) -->
+                            <!-- ========================================== -->
+                            <article class="portfolio-card stacked-card" data-category="branding" data-index="2">
+                                <!-- Top Browser Chrome Mockup -->
+                                <div class="mockup-browser-header">
+                                    <div class="mockup-dots">
+                                        <span class="mockup-dot red"></span>
+                                        <span class="mockup-dot yellow"></span>
+                                        <span class="mockup-dot green"></span>
+                                    </div>
+                                    <div class="mockup-address-bar">
+                                        <span class="lock-icon">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                        </span>
+                                        <span class="address-text">ferdianbimastya.ifree.page</span>
+                                    </div>
+                                    <span class="mockup-window-tag">Live Showcase</span>
+                                </div>
+
+                                <div class="portfolio-card-img-wrap">
+                                    <img src="{{ asset('images/portfolio-kopi.jpg') }}" alt="Ken's Coffee House — Artisan Roastery & Coffee Shop" loading="lazy">
+                                </div>
+
+                                <div class="portfolio-card-meta">
+                                    <div class="card-tags">
+                                        <span class="tag-pill">Coffee Shop & Roastery</span>
+                                        <span class="tag-pill">Personal Branding</span>
+                                        <span class="tag-pill">Online Booking</span>
+                                    </div>
+                                    <h3>Ken's Coffee House — Artisan Roastery & Personal Brand</h3>
+                                    <p>Platform digital eksklusif untuk coffee house & artisan roastery Master Barista Ken. Menampilkan kurasi biji kopi single origin, signature cold brew showcase, menu interaktif, serta sistem reservasi meja dan kelas barista profesional.</p>
+                                </div>
+
+                                <!-- Floating Bottom Action Bar -->
+                                <div class="card-bottom-bar backdrop-blur-md">
+                                    <div class="bottom-bar-info">
+                                        <span class="badge-status live">
+                                            <span class="status-dot live-pulse"></span>
+                                            Live Website
+                                        </span>
+                                    </div>
+                                    <div class="bottom-bar-action">
+                                        <a href="https://ferdianbimastya.ifree.page/" target="_blank" rel="noopener noreferrer" class="btn-card-action">
+                                            <span>Kunjungi Website</span>
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- ========================================== -->
+                            <!-- CARD 4: Pondok Pesantren Hidayatul Muhajirin (Academic) -->
+                            <!-- ========================================== -->
+                            <article class="portfolio-card stacked-card" data-category="academic" data-index="3">
+                                <!-- Top Browser Chrome Mockup -->
+                                <div class="mockup-browser-header">
+                                    <div class="mockup-dots">
+                                        <span class="mockup-dot red"></span>
+                                        <span class="mockup-dot yellow"></span>
+                                        <span class="mockup-dot green"></span>
+                                    </div>
+                                    <div class="mockup-address-bar">
+                                        <span class="lock-icon">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                        </span>
+                                        <span class="address-text">pondokmumodern.iblogger.org</span>
+                                    </div>
+                                    <span class="mockup-window-tag">Live Showcase</span>
+                                </div>
+
+                                <div class="portfolio-card-img-wrap">
+                                    <img src="{{ asset('images/portfolio-pesantren.png') }}" alt="Pondok Pesantren Hidayatul Muhajirin — Portal Resmi & PSB Online" loading="lazy">
+                                </div>
+
+                                <div class="portfolio-card-meta">
+                                    <div class="card-tags">
+                                        <span class="tag-pill">Pondok Pesantren</span>
+                                        <span class="tag-pill">PSB Online</span>
+                                        <span class="tag-pill">Tahfizh Al-Qur'an</span>
+                                    </div>
+                                    <h3>Pondok Pesantren Hidayatul Muhajirin — Portal Resmi & PSB Online</h3>
+                                    <p>Website resmi lembaga pendidikan Islam terpadu yang memadukan kurikulum Tahfizh Al-Qur'an 30 Juz dan Kitab Kuning. Dilengkapi modul Pendaftaran Santri Baru (PSB Online), informasi kurikulum, publikasi kegiatan, galeri santri, dan kontak asrama.</p>
+                                </div>
+
+                                <!-- Floating Bottom Action Bar -->
+                                <div class="card-bottom-bar backdrop-blur-md">
+                                    <div class="bottom-bar-info">
+                                        <span class="badge-status live">
+                                            <span class="status-dot live-pulse"></span>
+                                            Live Website
+                                        </span>
+                                    </div>
+                                    <div class="bottom-bar-action">
+                                        <a href="https://pondokmumodern.iblogger.org/" target="_blank" rel="noopener noreferrer" class="btn-card-action">
+                                            <span>Kunjungi Website</span>
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- ========================================== -->
+                            <!-- CARD 5: SD Negeri 258/VI Rejo Sari (Academic) -->
+                            <!-- ========================================== -->
+                            <article class="portfolio-card stacked-card" data-category="academic" data-index="4">
+                                <!-- Top Browser Chrome Mockup -->
+                                <div class="mockup-browser-header">
+                                    <div class="mockup-dots">
+                                        <span class="mockup-dot red"></span>
+                                        <span class="mockup-dot yellow"></span>
+                                        <span class="mockup-dot green"></span>
+                                    </div>
+                                    <div class="mockup-address-bar">
+                                        <span class="lock-icon">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                        </span>
+                                        <span class="address-text">sekolahdasarnegeri.free.je</span>
+                                    </div>
+                                    <span class="mockup-window-tag">Live Showcase</span>
+                                </div>
+
+                                <div class="portfolio-card-img-wrap">
+                                    <img src="{{ asset('images/portfolio-sekolah.png') }}" alt="SD Negeri 258/VI Rejo Sari — Portal Resmi Akademik" loading="lazy">
+                                </div>
+
+                                <div class="portfolio-card-meta">
+                                    <div class="card-tags">
+                                        <span class="tag-pill">Sekolah Dasar Negeri</span>
+                                        <span class="tag-pill">Portal Akademik</span>
+                                        <span class="tag-pill">Kurikulum Merdeka</span>
+                                    </div>
+                                    <h3>SD Negeri 258/VI Rejo Sari — Portal Informasi Akademik Terpadu</h3>
+                                    <p>Portal web resmi sekolah dasar negeri untuk media publikasi kegiatan belajar mengajar, pengumuman akademik berkala, portal berita sekolah, galeri prestasi siswa, informasi dewan guru, dan integrasi akses administrasi Tata Usaha.</p>
+                                </div>
+
+                                <!-- Floating Bottom Action Bar -->
+                                <div class="card-bottom-bar backdrop-blur-md">
+                                    <div class="bottom-bar-info">
+                                        <span class="badge-status live">
+                                            <span class="status-dot live-pulse"></span>
+                                            Live Website
+                                        </span>
+                                    </div>
+                                    <div class="bottom-bar-action">
+                                        <a href="https://sekolahdasarnegeri.free.je/" target="_blank" rel="noopener noreferrer" class="btn-card-action">
+                                            <span>Kunjungi Website</span>
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- ========================================== -->
+                            <!-- CARD 6: ScholarSphere (SaaS) -->
+                            <!-- ========================================== -->
+                            <article class="portfolio-card stacked-card" data-category="saas" data-index="5">
+                                <!-- Top Browser Chrome Mockup -->
+                                <div class="mockup-browser-header">
+                                    <div class="mockup-dots">
+                                        <span class="mockup-dot red"></span>
+                                        <span class="mockup-dot yellow"></span>
+                                        <span class="mockup-dot green"></span>
+                                    </div>
+                                    <div class="mockup-address-bar">
+                                        <span class="lock-icon">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                        </span>
+                                        <span class="address-text">scholarsphere.edu.id</span>
+                                    </div>
+                                    <span class="mockup-window-tag">Academic SaaS</span>
+                                </div>
+
+                                <div class="portfolio-card-img-wrap">
+                                    <img src="{{ asset('images/portfolio3.jpg') }}" alt="ScholarSphere Academic Repository" loading="lazy">
+                                </div>
+
+                                <div class="portfolio-card-meta">
+                                    <div class="card-tags">
+                                        <span class="tag-pill">Sistem Skripsi / Riset</span>
+                                        <span class="tag-pill">Machine Learning</span>
+                                        <span class="tag-pill">RESTful API</span>
+                                    </div>
+                                    <h3>ScholarSphere — Sistem Informasi & Manajemen Tesis</h3>
+                                    <p>Sistem bimbingan dan pelacakan riset akademik yang dilengkapi algoritma pencocokan topik cerdas, validasi dokumen instan, dan antarmuka ramah mahasiswa/dosen.</p>
+                                </div>
+
+                                <!-- Floating Bottom Action Bar -->
+                                <div class="card-bottom-bar backdrop-blur-md">
+                                    <div class="bottom-bar-info">
+                                        <span class="badge-status">
+                                            <span class="status-dot"></span>
+                                            Tahun 2026
+                                        </span>
+                                    </div>
+                                    <div class="bottom-bar-action">
+                                        <a href="#kolaborasi" class="btn-card-action">
+                                            <span>Eksplorasi Proyek</span>
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+
+                        </div>
+
                     </div>
-
-{{-- Area Kanan: Kartu Proyek yang Bergerak & Menumpuk (Sticky Cards Stream) --}}
-<div class="portfolio-cards-stream">
-    
-    <!-- ========================================== -->
-    <!-- CARD 1: Lunar Analytics -->
-    <!-- ========================================== -->
-    <article class="portfolio-card" data-category="saas">
-        <div class="portfolio-card-img-wrap">
-            <img src="{{ asset('images/portfolio1.jpg') }}" alt="Lunar Analytics Platform SaaS">
-        </div>
-        <div class="portfolio-card-meta">
-            <div class="card-tags">
-                <span class="tag-pill">SaaS Platform</span>
-                <span class="tag-pill">Laravel & React</span>
-                <span class="tag-pill">Dark Mode UI</span>
-            </div>
-            <h3>Lunar Analytics — High Scale Intelligence Dashboard</h3>
-            <p>Platform analitik data enterprise dengan visualisasi real-time, arsitektur microservices, dan antarmuka gelap yang ergonomis untuk pengguna intensif.</p>
-            <div class="card-footer">
-                <span class="tag-pill">Tahun 2026</span>
-                <span class="card-link">Eksplorasi Proyek ↗</span>
-            </div>
-        </div>
-    </article>
-
-    <!-- ========================================== -->
-    <!-- CARD 2: Sistem Administrasi Seragam TU SMP -->
-    <!-- ========================================== -->
-    <article class="portfolio-card" data-category="academic">
-        <div class="portfolio-card-img-wrap">
-            <img src="{{ asset('images/portfolio2.jpg') }}" alt="Sistem Informasi Administrasi Tata Usaha Seragam">
-        </div>
-        <div class="portfolio-card-meta">
-            <div class="card-tags">
-                <span class="tag-pill">Laravel</span>
-                <span class="tag-pill">MySql</span>
-                <span class="tag-pill">Api WhatsApp</span>
-            </div>
-            <h3>Sistem Informasi Administrasi Tata Usaha Seragam — WhatsApp Gateway - QrCode Pengambilan</h3>
-            
-            <!-- Teks Paragraf dengan ID unik -->
-            <p id="desc-card-2">
-                Tugas akhir ini berfokus pada pengembangan sistem informasi berbasis website untuk mempermudah dan meningkatkan efisiensi proses administrasi seragam siswa di SMP Negeri 3 Rajadesa. Sistem ini memiliki dua jenis pengguna, yaitu Tata Usaha (TU) dan siswa. Siswa dapat mengajukan kebutuhan seragam serta memantau status pengajuannya, sedangkan petugas TU dapat mengelola data siswa, memeriksa dan menyetujui pengajuan, serta mengelola laporan administrasi. Sistem ini juga terintegrasi dengan WhatsApp Gateway menggunakan Fonnte untuk mengirimkan notifikasi, dilengkapi QR Code dinamis untuk mendukung proses pengambilan seragam, serta fitur impor data siswa melalui Excel dan ekspor laporan. Pengembangan sistem menggunakan metode Waterfall, sedangkan pengujiannya menggunakan Black Box Testing dengan teknik Equivalence Partitioning terhadap 48 skenario pengujian, dengan hasil 100% valid berdasarkan skenario yang diuji. Tujuan utama penelitian ini adalah menghasilkan sistem administrasi seragam yang lebih terstruktur, efisien, dan memudahkan komunikasi antara siswa dan pihak Tata Usaha.
-            </p>
-
-            <!-- Tombol Baca Selengkapnya -->
-            <span class="btn-read-more" onclick="toggleReadMore('desc-card-2', this)">Baca Selengkapnya ↓</span>
-
-            <div class="card-footer">
-                <span class="tag-pill">Tahun 2026</span>
-                <span class="card-link">Eksplorasi Proyek ↗</span>
-            </div>
-        </div>
-    </article>
-
-    <!-- ========================================== -->
-    <!-- CARD 3: Ken's Coffee House (Coffee Shop) -->
-    <!-- ========================================== -->
-    <article class="portfolio-card" data-category="branding">
-        <div class="portfolio-card-img-wrap">
-            <img src="{{ asset('images/portfolio-kopi.jpg') }}" alt="Ken's Coffee House — Artisan Roastery & Coffee Shop">
-        </div>
-        <div class="portfolio-card-meta">
-            <div class="card-tags">
-                <span class="tag-pill">Coffee Shop & Roastery</span>
-                <span class="tag-pill">Personal Branding</span>
-                <span class="tag-pill">Online Booking</span>
-            </div>
-            <h3>Ken's Coffee House — Artisan Roastery & Personal Brand</h3>
-            <p>Platform digital eksklusif untuk coffee house & artisan roastery Master Barista Ken. Menampilkan kurasi biji kopi single origin, signature cold brew showcase, menu interaktif, serta sistem reservasi meja dan kelas barista profesional.</p>
-            <div class="card-footer">
-                <span class="tag-pill">Live Website</span>
-                <a href="https://ferdianbimastya.ifree.page/" target="_blank" rel="noopener noreferrer" class="card-link">
-                    Kunjungi Website ↗
-                </a>
-            </div>
-        </div>
-    </article>
-
-    <!-- ========================================== -->
-    <!-- CARD 4: Pondok Pesantren Hidayatul Muhajirin -->
-    <!-- ========================================== -->
-    <article class="portfolio-card" data-category="academic">
-        <div class="portfolio-card-img-wrap">
-            <img src="{{ asset('images/portfolio-pesantren.png') }}" alt="Pondok Pesantren Hidayatul Muhajirin — Portal Resmi & PSB Online">
-        </div>
-        <div class="portfolio-card-meta">
-            <div class="card-tags">
-                <span class="tag-pill">Pondok Pesantren</span>
-                <span class="tag-pill">PSB Online</span>
-                <span class="tag-pill">Tahfizh Al-Qur'an</span>
-            </div>
-            <h3>Pondok Pesantren Hidayatul Muhajirin — Portal Resmi & PSB Online</h3>
-            <p>Website resmi lembaga pendidikan Islam terpadu yang memadukan kurikulum Tahfizh Al-Qur'an 30 Juz dan Kitab Kuning. Dilengkapi modul Pendaftaran Santri Baru (PSB Online), informasi kurikulum, publikasi kegiatan, galeri santri, dan kontak asrama.</p>
-            <div class="card-footer">
-                <span class="tag-pill">Live Website</span>
-                <a href="https://pondokmumodern.iblogger.org/" target="_blank" rel="noopener noreferrer" class="card-link">
-                    Kunjungi Website ↗
-                </a>
-            </div>
-        </div>
-    </article>
-
-    <!-- ========================================== -->
-    <!-- CARD 5: SD Negeri 258/VI Rejo Sari (Sekolah) -->
-    <!-- ========================================== -->
-    <article class="portfolio-card" data-category="academic">
-        <div class="portfolio-card-img-wrap">
-            <img src="{{ asset('images/portfolio-sekolah.png') }}" alt="SD Negeri 258/VI Rejo Sari — Portal Resmi Akademik">
-        </div>
-        <div class="portfolio-card-meta">
-            <div class="card-tags">
-                <span class="tag-pill">Sekolah Dasar Negeri</span>
-                <span class="tag-pill">Portal Akademik</span>
-                <span class="tag-pill">Kurikulum Merdeka</span>
-            </div>
-            <h3>SD Negeri 258/VI Rejo Sari — Portal Informasi Akademik Terpadu</h3>
-            <p>Portal web resmi sekolah dasar negeri untuk media publikasi kegiatan belajar mengajar, pengumuman akademik berkala, portal berita sekolah, galeri prestasi siswa, informasi dewan guru, dan integrasi akses administrasi Tata Usaha.</p>
-            <div class="card-footer">
-                <span class="tag-pill">Live Website</span>
-                <a href="https://sekolahdasarnegeri.free.je/" target="_blank" rel="noopener noreferrer" class="card-link">
-                    Kunjungi Website ↗
-                </a>
-            </div>
-        </div>
-    </article>
-
-    <!-- ========================================== -->
-    <!-- CARD 6: ScholarSphere -->
-    <!-- ========================================== -->
-    <article class="portfolio-card" data-category="saas">
-        <div class="portfolio-card-img-wrap">
-            <img src="{{ asset('images/portfolio3.jpg') }}" alt="ScholarSphere Academic Repository">
-        </div>
-        <div class="portfolio-card-meta">
-            <div class="card-tags">
-                <span class="tag-pill">Sistem Skripsi / Riset</span>
-                <span class="tag-pill">Machine Learning</span>
-                <span class="tag-pill">RESTful API</span>
-            </div>
-            <h3>ScholarSphere — Sistem Informasi & Manajemen Tesis</h3>
-            <p>Sistem bimbingan dan pelacakan riset akademik yang dilengkapi algoritma pencocokan topik cerdas, validasi dokumen instan, dan antarmuka ramah mahasiswa/dosen.</p>
-            <div class="card-footer">
-                <span class="tag-pill">Tahun 2026</span>
-                <span class="card-link">Eksplorasi Proyek ↗</span>
-            </div>
-        </div>
-    </article>
-
-</div>
 
                 </div>
             </div>

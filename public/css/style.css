@@ -436,35 +436,36 @@ select {
 }
 
 /* --------------------------------------------------------------------------
-   3. PORTOFOLIO (Sticky Scroll Pinning / Section Pinning)
+   3. PORTOFOLIO (Cascading Stacked Showcase & Category Filter)
    -------------------------------------------------------------------------- */
 .portfolio-section {
     position: relative;
     padding: 90px 0 110px 0;
     background-color: var(--bg-surface);
     border-bottom: 1px solid var(--border-subtle);
+    scroll-margin-top: 100px;
 }
 
 .portfolio-layout {
     display: grid;
-    grid-template-columns: 380px 1fr;
+    grid-template-columns: 360px 1fr;
     gap: 48px;
     align-items: start;
     position: relative;
 }
 
-/* Pinning / Sticky Sidebar */
+/* Sisi Kiri: Pinning / Sticky Sidebar */
 .portfolio-pinned-sidebar {
     position: sticky;
     top: calc(var(--header-height) + 30px);
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 22px;
     padding: 32px;
     background-color: #ffffff;
     border: 1px solid var(--border-subtle);
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+    border-radius: 24px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
 }
 
 .portfolio-pinned-sidebar .sidebar-badge {
@@ -484,10 +485,10 @@ select {
 }
 
 .portfolio-pinned-sidebar .sidebar-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 800;
     letter-spacing: -0.02em;
-    line-height: 1.2;
+    line-height: 1.15;
     color: var(--text-primary);
 }
 
@@ -497,124 +498,349 @@ select {
     line-height: 1.6;
 }
 
+/* Category Filter Buttons (Interactive, Accessible, Visual Feedback) */
 .portfolio-categories-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 8px;
+    margin-top: 6px;
 }
 
 .cat-item {
+    width: 100%;
+    border: 1.5px solid rgba(228, 228, 231, 0.9);
+    background-color: #ffffff;
+    border-radius: 14px;
+    padding: 13px 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 16px;
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 10px;
-    font-size: 0.88rem;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
     font-weight: 500;
-    color: var(--text-secondary);
-    transition: all var(--transition-fast);
-    cursor: default;
+    color: #52525b;
+    text-align: left;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
 }
 
-.cat-item.active,
 .cat-item:hover {
-    background-color: #ffffff;
-    border-color: var(--border-medium);
-    color: var(--text-primary);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-color: #a1a1aa;
+    background-color: #f8fafc;
+    color: #18181b;
+    transform: translateX(3px);
 }
 
-.cat-item .cat-dot {
-    width: 6px;
-    height: 6px;
+.cat-item.active {
+    border-color: #09090b;
+    background-color: #f4f4f5;
+    color: #09090b;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.cat-label {
+    display: inline-block;
+}
+
+.cat-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cat-count {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #71717a;
+    background: #f4f4f5;
+    border-radius: 9999px;
+    padding: 2px 8px;
+    border: 1px solid rgba(228, 228, 231, 0.8);
+    transition: all 0.2s ease;
+}
+
+.cat-item.active .cat-count {
+    background: #09090b;
+    color: #ffffff;
+    border-color: #09090b;
+}
+
+.cat-dot {
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    background-color: var(--text-muted);
+    background-color: #d4d4d8;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cat-item.active .cat-dot {
-    background-color: var(--accent-black);
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    background-color: #09090b;
+    transform: scale(1.35);
+    box-shadow: 0 0 0 3px rgba(9, 9, 11, 0.15);
 }
 
-/* Portfolio Cards Stack (Sticky Pinning) */
-.portfolio-cards-stream {
+.sidebar-cta-wrap {
+    margin-top: 10px;
+}
+
+/* ==========================================================================
+   SISI KANAN: CASCADING STACKED SHOWCASE (Efek Bertingkat Tangga)
+   ========================================================================== */
+.portfolio-showcase-stage {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    width: 100%;
 }
 
-.portfolio-card {
-    position: sticky;
-    top: calc(var(--header-height) + 32px);
+.showcase-nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    padding: 0 4px;
+}
+
+.showcase-category-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #52525b;
+}
+
+.indicator-live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.showcase-nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.showcase-counter {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #09090b;
+    font-family: var(--font-mono);
+    letter-spacing: 1px;
+}
+
+.showcase-nav-arrows {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-stack-nav {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(228, 228, 231, 0.9);
     background-color: #ffffff;
-    border: 1px solid var(--border-medium);
-    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #18181b;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.btn-stack-nav:hover {
+    background-color: #09090b;
+    color: #ffffff;
+    border-color: #09090b;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.btn-stack-nav:active {
+    transform: translateY(1px);
+}
+
+/* Wadah Stack & Efek Bertingkat Tangga */
+.portfolio-stack-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 640px;
+    padding-top: 48px;
+    padding-bottom: 4rem;
+}
+
+.portfolio-card.stacked-card {
+    position: absolute;
+    top: 48px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 680px;
+    background-color: #ffffff;
+    border: 1px solid rgba(228, 228, 231, 0.95);
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
-    transition: transform var(--transition-smooth), border-color var(--transition-smooth);
+    box-sizing: border-box;
+    transform-origin: center top;
+    transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.35s ease,
+                box-shadow 0.35s ease,
+                border-color 0.3s ease;
+    will-change: transform, opacity;
 }
 
-.portfolio-card:nth-child(1) {
-    top: calc(var(--header-height) + 24px);
-    z-index: 11;
+/* Level 0: Kartu Depan Utama (Active Dashboard) */
+.portfolio-card.stacked-card.stack-pos-0 {
+    transform: translateY(0) scale(1);
+    z-index: 30;
+    opacity: 1;
+    pointer-events: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    cursor: default;
 }
 
-.portfolio-card:nth-child(2) {
-    top: calc(var(--header-height) + 38px);
-    z-index: 12;
+/* Level 1: Kartu Belakang 2 (Mencuat di atas) */
+.portfolio-card.stacked-card.stack-pos-1 {
+    transform: translateY(-20px) scale(0.95);
+    z-index: 20;
+    opacity: 0.94;
+    pointer-events: auto;
+    cursor: pointer;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04);
 }
 
-.portfolio-card:nth-child(3) {
-    top: calc(var(--header-height) + 52px);
-    z-index: 13;
+.portfolio-card.stacked-card.stack-pos-1:hover {
+    transform: translateY(-24px) scale(0.955);
+    border-color: #a1a1aa;
 }
 
-.portfolio-card:nth-child(4) {
-    top: calc(var(--header-height) + 66px);
-    z-index: 14;
+/* Level 2: Kartu Belakang 1 (Mencuat paling atas) */
+.portfolio-card.stacked-card.stack-pos-2 {
+    transform: translateY(-40px) scale(0.90);
+    z-index: 10;
+    opacity: 0.84;
+    pointer-events: auto;
+    cursor: pointer;
+    box-shadow: 0 15px 30px -15px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.03);
 }
 
-.portfolio-card:nth-child(5) {
-    top: calc(var(--header-height) + 80px);
-    z-index: 15;
+.portfolio-card.stacked-card.stack-pos-2:hover {
+    transform: translateY(-44px) scale(0.905);
+    border-color: #a1a1aa;
 }
 
-.portfolio-card:nth-child(6) {
-    top: calc(var(--header-height) + 94px);
-    z-index: 16;
+/* Level 3+: Tersembunyi di antrean */
+.portfolio-card.stacked-card.stack-pos-hidden {
+    transform: translateY(-50px) scale(0.85);
+    z-index: 5;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
 }
 
-.portfolio-card:hover {
-    border-color: var(--border-bright);
+/* Top Browser Mockup Chrome Header */
+.mockup-browser-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: #f8fafc;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.95);
+    transition: background-color 0.3s ease;
 }
 
+.portfolio-card.stacked-card.stack-pos-1 .mockup-browser-header {
+    background: #f1f5f9;
+}
+
+.portfolio-card.stacked-card.stack-pos-2 .mockup-browser-header {
+    background: #e2e8f0;
+}
+
+.mockup-dots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.mockup-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.mockup-dot.red { background-color: #ff5f56; }
+.mockup-dot.yellow { background-color: #ffbd2e; }
+.mockup-dot.green { background-color: #27c93f; }
+
+.mockup-address-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid rgba(228, 228, 231, 0.85);
+    padding: 5px 14px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-family: var(--font-mono);
+    color: #71717a;
+    max-width: 320px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.mockup-address-bar .lock-icon {
+    display: inline-flex;
+    align-items: center;
+    color: #10b981;
+}
+
+.mockup-window-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #a1a1aa;
+}
+
+/* Gambar Portofolio */
 .portfolio-card-img-wrap {
     width: 100%;
-    height: 320px;
+    height: 250px;
     overflow: hidden;
     position: relative;
-    background-color: #f1f5f9;
+    background-color: #f4f4f5;
 }
 
 .portfolio-card-img-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top;
     transition: transform 0.5s ease;
 }
 
-.portfolio-card:hover .portfolio-card-img-wrap img {
-    transform: scale(1.03);
+.portfolio-card.stacked-card.stack-pos-0:hover .portfolio-card-img-wrap img {
+    transform: scale(1.02);
 }
 
+/* Deskripsi & Meta */
 .portfolio-card-meta {
-    padding: 28px 32px;
+    padding: 22px 28px 18px 28px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
 }
 
 .card-tags {
@@ -627,7 +853,7 @@ select {
     font-size: 0.72rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
     padding: 4px 10px;
     border-radius: 999px;
     background-color: var(--bg-surface);
@@ -636,14 +862,15 @@ select {
 }
 
 .portfolio-card-meta h3 {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: 750;
-    color: var(--text-primary);
+    color: #09090b;
+    line-height: 1.35;
 }
 
 .portfolio-card-meta p {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
+    font-size: 0.92rem;
+    color: #52525b;
     line-height: 1.6;
 }
 
@@ -684,26 +911,92 @@ select {
     border-color: var(--accent-black);
 }
 
-.card-footer {
+/* Floating Bottom Action Bar (Uncut CTA & Status) */
+.card-bottom-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 16px;
-    border-top: 1px solid var(--border-subtle);
-    margin-top: 6px;
+    padding: 16px 28px;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid rgba(228, 228, 231, 0.85);
 }
 
-.card-link {
+.badge-status {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.88rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    color: var(--accent-black);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #71717a;
 }
 
-.card-link:hover {
-    gap: 12px;
+.badge-status.live {
+    color: #059669;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #a1a1aa;
+    display: inline-block;
+}
+
+.status-dot.live-pulse {
+    background-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+    animation: pulseLiveDot 2s infinite;
+}
+
+@keyframes pulseLiveDot {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+.btn-card-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #09090b;
+    color: #ffffff;
+    font-size: 0.86rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-card-action:hover {
+    background-color: #27272a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-card-action svg {
+    transition: transform 0.2s ease;
+}
+
+.btn-card-action:hover svg {
+    transform: translate(2px, -2px);
 }
 
 /* --------------------------------------------------------------------------
@@ -3125,34 +3418,70 @@ body.is-nav-open .floating-wa-btn {
         border-radius: 999px;
     }
 
-    .portfolio-cards-stream {
-        gap: 22px;
+    .portfolio-stack-wrapper {
+        min-height: 590px;
+        padding-top: 36px;
+        padding-bottom: 24px;
     }
 
-    .portfolio-card,
-    .portfolio-card:nth-child(n) {
-        position: static;
-        top: auto;
-        border-radius: 18px;
+    .portfolio-card.stacked-card {
+        top: 36px;
+        max-width: 100%;
+        border-radius: 20px;
+    }
+
+    .portfolio-card.stacked-card.stack-pos-0 {
+        transform: translateY(0) scale(1);
+    }
+
+    .portfolio-card.stacked-card.stack-pos-1 {
+        transform: translateY(-16px) scale(0.96);
+    }
+
+    .portfolio-card.stacked-card.stack-pos-2 {
+        transform: translateY(-32px) scale(0.92);
     }
 
     .portfolio-card-img-wrap {
-        height: clamp(190px, 56vw, 250px);
+        height: clamp(160px, 46vw, 200px);
+    }
+
+    .mockup-browser-header {
+        padding: 9px 14px;
+    }
+
+    .mockup-address-bar {
+        max-width: 170px;
+        font-size: 0.72rem;
+        padding: 3px 10px;
+    }
+
+    .mockup-window-tag {
+        display: none;
     }
 
     .portfolio-card-meta {
-        padding: 20px 18px;
-        gap: 12px;
+        padding: 16px 18px 12px 18px;
+        gap: 10px;
     }
 
     .portfolio-card-meta h3 {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
         line-height: 1.35;
     }
 
     .portfolio-card-meta p {
-        font-size: 0.9rem;
-        line-height: 1.55;
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .card-bottom-bar {
+        padding: 11px 16px;
+    }
+
+    .btn-card-action {
+        padding: 7px 14px;
+        font-size: 0.78rem;
     }
 
     /* 4. Services Section */
