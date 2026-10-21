@@ -3580,3 +3580,33 @@ body.is-nav-open .floating-wa-btn {
     color: #4b5563;
 >>>>>>> a8db68554533e88c778c181c1bdb96a47c7dacf0
 }
+/* --- STYLING BACA SELENGKAPNYA --- */
+.portfolio-card-meta p {
+    /* Batasi teks menjadi 3 baris */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Class saat teks dibuka */
+.portfolio-card-meta p.expanded {
+    display: block;
+    -webkit-line-clamp: unset;
+}
+
+/* Tombol Baca Selengkapnya */
+.btn-read-more {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-black);
+    cursor: pointer;
+    margin-top: 8px;
+    text-decoration: underline;
+}
+
+.btn-read-more:hover {
+    color: #4b5563;
+}

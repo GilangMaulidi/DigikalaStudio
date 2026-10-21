@@ -85,52 +85,43 @@
                     <a href="#beranda" class="mobile-nav-link active">
                         <span class="nav-num">01</span>
                         <span class="nav-text">Beranda</span>
-                        <span class="nav-arrow">→</span>
                     </a>
                     <a href="#portofolio" class="mobile-nav-link">
                         <span class="nav-num">02</span>
                         <span class="nav-text">Portofolio</span>
-                        <span class="nav-arrow">→</span>
                     </a>
                     <a href="#layanan" class="mobile-nav-link">
                         <span class="nav-num">03</span>
                         <span class="nav-text">Layanan</span>
-                        <span class="nav-arrow">→</span>
                     </a>
                     <a href="#proses" class="mobile-nav-link">
                         <span class="nav-num">04</span>
                         <span class="nav-text">Proses Kerja</span>
-                        <span class="nav-arrow">→</span>
                     </a>
                     <a href="#wishlist" class="mobile-nav-link">
                         <span class="nav-num">05</span>
                         <span class="nav-text">Pilih Level Website</span>
-                        <span class="nav-arrow">→</span>
                     </a>
                     <a href="#faq" class="mobile-nav-link">
                         <span class="nav-num">06</span>
                         <span class="nav-text">FAQ</span>
-                        <span class="nav-arrow">→</span>
                     </a>
                     <a href="#testimoni" class="mobile-nav-link">
                         <span class="nav-num">07</span>
                         <span class="nav-text">Testimoni Klien</span>
-                        <span class="nav-arrow">→</span>
                     </a>
                     <a href="#kontak" class="mobile-nav-link">
                         <span class="nav-num">08</span>
                         <span class="nav-text">Kontak Resmi</span>
-                        <span class="nav-arrow">→</span>
                     </a>
                     <a href="#tentang" class="mobile-nav-link">
                         <span class="nav-num">09</span>
                         <span class="nav-text">Tentang Kami</span>
-                        <span class="nav-arrow">→</span>
                     </a>
                 </nav>
 
                 <div class="mobile-nav-footer">
-                    <a href="#kolaborasi" class="btn btn-primary btn-mobile-cta">Mulai Proyek Sekarang →</a>
+                    <a href="#kolaborasi" class="btn btn-primary btn-mobile-cta">Mulai Proyek Sekarang </a>
                     <a href="https://wa.me/6281234567890?text=Halo%20Digikala%20Studio" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-mobile-wa">
                         💬 WhatsApp Fast Chat
                     </a>
