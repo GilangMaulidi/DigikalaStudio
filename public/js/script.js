@@ -337,4 +337,43 @@ document.addEventListener('DOMContentLoaded', () => {
             else startAutoPlay();
         });
     }
+
+    // =====================================================================
+    // 6. PORTFOLIO CATEGORY FILTER & READ MORE
+    // =====================================================================
+    const catItems = document.querySelectorAll('.portfolio-categories-list .cat-item');
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+    if (catItems.length > 0 && portfolioCards.length > 0) {
+        catItems.forEach(item => {
+            item.addEventListener('click', () => {
+                catItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+
+                const category = item.getAttribute('data-category');
+                portfolioCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (!category || category === 'all' || cardCategory === category) {
+                        card.style.display = 'block';
+                        card.style.opacity = '1';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    // Global toggleReadMore function
+    window.toggleReadMore = function(elementId, btnElement) {
+        const textEl = document.getElementById(elementId);
+        if (!textEl) return;
+
+        textEl.classList.toggle('expanded');
+        if (textEl.classList.contains('expanded')) {
+            btnElement.textContent = 'Tutup Sebagian ↑';
+        } else {
+            btnElement.textContent = 'Baca Selengkapnya ↓';
+        }
+    };
 });

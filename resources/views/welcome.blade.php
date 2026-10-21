@@ -189,20 +189,20 @@
                         </p>
 
                         <div class="portfolio-categories-list">
-                            <div class="cat-item active">
+                            <div class="cat-item active" data-category="all">
                                 <span>Semua Proyek</span>
                                 <span class="cat-dot"></span>
                             </div>
-                            <div class="cat-item">
+                            <div class="cat-item" data-category="saas">
                                 <span>Platform SaaS & Web App</span>
                                 <span class="cat-dot"></span>
                             </div>
-                            <div class="cat-item">
+                            <div class="cat-item" data-category="branding">
                                 <span>E-Commerce & Branding</span>
                                 <span class="cat-dot"></span>
                             </div>
-                            <div class="cat-item">
-                                <span>Sistem Riset & Akademik</span>
+                            <div class="cat-item" data-category="academic">
+                                <span>Sistem Riset & Edukasi</span>
                                 <span class="cat-dot"></span>
                             </div>
                         </div>
@@ -216,9 +216,9 @@
 <div class="portfolio-cards-stream">
     
     <!-- ========================================== -->
-    <!-- CARD 1 -->
+    <!-- CARD 1: Lunar Analytics -->
     <!-- ========================================== -->
-    <article class="portfolio-card">
+    <article class="portfolio-card" data-category="saas">
         <div class="portfolio-card-img-wrap">
             <img src="{{ asset('images/portfolio1.jpg') }}" alt="Lunar Analytics Platform SaaS">
         </div>
@@ -233,15 +233,14 @@
             <div class="card-footer">
                 <span class="tag-pill">Tahun 2026</span>
                 <span class="card-link">Eksplorasi Proyek ↗</span>
-
             </div>
         </div>
     </article>
 
     <!-- ========================================== -->
-    <!-- CARD 2 (Dengan Fitur Baca Selengkapnya) -->
+    <!-- CARD 2: Sistem Administrasi Seragam TU SMP -->
     <!-- ========================================== -->
-    <article class="portfolio-card">
+    <article class="portfolio-card" data-category="academic">
         <div class="portfolio-card-img-wrap">
             <img src="{{ asset('images/portfolio2.jpg') }}" alt="Sistem Informasi Administrasi Tata Usaha Seragam">
         </div>
@@ -269,9 +268,81 @@
     </article>
 
     <!-- ========================================== -->
-    <!-- CARD 3 -->
+    <!-- CARD 3: Ken's Coffee House (Coffee Shop) -->
     <!-- ========================================== -->
-    <article class="portfolio-card">
+    <article class="portfolio-card" data-category="branding">
+        <div class="portfolio-card-img-wrap">
+            <img src="{{ asset('images/portfolio-kopi.jpg') }}" alt="Ken's Coffee House — Artisan Roastery & Coffee Shop">
+        </div>
+        <div class="portfolio-card-meta">
+            <div class="card-tags">
+                <span class="tag-pill">Coffee Shop & Roastery</span>
+                <span class="tag-pill">Personal Branding</span>
+                <span class="tag-pill">Online Booking</span>
+            </div>
+            <h3>Ken's Coffee House — Artisan Roastery & Personal Brand</h3>
+            <p>Platform digital eksklusif untuk coffee house & artisan roastery Master Barista Ken. Menampilkan kurasi biji kopi single origin, signature cold brew showcase, menu interaktif, serta sistem reservasi meja dan kelas barista profesional.</p>
+            <div class="card-footer">
+                <span class="tag-pill">Live Website</span>
+                <a href="https://ferdianbimastya.ifree.page/" target="_blank" rel="noopener noreferrer" class="card-link">
+                    Kunjungi Website ↗
+                </a>
+            </div>
+        </div>
+    </article>
+
+    <!-- ========================================== -->
+    <!-- CARD 4: Pondok Pesantren Hidayatul Muhajirin -->
+    <!-- ========================================== -->
+    <article class="portfolio-card" data-category="academic">
+        <div class="portfolio-card-img-wrap">
+            <img src="{{ asset('images/portfolio-pesantren.png') }}" alt="Pondok Pesantren Hidayatul Muhajirin — Portal Resmi & PSB Online">
+        </div>
+        <div class="portfolio-card-meta">
+            <div class="card-tags">
+                <span class="tag-pill">Pondok Pesantren</span>
+                <span class="tag-pill">PSB Online</span>
+                <span class="tag-pill">Tahfizh Al-Qur'an</span>
+            </div>
+            <h3>Pondok Pesantren Hidayatul Muhajirin — Portal Resmi & PSB Online</h3>
+            <p>Website resmi lembaga pendidikan Islam terpadu yang memadukan kurikulum Tahfizh Al-Qur'an 30 Juz dan Kitab Kuning. Dilengkapi modul Pendaftaran Santri Baru (PSB Online), informasi kurikulum, publikasi kegiatan, galeri santri, dan kontak asrama.</p>
+            <div class="card-footer">
+                <span class="tag-pill">Live Website</span>
+                <a href="https://pondokmumodern.iblogger.org/" target="_blank" rel="noopener noreferrer" class="card-link">
+                    Kunjungi Website ↗
+                </a>
+            </div>
+        </div>
+    </article>
+
+    <!-- ========================================== -->
+    <!-- CARD 5: SD Negeri 258/VI Rejo Sari (Sekolah) -->
+    <!-- ========================================== -->
+    <article class="portfolio-card" data-category="academic">
+        <div class="portfolio-card-img-wrap">
+            <img src="{{ asset('images/portfolio-sekolah.png') }}" alt="SD Negeri 258/VI Rejo Sari — Portal Resmi Akademik">
+        </div>
+        <div class="portfolio-card-meta">
+            <div class="card-tags">
+                <span class="tag-pill">Sekolah Dasar Negeri</span>
+                <span class="tag-pill">Portal Akademik</span>
+                <span class="tag-pill">Kurikulum Merdeka</span>
+            </div>
+            <h3>SD Negeri 258/VI Rejo Sari — Portal Informasi Akademik Terpadu</h3>
+            <p>Portal web resmi sekolah dasar negeri untuk media publikasi kegiatan belajar mengajar, pengumuman akademik berkala, portal berita sekolah, galeri prestasi siswa, informasi dewan guru, dan integrasi akses administrasi Tata Usaha.</p>
+            <div class="card-footer">
+                <span class="tag-pill">Live Website</span>
+                <a href="https://sekolahdasarnegeri.free.je/" target="_blank" rel="noopener noreferrer" class="card-link">
+                    Kunjungi Website ↗
+                </a>
+            </div>
+        </div>
+    </article>
+
+    <!-- ========================================== -->
+    <!-- CARD 6: ScholarSphere -->
+    <!-- ========================================== -->
+    <article class="portfolio-card" data-category="saas">
         <div class="portfolio-card-img-wrap">
             <img src="{{ asset('images/portfolio3.jpg') }}" alt="ScholarSphere Academic Repository">
         </div>
