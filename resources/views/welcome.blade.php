@@ -219,35 +219,27 @@
                         </div>
                     </aside>
 
-                    {{-- SISI KANAN: Cascading Stacked Cards Showcase --}}
+                    {{-- SISI KANAN: Kartu Proyek Sticky Scroll Pinning --}}
                     <div class="portfolio-showcase-stage">
                         
-                        <!-- Header Kontrol Showcase: Kategori Aktif, Counter, & Tombol Navigasi Tangga -->
+                        <!-- Header Kontrol Showcase: Status Kategori & Jumlah Proyek -->
                         <div class="showcase-nav-bar">
                             <div class="showcase-category-tag">
                                 <span class="indicator-live-dot"></span>
                                 <span id="activeCategoryName">Semua Proyek</span>
                             </div>
                             <div class="showcase-nav-controls">
-                                <span class="showcase-counter" id="showcaseCounter">01 / 06</span>
-                                <div class="showcase-nav-arrows">
-                                    <button type="button" class="btn-stack-nav" id="prevCardBtn" aria-label="Proyek Sebelumnya" title="Lihat Proyek Sebelumnya">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                                    </button>
-                                    <button type="button" class="btn-stack-nav" id="nextCardBtn" aria-label="Proyek Selanjutnya" title="Lihat Proyek Selanjutnya">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                    </button>
-                                </div>
+                                <span class="showcase-counter" id="showcaseCounter">Menampilkan 6 Proyek Unggulan</span>
                             </div>
                         </div>
 
-                        <!-- Wadah Bertingkat Tangga / Cascading Stacked Cards -->
-                        <div class="portfolio-stack-wrapper pb-16" id="portfolioStackWrapper">
+                        <!-- Wadah Aliran Kartu Sticky Scroll Pinning (Menumpuk Otomatis Saat Di-Scroll) -->
+                        <div class="portfolio-cards-stream" id="portfolioCardsStream">
                             
                             <!-- ========================================== -->
                             <!-- CARD 1: Lunar Analytics (SaaS) -->
                             <!-- ========================================== -->
-                            <article class="portfolio-card stacked-card" data-category="saas" data-index="0">
+                            <article class="portfolio-card" data-category="saas" data-index="0">
                                 <!-- Top Browser Chrome Mockup -->
                                 <div class="mockup-browser-header">
                                     <div class="mockup-dots">
@@ -357,7 +349,7 @@
                             <!-- ========================================== -->
                             <!-- CARD 3: Ken's Coffee House (Branding) -->
                             <!-- ========================================== -->
-                            <article class="portfolio-card stacked-card" data-category="branding" data-index="2">
+                            <article class="portfolio-card" data-category="branding" data-index="2">
                                 <!-- Top Browser Chrome Mockup -->
                                 <div class="mockup-browser-header">
                                     <div class="mockup-dots">
@@ -408,7 +400,7 @@
                             <!-- ========================================== -->
                             <!-- CARD 4: Pondok Pesantren Hidayatul Muhajirin (Academic) -->
                             <!-- ========================================== -->
-                            <article class="portfolio-card stacked-card" data-category="academic" data-index="3">
+                            <article class="portfolio-card" data-category="academic" data-index="3">
                                 <!-- Top Browser Chrome Mockup -->
                                 <div class="mockup-browser-header">
                                     <div class="mockup-dots">
@@ -459,7 +451,7 @@
                             <!-- ========================================== -->
                             <!-- CARD 5: SD Negeri 258/VI Rejo Sari (Academic) -->
                             <!-- ========================================== -->
-                            <article class="portfolio-card stacked-card" data-category="academic" data-index="4">
+                            <article class="portfolio-card" data-category="academic" data-index="4">
                                 <!-- Top Browser Chrome Mockup -->
                                 <div class="mockup-browser-header">
                                     <div class="mockup-dots">
@@ -510,7 +502,7 @@
                             <!-- ========================================== -->
                             <!-- CARD 6: ScholarSphere (SaaS) -->
                             <!-- ========================================== -->
-                            <article class="portfolio-card stacked-card" data-category="saas" data-index="5">
+                            <article class="portfolio-card" data-category="saas" data-index="5">
                                 <!-- Top Browser Chrome Mockup -->
                                 <div class="mockup-browser-header">
                                     <div class="mockup-dots">

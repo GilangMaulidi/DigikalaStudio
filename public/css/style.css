@@ -668,83 +668,69 @@ select {
     transform: translateY(1px);
 }
 
-/* Wadah Stack & Efek Bertingkat Tangga */
-.portfolio-stack-wrapper {
-    position: relative;
+/* ==========================================================================
+   Wadah Aliran Kartu Sticky Scroll Pinning (Menumpuk Saat Di-Scroll)
+   ========================================================================== */
+.portfolio-cards-stream {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
     width: 100%;
-    min-height: 640px;
-    padding-top: 48px;
-    padding-bottom: 4rem;
+    position: relative;
+    padding-bottom: 50px;
 }
 
-.portfolio-card.stacked-card {
-    position: absolute;
-    top: 48px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
+.portfolio-card {
+    position: -webkit-sticky;
+    position: sticky;
     width: 100%;
-    max-width: 680px;
     background-color: #ffffff;
     border: 1px solid rgba(228, 228, 231, 0.95);
     border-radius: 24px;
     overflow: hidden;
     box-sizing: border-box;
-    transform-origin: center top;
-    transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.35s ease,
-                box-shadow 0.35s ease,
-                border-color 0.3s ease;
-    will-change: transform, opacity;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s ease,
+                border-color 0.3s ease,
+                opacity 0.3s ease;
+    will-change: transform, top;
 }
 
-/* Level 0: Kartu Depan Utama (Active Dashboard) */
-.portfolio-card.stacked-card.stack-pos-0 {
-    transform: translateY(0) scale(1);
-    z-index: 30;
-    opacity: 1;
-    pointer-events: auto;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.05);
-    cursor: default;
+/* Animasi Stay Sticky Scroll Pinning - Tingkatan Top & Z-Index Menumpuk */
+.portfolio-card:nth-child(1) {
+    top: calc(var(--header-height) + 20px);
+    z-index: 11;
 }
 
-/* Level 1: Kartu Belakang 2 (Mencuat di atas) */
-.portfolio-card.stacked-card.stack-pos-1 {
-    transform: translateY(-20px) scale(0.95);
-    z-index: 20;
-    opacity: 0.94;
-    pointer-events: auto;
-    cursor: pointer;
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04);
+.portfolio-card:nth-child(2) {
+    top: calc(var(--header-height) + 38px);
+    z-index: 12;
 }
 
-.portfolio-card.stacked-card.stack-pos-1:hover {
-    transform: translateY(-24px) scale(0.955);
+.portfolio-card:nth-child(3) {
+    top: calc(var(--header-height) + 56px);
+    z-index: 13;
+}
+
+.portfolio-card:nth-child(4) {
+    top: calc(var(--header-height) + 74px);
+    z-index: 14;
+}
+
+.portfolio-card:nth-child(5) {
+    top: calc(var(--header-height) + 92px);
+    z-index: 15;
+}
+
+.portfolio-card:nth-child(6) {
+    top: calc(var(--header-height) + 110px);
+    z-index: 16;
+}
+
+.portfolio-card:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.08);
     border-color: #a1a1aa;
-}
-
-/* Level 2: Kartu Belakang 1 (Mencuat paling atas) */
-.portfolio-card.stacked-card.stack-pos-2 {
-    transform: translateY(-40px) scale(0.90);
-    z-index: 10;
-    opacity: 0.84;
-    pointer-events: auto;
-    cursor: pointer;
-    box-shadow: 0 15px 30px -15px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.03);
-}
-
-.portfolio-card.stacked-card.stack-pos-2:hover {
-    transform: translateY(-44px) scale(0.905);
-    border-color: #a1a1aa;
-}
-
-/* Level 3+: Tersembunyi di antrean */
-.portfolio-card.stacked-card.stack-pos-hidden {
-    transform: translateY(-50px) scale(0.85);
-    z-index: 5;
-    opacity: 0;
-    pointer-events: none;
-    visibility: hidden;
 }
 
 /* Top Browser Mockup Chrome Header */
@@ -3418,29 +3404,23 @@ body.is-nav-open .floating-wa-btn {
         border-radius: 999px;
     }
 
-    .portfolio-stack-wrapper {
-        min-height: 590px;
-        padding-top: 36px;
+    .portfolio-cards-stream {
+        gap: 28px;
         padding-bottom: 24px;
     }
 
-    .portfolio-card.stacked-card {
-        top: 36px;
+    .portfolio-card {
         max-width: 100%;
         border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
-    .portfolio-card.stacked-card.stack-pos-0 {
-        transform: translateY(0) scale(1);
-    }
-
-    .portfolio-card.stacked-card.stack-pos-1 {
-        transform: translateY(-16px) scale(0.96);
-    }
-
-    .portfolio-card.stacked-card.stack-pos-2 {
-        transform: translateY(-32px) scale(0.92);
-    }
+    .portfolio-card:nth-child(1) { top: calc(var(--header-height) + 12px); }
+    .portfolio-card:nth-child(2) { top: calc(var(--header-height) + 24px); }
+    .portfolio-card:nth-child(3) { top: calc(var(--header-height) + 36px); }
+    .portfolio-card:nth-child(4) { top: calc(var(--header-height) + 48px); }
+    .portfolio-card:nth-child(5) { top: calc(var(--header-height) + 60px); }
+    .portfolio-card:nth-child(6) { top: calc(var(--header-height) + 72px); }
 
     .portfolio-card-img-wrap {
         height: clamp(160px, 46vw, 200px);
