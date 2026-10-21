@@ -339,29 +339,158 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =====================================================================
-    // 6. PORTFOLIO CATEGORY FILTER & READ MORE
+    // 6. PORTFOLIO CASCADING STACKED SHOWCASE & CATEGORY FILTER
     // =====================================================================
     const catItems = document.querySelectorAll('.portfolio-categories-list .cat-item');
-    const portfolioCards = document.querySelectorAll('.portfolio-card');
+    const allPortfolioCards = Array.from(document.querySelectorAll('.portfolio-card.stacked-card'));
+    const stackWrapper = document.getElementById('portfolioStackWrapper');
+    const activeCategoryLabel = document.getElementById('activeCategoryName');
+    const counterDisplay = document.getElementById('showcaseCounter');
+    const prevBtn = document.getElementById('prevCardBtn');
+    const nextBtn = document.getElementById('nextCardBtn');
 
-    if (catItems.length > 0 && portfolioCards.length > 0) {
-        catItems.forEach(item => {
-            item.addEventListener('click', () => {
-                catItems.forEach(i => i.classList.remove('active'));
-                item.classList.add('active');
+    if (allPortfolioCards.length > 0 && stackWrapper) {
+        let currentCategory = 'all';
+        let filteredCards = [...allPortfolioCards];
+        let activeCardIndex = 0;
 
-                const category = item.getAttribute('data-category');
-                portfolioCards.forEach(card => {
-                    const cardCategory = card.getAttribute('data-category');
-                    if (!category || category === 'all' || cardCategory === category) {
-                        card.style.display = 'block';
-                        card.style.opacity = '1';
+        function updateStackedCards() {
+            const total = filteredCards.length;
+            if (total === 0) return;
+
+            // Pastikan activeCardIndex selalu berada dalam rentang valid
+            if (activeCardIndex < 0) activeCardIndex = total - 1;
+            if (activeCardIndex >= total) activeCardIndex = 0;
+
+            // Perbarui counter visual (e.g. 01 / 06)
+            if (counterDisplay) {
+                counterDisplay.textContent = 
+                    String(activeCardIndex + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+            }
+
+            // Atur posisi setiap kartu (Bertingkat Tangga: 0 = depan, 1 = belakang 2, 2 = belakang 1)
+            allPortfolioCards.forEach(card => {
+                const filteredIdx = filteredCards.indexOf(card);
+
+                if (filteredIdx === -1) {
+                    // Kartu tidak masuk kategori terpilih
+                    card.classList.remove('stack-pos-0', 'stack-pos-1', 'stack-pos-2');
+                    card.classList.add('stack-pos-hidden');
+                    card.style.display = 'none';
+                } else {
+                    card.style.display = 'block';
+                    card.classList.remove('stack-pos-0', 'stack-pos-1', 'stack-pos-2', 'stack-pos-hidden');
+
+                    const relPos = (filteredIdx - activeCardIndex + total) % total;
+
+                    if (relPos === 0) {
+                        card.classList.add('stack-pos-0');
+                    } else if (relPos === 1) {
+                        card.classList.add('stack-pos-1');
+                    } else if (relPos === 2) {
+                        card.classList.add('stack-pos-2');
                     } else {
-                        card.style.display = 'none';
+                        card.classList.add('stack-pos-hidden');
                     }
+                }
+            });
+        }
+
+        // Filter Kategori saat tombol di sidebar diklik
+        catItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                catItems.forEach(i => {
+                    i.classList.remove('active');
+                    i.setAttribute('aria-selected', 'false');
                 });
+                item.classList.add('active');
+                item.setAttribute('aria-selected', 'true');
+
+                currentCategory = item.getAttribute('data-category') || 'all';
+                
+                const labelSpan = item.querySelector('.cat-label');
+                if (labelSpan && activeCategoryLabel) {
+                    activeCategoryLabel.textContent = labelSpan.textContent.trim();
+                }
+
+                if (currentCategory === 'all') {
+                    filteredCards = [...allPortfolioCards];
+                } else {
+                    filteredCards = allPortfolioCards.filter(card => 
+                        card.getAttribute('data-category') === currentCategory
+                    );
+                }
+
+                // Reset ke kartu pertama dari kategori baru
+                activeCardIndex = 0;
+                updateStackedCards();
             });
         });
+
+        // Klik langsung pada kartu bertingkat di belakang untuk membawanya ke depan
+        allPortfolioCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Abaikan jika yang diklik adalah link atau tombol read more
+                if (e.target.closest('a, button, .btn-read-more')) return;
+
+                if (card.classList.contains('stack-pos-1')) {
+                    activeCardIndex = (activeCardIndex + 1) % filteredCards.length;
+                    updateStackedCards();
+                } else if (card.classList.contains('stack-pos-2')) {
+                    activeCardIndex = (activeCardIndex + 2) % filteredCards.length;
+                    updateStackedCards();
+                }
+            });
+        });
+
+        // Navigasi Panah Berikutnya & Sebelumnya
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                activeCardIndex = (activeCardIndex + 1) % filteredCards.length;
+                updateStackedCards();
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                activeCardIndex = (activeCardIndex - 1 + filteredCards.length) % filteredCards.length;
+                updateStackedCards();
+            });
+        }
+
+        // Swipe Touch untuk Mobile (Geser kiri = selanjutnya, Geser kanan = sebelumnya)
+        let stackTouchStartX = 0;
+        let stackTouchStartY = 0;
+
+        stackWrapper.addEventListener('touchstart', (e) => {
+            stackTouchStartX = e.changedTouches[0].screenX;
+            stackTouchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        stackWrapper.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].screenX;
+            const touchEndY = e.changedTouches[0].screenY;
+            const diffX = touchEndX - stackTouchStartX;
+            const diffY = touchEndY - stackTouchStartY;
+
+            if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+                if (diffX < 0) {
+                    // Geser ke kiri -> Next
+                    activeCardIndex = (activeCardIndex + 1) % filteredCards.length;
+                    updateStackedCards();
+                } else {
+                    // Geser ke kanan -> Prev
+                    activeCardIndex = (activeCardIndex - 1 + filteredCards.length) % filteredCards.length;
+                    updateStackedCards();
+                }
+            }
+        }, { passive: true });
+
+        // Inisialisasi awal stack
+        updateStackedCards();
     }
 
     // Global toggleReadMore function
