@@ -61,27 +61,110 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =====================================================================
-    // 2. ACTIVE NAV HIGHLIGHTING
+    // 2. ACTIVE NAV HIGHLIGHTING & MOBILE DRAWER
     // =====================================================================
+    const siteHeader = document.getElementById('header');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+    const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .btn-mobile-cta');
     const navLinks = document.querySelectorAll('.nav-link');
     const trackedSections = [];
 
+    // Mobile Drawer Controls
+    function openMobileNav() {
+        if (!mobileNavDrawer) return;
+        mobileNavDrawer.classList.add('active');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.classList.add('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        }
+        mobileNavDrawer.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('is-nav-open');
+    }
+
+    function closeMobileNav() {
+        if (!mobileNavDrawer) return;
+        mobileNavDrawer.classList.remove('active');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+        mobileNavDrawer.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('is-nav-open');
+    }
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (mobileNavDrawer && mobileNavDrawer.classList.contains('active')) {
+                closeMobileNav();
+            } else {
+                openMobileNav();
+            }
+        });
+    }
+
+    if (mobileNavClose) {
+        mobileNavClose.addEventListener('click', closeMobileNav);
+    }
+
+    if (mobileNavBackdrop) {
+        mobileNavBackdrop.addEventListener('click', closeMobileNav);
+    }
+
+    // Close on ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileNavDrawer && mobileNavDrawer.classList.contains('active')) {
+            closeMobileNav();
+        }
+    });
+
+    // Close on link click & smooth scroll
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                closeMobileNav();
+            }
+        });
+    });
+
+    // Swipe to close mobile drawer (Geser ke kanan untuk menutup)
+    const mobileNavPanel = document.querySelector('.mobile-nav-panel');
+    if (mobileNavPanel) {
+        let drawerTouchStartX = 0;
+        let drawerTouchEndX = 0;
+
+        mobileNavPanel.addEventListener('touchstart', (e) => {
+            drawerTouchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        mobileNavPanel.addEventListener('touchend', (e) => {
+            drawerTouchEndX = e.changedTouches[0].screenX;
+            // Jika digeser ke kanan lebih dari 50px, tutup drawer
+            if (drawerTouchEndX - drawerTouchStartX > 50) {
+                closeMobileNav();
+            }
+        }, { passive: true });
+    }
+
+    // Active link tracking
     navLinks.forEach(link => {
         const targetId = link.getAttribute('href');
         if (targetId && targetId.startsWith('#')) {
             const section = document.querySelector(targetId);
-            if (section) trackedSections.push(section);
+            if (section && !trackedSections.includes(section)) trackedSections.push(section);
         }
     });
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.forEach(navLink => navLink.classList.remove('active'));
-            link.classList.add('active');
-        });
-    });
+    const updateActiveNav = () => {
+        // Toggle header scrolled styling
+        if (siteHeader) {
+            siteHeader.classList.toggle('is-scrolled', window.scrollY > 20);
+        }
 
-    window.addEventListener('scroll', () => {
         let current = '';
         const activeLine = Math.min(window.innerHeight * 0.35, 240);
 
@@ -92,13 +175,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Sync Desktop Nav
         navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
+            link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
         });
-    }, { passive: true });
+
+        // Sync Mobile Nav
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+        });
+    };
+
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
 
     // =====================================================================
     // 3. REVEAL ON SCROLL
@@ -212,6 +301,35 @@ document.addEventListener('DOMContentLoaded', () => {
         if (carousel) {
             carousel.addEventListener('mouseenter', stopAutoPlay);
             carousel.addEventListener('mouseleave', startAutoPlay);
+
+            // Touch Swipe for Mobile
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let touchEndX = 0;
+            let touchEndY = 0;
+
+            carousel.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                touchStartY = e.changedTouches[0].screenY;
+                stopAutoPlay();
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                touchEndY = e.changedTouches[0].screenY;
+                const diffX = touchEndX - touchStartX;
+                const diffY = touchEndY - touchStartY;
+
+                // Only horizontal swipes with sufficient movement and not primarily a vertical scroll
+                if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY)) {
+                    if (diffX < 0) {
+                        nextTestimonial();
+                    } else {
+                        prevTestimonial();
+                    }
+                }
+                startAutoPlay();
+            }, { passive: true });
         }
 
         document.addEventListener('visibilitychange', () => {
