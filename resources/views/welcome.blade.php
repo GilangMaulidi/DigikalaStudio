@@ -212,70 +212,85 @@
                         </div>
                     </div>
 
-                    {{-- Area Kanan: Kartu Proyek yang Bergerak & Menumpuk (Sticky Cards Stream) --}}
-                    <div class="portfolio-cards-stream">
-                        
-                        <!-- Card 1 -->
-                        <article class="portfolio-card">
-                            <div class="portfolio-card-img-wrap">
-                                <img src="{{ asset('images/portfolio1.jpg') }}" alt="Lunar Analytics Platform SaaS">
-                            </div>
-                            <div class="portfolio-card-meta">
-                                <div class="card-tags">
-                                    <span class="tag-pill">SaaS Platform</span>
-                                    <span class="tag-pill">Laravel & React</span>
-                                    <span class="tag-pill">Dark Mode UI</span>
-                                </div>
-                                <h3>Lunar Analytics — High Scale Intelligence Dashboard</h3>
-                                <p>Platform analitik data enterprise dengan visualisasi real-time, arsitektur microservices, dan antarmuka gelap yang ergonomis untuk pengguna intensif.</p>
-                                <div class="card-footer">
-                                    <span class="tag-pill">Tahun 2026</span>
-                                    <span class="card-link">Eksplorasi Proyek ↗</span>
-                                </div>
-                            </div>
-                        </article>
+{{-- Area Kanan: Kartu Proyek yang Bergerak & Menumpuk (Sticky Cards Stream) --}}
+<div class="portfolio-cards-stream">
+    
+    <!-- ========================================== -->
+    <!-- CARD 1 -->
+    <!-- ========================================== -->
+    <article class="portfolio-card">
+        <div class="portfolio-card-img-wrap">
+            <img src="{{ asset('images/portfolio1.jpg') }}" alt="Lunar Analytics Platform SaaS">
+        </div>
+        <div class="portfolio-card-meta">
+            <div class="card-tags">
+                <span class="tag-pill">SaaS Platform</span>
+                <span class="tag-pill">Laravel & React</span>
+                <span class="tag-pill">Dark Mode UI</span>
+            </div>
+            <h3>Lunar Analytics — High Scale Intelligence Dashboard</h3>
+            <p>Platform analitik data enterprise dengan visualisasi real-time, arsitektur microservices, dan antarmuka gelap yang ergonomis untuk pengguna intensif.</p>
+            <div class="card-footer">
+                <span class="tag-pill">Tahun 2026</span>
+                <span class="card-link">Eksplorasi Proyek ↗</span>
 
-                        <!-- Card 2 -->
-                        <article class="portfolio-card">
-                            <div class="portfolio-card-img-wrap">
-                                <img src="{{ asset('images/portfolio2.jpg') }}" alt="Aura Architecture Studio">
-                            </div>
-                            <div class="portfolio-card-meta">
-                                <div class="card-tags">
-                                    <span class="tag-pill">Architecture & E-Commerce</span>
-                                    <span class="tag-pill">Monochrome Design</span>
-                                    <span class="tag-pill">SEO Optimized</span>
-                                </div>
-                                <h3>Aura Studio — Minimalist Architectural Showcase</h3>
-                                <p>Website portofolio arsitektur bertaraf internasional dengan tipografi editorial tajam, transisi halaman halus, dan sistem kurasi proyek interaktif.</p>
-                                <div class="card-footer">
-                                    <span class="tag-pill">Tahun 2026</span>
-                                    <span class="card-link">Eksplorasi Proyek ↗</span>
-                                </div>
-                            </div>
-                        </article>
+            </div>
+        </div>
+    </article>
 
-                        <!-- Card 3 -->
-                        <article class="portfolio-card">
-                            <div class="portfolio-card-img-wrap">
-                                <img src="{{ asset('images/portfolio3.jpg') }}" alt="ScholarSphere Academic Repository">
-                            </div>
-                            <div class="portfolio-card-meta">
-                                <div class="card-tags">
-                                    <span class="tag-pill">Sistem Skripsi / Riset</span>
-                                    <span class="tag-pill">Machine Learning</span>
-                                    <span class="tag-pill">RESTful API</span>
-                                </div>
-                                <h3>ScholarSphere — Sistem Informasi & Manajemen Tesis</h3>
-                                <p>Sistem bimbingan dan pelacakan riset akademik yang dilengkapi algoritma pencocokan topik cerdas, validasi dokumen instan, dan antarmuka ramah mahasiswa/dosen.</p>
-                                <div class="card-footer">
-                                    <span class="tag-pill">Tahun 2026</span>
-                                    <span class="card-link">Eksplorasi Proyek ↗</span>
-                                </div>
-                            </div>
-                        </article>
+    <!-- ========================================== -->
+    <!-- CARD 2 (Dengan Fitur Baca Selengkapnya) -->
+    <!-- ========================================== -->
+    <article class="portfolio-card">
+        <div class="portfolio-card-img-wrap">
+            <img src="{{ asset('images/portfolio2.jpg') }}" alt="Sistem Informasi Administrasi Tata Usaha Seragam">
+        </div>
+        <div class="portfolio-card-meta">
+            <div class="card-tags">
+                <span class="tag-pill">Laravel</span>
+                <span class="tag-pill">MySql</span>
+                <span class="tag-pill">Api WhatsApp</span>
+            </div>
+            <h3>Sistem Informasi Administrasi Tata Usaha Seragam — WhatsApp Gateway - QrCode Pengambilan</h3>
+            
+            <!-- Teks Paragraf dengan ID unik -->
+            <p id="desc-card-2">
+                Tugas akhir ini berfokus pada pengembangan sistem informasi berbasis website untuk mempermudah dan meningkatkan efisiensi proses administrasi seragam siswa di SMP Negeri 3 Rajadesa. Sistem ini memiliki dua jenis pengguna, yaitu Tata Usaha (TU) dan siswa. Siswa dapat mengajukan kebutuhan seragam serta memantau status pengajuannya, sedangkan petugas TU dapat mengelola data siswa, memeriksa dan menyetujui pengajuan, serta mengelola laporan administrasi. Sistem ini juga terintegrasi dengan WhatsApp Gateway menggunakan Fonnte untuk mengirimkan notifikasi, dilengkapi QR Code dinamis untuk mendukung proses pengambilan seragam, serta fitur impor data siswa melalui Excel dan ekspor laporan. Pengembangan sistem menggunakan metode Waterfall, sedangkan pengujiannya menggunakan Black Box Testing dengan teknik Equivalence Partitioning terhadap 48 skenario pengujian, dengan hasil 100% valid berdasarkan skenario yang diuji. Tujuan utama penelitian ini adalah menghasilkan sistem administrasi seragam yang lebih terstruktur, efisien, dan memudahkan komunikasi antara siswa dan pihak Tata Usaha.
+            </p>
 
-                    </div>
+            <!-- Tombol Baca Selengkapnya -->
+            <span class="btn-read-more" onclick="toggleReadMore('desc-card-2', this)">Baca Selengkapnya ↓</span>
+
+            <div class="card-footer">
+                <span class="tag-pill">Tahun 2026</span>
+                <span class="card-link">Eksplorasi Proyek ↗</span>
+            </div>
+        </div>
+    </article>
+
+    <!-- ========================================== -->
+    <!-- CARD 3 -->
+    <!-- ========================================== -->
+    <article class="portfolio-card">
+        <div class="portfolio-card-img-wrap">
+            <img src="{{ asset('images/portfolio3.jpg') }}" alt="ScholarSphere Academic Repository">
+        </div>
+        <div class="portfolio-card-meta">
+            <div class="card-tags">
+                <span class="tag-pill">Sistem Skripsi / Riset</span>
+                <span class="tag-pill">Machine Learning</span>
+                <span class="tag-pill">RESTful API</span>
+            </div>
+            <h3>ScholarSphere — Sistem Informasi & Manajemen Tesis</h3>
+            <p>Sistem bimbingan dan pelacakan riset akademik yang dilengkapi algoritma pencocokan topik cerdas, validasi dokumen instan, dan antarmuka ramah mahasiswa/dosen.</p>
+            <div class="card-footer">
+                <span class="tag-pill">Tahun 2026</span>
+                <span class="card-link">Eksplorasi Proyek ↗</span>
+            </div>
+        </div>
+    </article>
+
+</div>
 
                 </div>
             </div>
