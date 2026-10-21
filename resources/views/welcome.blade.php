@@ -295,62 +295,65 @@
                                 </div>
                             </article>
 
-                            <!-- ========================================== -->
-                            <!-- CARD 2: Sistem Administrasi Seragam TU SMP (Academic) -->
-                            <!-- ========================================== -->
-                            <article class="portfolio-card stacked-card" data-category="academic" data-index="1">
-                                <!-- Top Browser Chrome Mockup -->
-                                <div class="mockup-browser-header">
-                                    <div class="mockup-dots">
-                                        <span class="mockup-dot red"></span>
-                                        <span class="mockup-dot yellow"></span>
-                                        <span class="mockup-dot green"></span>
-                                    </div>
-                                    <div class="mockup-address-bar">
-                                        <span class="lock-icon">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                                        </span>
-                                        <span class="address-text">sim-seragam.smpn3rajadesa.sch.id</span>
-                                    </div>
-                                    <span class="mockup-window-tag">Academic System</span>
-                                </div>
+<!-- ========================================== -->
+<!-- CARD 2: Sistem Administrasi Seragam TU SMP (Academic) -->
+<!-- ========================================== -->
+<article class="portfolio-card stacked-card" data-category="academic" data-index="1">
+    <!-- Top Browser Chrome Mockup -->
+    <div class="mockup-browser-header">
+        <div class="mockup-dots">
+            <span class="mockup-dot red"></span>
+            <span class="mockup-dot yellow"></span>
+            <span class="mockup-dot green"></span>
+        </div>
+        <div class="mockup-address-bar">
+            <span class="lock-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </span>
+            <span class="address-text">sim-seragam.smpn3rajadesa.sch.id</span>
+        </div>
+        <span class="mockup-window-tag">Academic System</span>
+    </div>
 
-                                <div class="portfolio-card-img-wrap">
-                                    <img src="{{ asset('images/portfolio2.jpg') }}" alt="Sistem Informasi Administrasi Tata Usaha Seragam" loading="lazy">
-                                </div>
+    <div class="portfolio-card-img-wrap">
+        <img src="{{ asset('images/portofolio_Sangga.jpeg') }}" alt="Sistem Informasi Administrasi Tata Usaha Seragam" loading="lazy">
+    </div>
 
-                                <div class="portfolio-card-meta">
-                                    <div class="card-tags">
-                                        <span class="tag-pill">Laravel</span>
-                                        <span class="tag-pill">MySql</span>
-                                        <span class="tag-pill">Api WhatsApp</span>
-                                    </div>
-                                    <h3>Sistem Informasi Administrasi Tata Usaha Seragam — WhatsApp Gateway - QrCode Pengambilan</h3>
-                                    
-                                    <p id="desc-card-2" class="collapsible-text">
-                                        Tugas akhir ini berfokus pada pengembangan sistem informasi berbasis website untuk mempermudah dan meningkatkan efisiensi proses administrasi seragam siswa di SMP Negeri 3 Rajadesa. Sistem ini memiliki dua jenis pengguna, yaitu Tata Usaha (TU) dan siswa. Siswa dapat mengajukan kebutuhan seragam serta memantau status pengajuannya, sedangkan petugas TU dapat mengelola data siswa, memeriksa dan menyetujui pengajuan, serta mengelola laporan administrasi. Sistem ini juga terintegrasi dengan WhatsApp Gateway menggunakan Fonnte untuk mengirimkan notifikasi, dilengkapi QR Code dinamis untuk mendukung proses pengambilan seragam, serta fitur impor data siswa melalui Excel dan ekspor laporan. Pengembangan sistem menggunakan metode Waterfall, sedangkan pengujiannya menggunakan Black Box Testing dengan teknik Equivalence Partitioning terhadap 48 skenario pengujian, dengan hasil 100% valid berdasarkan skenario yang diuji.
-                                    </p>
+    <div class="portfolio-card-meta">
+        <div class="card-tags">
+            <span class="tag-pill">Laravel</span>
+            <span class="tag-pill">MySql</span>
+            <span class="tag-pill">Api WhatsApp</span>
+        </div>
+        <h3>Sistem Informasi Administrasi Tata Usaha Seragam — WhatsApp Gateway - QrCode Pengambilan</h3>
+        
+        <p id="desc-card-2" class="collapsible-text">
+            Tugas akhir ini berfokus pada pengembangan sistem informasi berbasis website untuk mempermudah dan meningkatkan efisiensi proses administrasi seragam siswa di SMP Negeri 3 Rajadesa. Sistem ini memiliki dua jenis pengguna, yaitu Tata Usaha (TU) dan siswa. Siswa dapat mengajukan kebutuhan seragam serta memantau status pengajuannya, sedangkan petugas TU dapat mengelola data siswa, memeriksa dan menyetujui pengajuan, serta mengelola laporan administrasi. Sistem ini juga terintegrasi dengan WhatsApp Gateway menggunakan Fonnte untuk mengirimkan notifikasi, dilengkapi QR Code dinamis untuk mendukung proses pengambilan seragam, serta fitur impor data siswa melalui Excel dan ekspor laporan. Pengembangan sistem menggunakan metode Waterfall, sedangkan pengujiannya menggunakan Black Box Testing dengan teknik Equivalence Partitioning terhadap 48 skenario pengujian, dengan hasil 100% valid berdasarkan skenario yang diuji.
+        </p>
 
-                                    <span class="btn-read-more" onclick="toggleReadMore('desc-card-2', this)">Baca Selengkapnya ↓</span>
-                                </div>
+        <span class="btn-read-more" onclick="toggleReadMore('desc-card-2', this)">Baca Selengkapnya ↓</span>
+    </div>
 
-                                <!-- Floating Bottom Action Bar -->
-                                <div class="card-bottom-bar backdrop-blur-md">
-                                    <div class="bottom-bar-info">
-                                        <span class="badge-status">
-                                            <span class="status-dot"></span>
-                                            Tahun 2026
-                                        </span>
-                                    </div>
-                                    <div class="bottom-bar-action">
-                                        <a href="#kolaborasi" class="btn-card-action">
-                                            <span>Eksplorasi Proyek</span>
-                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-
+    <!-- Floating Bottom Action Bar -->
+    <div class="card-bottom-bar backdrop-blur-md">
+        <div class="bottom-bar-info">
+            <span class="badge-status">
+                <span class="status-dot"></span>
+                Tahun 2026
+            </span>
+        </div>
+        <div class="bottom-bar-action">
+            <!-- BAGIAN YANG DIUBAH: LINK DEMO PROYEK -->
+            <a href="https://sanggam13.github.io/root-hosting/" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn-card-action">
+                <span>Eksplorasi Proyek</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+        </div>
+    </div>
+</article>
                             <!-- ========================================== -->
                             <!-- CARD 3: Ken's Coffee House (Branding) -->
                             <!-- ========================================== -->
