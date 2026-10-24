@@ -2928,7 +2928,6 @@ select {
     mask-image: radial-gradient(circle at top right, black 20%, transparent 70%);
     -webkit-mask-image: radial-gradient(circle at top right, black 20%, transparent 70%);
 }
-<<<<<<< HEAD
 /* ==========================================================================
    MOBILE NAVIGATION DRAWER & QUICK ACTION BUTTON (BASE STYLES)
    ========================================================================== */
@@ -3908,7 +3907,6 @@ body.is-nav-open .floating-wa-btn {
     .stat-item-label {
         font-size: 0.58rem;
     }
-=======
 
 /* --- STYLING BACA SELENGKAPNYA --- */
 .portfolio-card-meta p {
@@ -3939,7 +3937,6 @@ body.is-nav-open .floating-wa-btn {
 
 .btn-read-more:hover {
     color: #4b5563;
->>>>>>> a8db68554533e88c778c181c1bdb96a47c7dacf0
 }
 /* --- STYLING BACA SELENGKAPNYA --- */
 .portfolio-card-meta p {
@@ -3970,4 +3967,5 @@ body.is-nav-open .floating-wa-btn {
 
 .btn-read-more:hover {
     color: #4b5563;
+}
 }

@@ -951,7 +951,7 @@
                             <h4>Informasi Kontak Resmi</h4>
                             <div class="cta-info-item">
                                 <span class="cta-info-label">Studio & Kantor</span>
-                                <p>Prosperity Tower Lt. 18, District 8 SCBD, Jakarta Selatan 12190</p>
+                                <p>DI yogyakarta</p>
                             </div>
                             <div class="cta-info-item">
                                 <span class="cta-info-label">Telepon & WhatsApp</span>
@@ -959,7 +959,7 @@
                             </div>
                             <div class="cta-info-item">
                                 <span class="cta-info-label">Email</span>
-                                <a href="mailto:hello@digikalastudio.com">hello@digikalastudio.com</a>
+                                <a href="mailto:digikalastudio2026@digikalastudio.com">digikalastudio2026@digikalastudio.com</a>
                             </div>
                             <div class="cta-info-footer">
                                 <span>Waktu Respon Rata-rata:</span>
@@ -1107,8 +1107,8 @@
                 <div class="footer-col">
                     <h4>Kontak Kami</h4>
                     <ul class="footer-links">
-                        <li><a href="mailto:hello@digikalastudio.com">hello@digikalastudio.com</a></li>
-                        <li><a href="https://wa.me/6281200000000" target="_blank">+62 812-0000-0000</a></li>
+                        <li><a href="mailto:digikalastudio2026@digikalastudio.com">digikalastudio2026@digikalastudio.com</a></li>
+                        <li><a href="https://wa.me/6282181946617" target="_blank">+62 812-0000-0000</a></li>
                         <li><span class="footer-location">Jakarta / Yogyakarta, Indonesia</span></li>
                     </ul>
                 </div>
