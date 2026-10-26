@@ -479,9 +479,9 @@ select {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
     box-sizing: border-box;
     z-index: 10;
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+    opacity: 1;
+    transition: none;
+    will-change: transform;
 }
 
 .portfolio-pinned-sidebar .sidebar-badge {
@@ -742,14 +742,18 @@ select {
     position: -webkit-sticky;
     position: sticky;
     width: 100%;
+    height: 560px;
+    min-height: 560px;
+    max-height: 560px;
     background-color: #ffffff;
     border: 1px solid rgba(228, 228, 231, 0.95);
     border-radius: 24px;
     overflow: hidden;
     box-sizing: border-box;
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.3s ease,
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease,
                 border-color 0.3s ease,
                 opacity 0.3s ease;
     will-change: transform, top;
@@ -859,12 +863,14 @@ select {
 }
 
 /* Gambar Portofolio */
+/* Gambar Portofolio */
 .portfolio-card-img-wrap {
     width: 100%;
-    height: 250px;
+    height: 235px;
     overflow: hidden;
     position: relative;
     background-color: #f4f4f5;
+    flex-shrink: 0;
 }
 
 .portfolio-card-img-wrap img {
@@ -881,16 +887,19 @@ select {
 
 /* Deskripsi & Meta */
 .portfolio-card-meta {
-    padding: 22px 28px 18px 28px;
+    padding: 16px 26px 10px 26px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
+    flex: 1;
+    overflow: hidden;
 }
 
 .card-tags {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
+    flex-shrink: 0;
 }
 
 .tag-pill {
@@ -898,7 +907,7 @@ select {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    padding: 4px 10px;
+    padding: 3px 9px;
     border-radius: 999px;
     background-color: var(--bg-surface);
     border: 1px solid var(--border-subtle);
@@ -906,50 +915,80 @@ select {
 }
 
 .portfolio-card-meta h3 {
-    font-size: 1.35rem;
+    font-size: 1.22rem;
     font-weight: 750;
     color: #09090b;
     line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.7em;
+    margin: 0;
+    flex-shrink: 0;
 }
 
 .portfolio-card-meta p {
-    font-size: 0.92rem;
+    font-size: 0.875rem;
     color: #52525b;
-    line-height: 1.6;
+    line-height: 1.5;
+    margin: 0;
 }
 
-.portfolio-card-meta p#desc-card-2,
-.portfolio-card-meta p.collapsible-text {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+/* Format Deskripsi Paragraf & Collapsible */
+.card-desc-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-height: 68px;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
-.portfolio-card-meta p#desc-card-2.expanded,
-.portfolio-card-meta p.collapsible-text.expanded {
-    display: block !important;
-    -webkit-line-clamp: unset !important;
-    max-height: 85px !important;
-    overflow-y: auto !important;
-    padding-right: 6px;
+.card-desc-container.expanded {
+    max-height: 98px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.card-desc-container p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #52525b;
+    line-height: 1.5;
+}
+
+.card-desc-container .more-paragraphs {
+    display: none;
+}
+
+.card-desc-container.expanded .more-paragraphs {
+    display: block;
+}
+
+.card-desc-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.card-desc-container::-webkit-scrollbar-thumb {
+    background: #d4d4d8;
+    border-radius: 4px;
 }
 
 .btn-read-more {
     display: inline-block;
     align-self: flex-start;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 700;
     color: var(--text-primary);
     background: var(--bg-surface);
     border: 1px solid var(--border-medium);
     border-radius: 999px;
-    padding: 4px 14px;
+    padding: 3px 12px;
     cursor: pointer;
     transition: all var(--transition-fast);
-    margin-top: 4px;
-    margin-bottom: 4px;
+    margin-top: 2px;
+    flex-shrink: 0;
 }
 
 .btn-read-more:hover {
@@ -963,12 +1002,14 @@ select {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 28px;
+    padding: 13px 26px;
     gap: 16px;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-top: 1px solid rgba(228, 228, 231, 0.85);
+    flex-shrink: 0;
+    margin-top: auto;
 }
 
 .badge-status {
@@ -1176,13 +1217,16 @@ select {
    5. PROSES KERJA KAMI (Horizontal Timeline / Step-by-Step)
    -------------------------------------------------------------------------- */
 .process-section {
-    position: sticky;
-    top: var(--header-height);           /* diam di bawah header */
-    z-index: 10;                          /* di bawah section berikutnya */
-    /* min-height: calc(100vh - var(--header-height));  hampir 1 layar penuh */
+    position: relative;            /* ← sticky dihapus, jadi aliran normal */
+    z-index: 10;
     background-color: var(--bg-surface);
     border-bottom: 1px solid var(--border-subtle);
-    padding: 80px 0;
+    min-height: 80vh;             /* ← tinggi pas 1 layar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;       /* ← konten di tengah vertikal */
+    padding: calc(var(--header-height) + 20px) 0 40px;  /* padding atas beri ruang header */
+    box-sizing: border-box;
 }
 .timeline-horizontal-wrapper {
     position: relative;
@@ -1348,9 +1392,7 @@ select {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     min-height: 100vh;
-    /* Hapus atau beri komentar pada baris ini */
     box-shadow: none;
-    /* Hapus atau beri komentar pada baris ini */
     border-top: none;
     overflow: hidden;
     /* TAMBAHKAN INI agar elemen fade tidak keluar dari kotak */
@@ -1398,24 +1440,29 @@ select {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    align-items: center;
+    align-items: stretch;
 }
 
 @media (min-width: 768px) {
     .wishlist-grid {
         grid-template-columns: repeat(3, 1fr);
+        align-items: stretch;
     }
 }
 
-/* 6. Kartu Pricing (Default) */
+/* 6. Kartu Pricing (Default) - Ukuran & Dimensi Seragam */
 .pricing-card {
     background-color: rgba(255, 255, 255, 0.05);
-    padding: 2rem;
+    padding: 2.25rem 2rem 2rem;
     border-radius: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .pricing-card:hover {
@@ -1456,6 +1503,7 @@ select {
     margin-bottom: 2rem;
     font-size: 0.875rem;
     color: #d1d5db;
+    flex-grow: 1;
 }
 
 .plan-features li {
@@ -1476,12 +1524,14 @@ select {
     width: 100%;
     text-align: center;
     font-weight: 600;
-    padding: 0.75rem;
+    padding: 0.85rem 1rem;
     border-radius: 9999px;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
     border: none;
     cursor: pointer;
+    margin-top: auto;
+    box-sizing: border-box;
 }
 
 .plan-btn-white,
@@ -1508,18 +1558,23 @@ select {
     color: #ffffff;
 }
 
-/* 8. Kartu Populer (Tengah) */
+/* 8. Kartu Populer (Tengah) - Sama Ukuran & Sejajar Rata */
 .pricing-card.popular {
     background-color: #ffffff;
     color: #000000;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     position: relative;
+    transform: none;
 }
 
 @media (min-width: 768px) {
     .pricing-card.popular {
-        transform: translateY(-1rem);
+        transform: none;
     }
+}
+
+.pricing-card.popular .plan-label {
+    color: #71717a;
 }
 
 .pricing-card.popular .plan-title,
@@ -1552,6 +1607,7 @@ select {
     padding: 0.25rem 1rem;
     border-radius: 9999px;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
 }
 
 /* --------------------------------------------------------------------------
@@ -2373,9 +2429,14 @@ select {
 .testimonial-section {
     position: relative;
     z-index: 15;
-    padding: 100px 0;
-    background-color: var(--bg-surface);
-    border-bottom: 1px solid var(--border-subtle);
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--bg-base);
+    border-bottom: none;
+    padding: calc(var(--header-height) + 20px) 0 40px;
+    box-sizing: border-box;
 }
 .testimonial-carousel {
     max-width: 1000px;
@@ -2545,7 +2606,7 @@ select {
     position: relative;
     padding: 100px 0;
     background-color: var(--bg-base);
-    border-top: 1px solid var(--border-subtle);
+    border-top: none;
 }
 
 .cta-banner {
@@ -3477,6 +3538,13 @@ body.is-nav-open .floating-wa-btn {
         max-width: 100%;
         border-radius: 20px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        height: auto;
+        min-height: unset;
+        max-height: unset;
+    }
+
+    .portfolio-card-meta h3 {
+        min-height: unset;
     }
 
     .portfolio-card:nth-child(1) { top: calc(var(--header-height) + 84px); }

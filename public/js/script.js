@@ -405,41 +405,75 @@ document.addEventListener('DOMContentLoaded', () => {
         filterPortfolio('all');
 
         // =====================================================================
-        // SINKRONISASI SCROLL KELUAR (EXIT LOCKSTEP)
-        // Mencegah kartu menabrak/melebihi showcase-nav-bar saat mencapai batas akhir section
+        // SINKRONISASI SCROLL KELUAR SERENTAK (EXIT LOCKSTEP PORTOFOLIO)
+        // Saat semua kartu telah bertumpuk (Card terakhir aktif):
+        // Jika di-scroll lebih lanjut, SELURUH elemen (showcase-nav-bar,
+        // sidebar portofolio sebelah kiri, dan seluruh kartu bertumpuk)
+        // NAIK BERSAMAAN secara serentak, rapi, dan presisi ke atas.
         // =====================================================================
         const showcaseNavBar = document.querySelector('.showcase-nav-bar');
-        const siteHeader = document.querySelector('.site-header');
+        const portfolioSidebar = document.querySelector('.portfolio-pinned-sidebar');
+        const siteHeader = document.querySelector('.site-header') || document.getElementById('header');
 
-        if (showcaseNavBar) {
-            let ticking = false;
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    window.requestAnimationFrame(() => {
-                        const visibleCards = allPortfolioCards.filter(c => c.style.display !== 'none');
-                        if (visibleCards.length > 0) {
-                            const lastCard = visibleCards[visibleCards.length - 1];
-                            const headerH = siteHeader ? siteHeader.offsetHeight : 80;
-                            // Target posisi sticky kartu terakhir
-                            const expectedStickyTop = headerH + 84 + (visibleCards.length - 1) * 18;
-                            const actualTop = lastCard.getBoundingClientRect().top;
-                            const delta = expectedStickyTop - actualTop;
+        function updatePortfolioExitLockstep() {
+            if (window.innerWidth <= 768) {
+                if (showcaseNavBar && showcaseNavBar.style.transform !== '') showcaseNavBar.style.transform = '';
+                if (portfolioSidebar && portfolioSidebar.style.transform !== '') portfolioSidebar.style.transform = '';
+                allPortfolioCards.forEach(card => {
+                    if (card.style.transform !== '') card.style.transform = '';
+                });
+                return;
+            }
 
-                            if (delta > 0 && actualTop > -lastCard.offsetHeight) {
-                                // Geser navbar ke atas berbarengan dengan dorongan kartu
-                                showcaseNavBar.style.transform = `translateY(-${delta}px)`;
-                            } else if (delta <= 0) {
-                                if (showcaseNavBar.style.transform !== '') {
-                                    showcaseNavBar.style.transform = '';
-                                }
-                            }
-                        }
-                        ticking = false;
-                    });
-                    ticking = true;
+            const visibleCards = allPortfolioCards.filter(c => c.style.display !== 'none');
+            if (visibleCards.length === 0) return;
+
+            const lastCard = visibleCards[visibleCards.length - 1];
+            const otherCards = visibleCards.slice(0, -1);
+            const headerH = siteHeader ? siteHeader.offsetHeight : 80;
+            // Posisi sticky akhir kartu terakhir
+            const expectedStickyTop = headerH + 84 + (visibleCards.length - 1) * 18;
+            const actualTop = lastCard.getBoundingClientRect().top;
+            const delta = expectedStickyTop - actualTop;
+
+            if (delta > 0) {
+                // Semua elemen naik bersamaan dengan rasio 1:1 mengikuti pergerakan scroll kartu terakhir
+                const exitTransform = `translateY(-${delta}px)`;
+                if (showcaseNavBar) showcaseNavBar.style.transform = exitTransform;
+                if (portfolioSidebar) portfolioSidebar.style.transform = exitTransform;
+                otherCards.forEach(card => {
+                    card.style.transform = exitTransform;
+                });
+            } else {
+                // Kondisi normal saat kartu belum terdorong keluar
+                if (showcaseNavBar && showcaseNavBar.style.transform !== '') {
+                    showcaseNavBar.style.transform = '';
                 }
-            }, { passive: true });
+                if (portfolioSidebar && portfolioSidebar.style.transform !== '') {
+                    portfolioSidebar.style.transform = '';
+                }
+                otherCards.forEach(card => {
+                    if (card.style.transform !== '') {
+                        card.style.transform = '';
+                    }
+                });
+            }
         }
+
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updatePortfolioExitLockstep();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        window.addEventListener('resize', () => {
+            updatePortfolioExitLockstep();
+        }, { passive: true });
     }
 
     // Global toggleReadMore function

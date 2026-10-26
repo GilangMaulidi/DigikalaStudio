@@ -20,6 +20,11 @@
     <title>Digikala Studio - Digital Agency & Software Development</title>
     <meta name="description" content="Digikala Studio merancang website eksklusif, sistem kustom, dan pendampingan riset teknologi dengan estetika monokrom modern dan performa tinggi.">
 
+    {{-- Favicon Website (Logo Tab Browser saat aktif maupun ditinggal) --}}
+    <link rel="icon" type="image/png" href="{{ asset('images/image.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/image.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/image.png') }}">
+
     {{-- Pemanggilan CSS Eksternal (Terpisah dari kode Blade) --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}">
 </head>
@@ -50,7 +55,7 @@
             </nav>
 
             <div class="header-action">
-                <a href="#kolaborasi" class="btn btn-outline btn-sm">Diskusikan Proyek →</a>
+                <a href="#kolaborasi" class="btn btn-outline btn-sm">Diskusikan Proyek </a>
             </div>
 
             <!-- Tombol Hamburger Mobile -->
@@ -157,8 +162,8 @@
             </p>
 
             <div class="hero-cta">
-                <a href="#kolaborasi" class="btn btn-primary">Mulai Proyek →</a>
-                <a href="#portofolio" class="btn btn-outline">Lihat Portofolio →</a>
+                <a href="#kolaborasi" class="btn btn-primary">Mulai Proyek </a>
+                <a href="#portofolio" class="btn btn-outline">Lihat Portofolio </a>
             </div>
         </div>
     </div>
@@ -227,7 +232,7 @@
                         </div>
 
                         <div class="sidebar-cta-wrap">
-                            <a href="#kolaborasi" class="btn btn-outline btn-sm">Konsultasi Desain Serupa →</a>
+                            <a href="#kolaborasi" class="btn btn-outline btn-sm">Konsultasi Desain Serupa </a>
                         </div>
                     </aside>
 
@@ -320,9 +325,11 @@
                                     </div>
                                     <h3>Sistem Informasi Administrasi Tata Usaha Seragam — WhatsApp Gateway - QrCode Pengambilan</h3>
 
-                                    <p id="desc-card-2" class="collapsible-text">
-                                        Tugas akhir ini berfokus pada pengembangan sistem informasi berbasis website untuk mempermudah dan meningkatkan efisiensi proses administrasi seragam siswa di SMP Negeri 3 Rajadesa. Sistem ini memiliki dua jenis pengguna, yaitu Tata Usaha (TU) dan siswa. Siswa dapat mengajukan kebutuhan seragam serta memantau status pengajuannya, sedangkan petugas TU dapat mengelola data siswa, memeriksa dan menyetujui pengajuan, serta mengelola laporan administrasi. Sistem ini juga terintegrasi dengan WhatsApp Gateway menggunakan Fonnte untuk mengirimkan notifikasi, dilengkapi QR Code dinamis untuk mendukung proses pengambilan seragam, serta fitur impor data siswa melalui Excel dan ekspor laporan. Pengembangan sistem menggunakan metode Waterfall, sedangkan pengujiannya menggunakan Black Box Testing dengan teknik Equivalence Partitioning terhadap 48 skenario pengujian, dengan hasil 100% valid berdasarkan skenario yang diuji.
-                                    </p>
+                                    <div id="desc-card-2" class="card-desc-container collapsible-text">
+                                        <p>Tugas akhir ini berfokus pada pengembangan sistem informasi berbasis website untuk mempermudah dan meningkatkan efisiensi proses administrasi seragam siswa di SMP Negeri 3 Rajadesa. Sistem ini memiliki dua jenis pengguna, yaitu Tata Usaha (TU) dan siswa.</p>
+                                        <p>Siswa dapat mengajukan kebutuhan seragam serta memantau status pengajuannya, sedangkan petugas TU dapat mengelola data siswa, memeriksa dan menyetujui pengajuan, serta mengelola laporan administrasi.</p>
+                                        <p class="more-paragraphs">Sistem ini juga terintegrasi dengan WhatsApp Gateway menggunakan Fonnte untuk notifikasi otomatis, dilengkapi QR Code dinamis untuk mendukung proses verifikasi pengambilan seragam, serta fitur impor data siswa melalui Excel dan ekspor laporan. Pengujian sistem menggunakan Black Box Testing terhadap 48 skenario pengujian dengan hasil valid 100%.</p>
+                                    </div>
 
                                     <span class="btn-read-more" onclick="toggleReadMore('desc-card-2', this)">Baca Selengkapnya ↓</span>
                                 </div>
@@ -331,8 +338,8 @@
                                 <div class="card-bottom-bar backdrop-blur-md">
                                     <div class="bottom-bar-info">
                                         <span class="badge-status">
-                                            <span class="status-dot"></span>
-                                            Tahun 2026
+                                            <span class="status-dot live-pulse"></span>
+                                            Live Website
                                         </span>
                                     </div>
                                     <div class="bottom-bar-action">
@@ -936,7 +943,7 @@
                             </p>
                             <div class="cta-actions">
                                 <a href="#kolaborasi" class="btn btn-primary">
-                                    Diskusikan Proyek Sekarang →
+                                    Diskusikan Proyek Sekarang 
                                 </a>
                                 <a href="https://wa.me/6281234567890?text=Halo%20Digikala%20Studio" 
                                    target="_blank" rel="noopener noreferrer" 
@@ -1058,7 +1065,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary form-submit-btn">
-                                Kirim Pengajuan Kolaborasi →
+                                Kirim Pengajuan Kolaborasi 
                             </button>
                         </form>
                     </div>
@@ -1107,8 +1114,8 @@
                     <h4>Kontak Kami</h4>
                     <ul class="footer-links">
                         <li><a href="mailto:digikalastudio2026@digikalastudio.com">digikalastudio2026@digikalastudio.com</a></li>
-                        <li><a href="https://wa.me/6282181946617" target="_blank">+62 812-0000-0000</a></li>
-                        <li><span class="footer-location">Jakarta / Yogyakarta, Indonesia</span></li>
+                        <li><a href="https://wa.me/6281234567890" target="_blank">+62 812 3456 7890</a></li>
+                        <li><span class="footer-location">Sleman / Yogyakarta, Indonesia</span></li>
                     </ul>
                 </div>
             </div>

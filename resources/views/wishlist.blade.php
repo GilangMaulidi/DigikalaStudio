@@ -34,7 +34,7 @@
             <!-- Paket 2: Business (Paling Populer) -->
             <div class="pricing-card popular">
                 <div class="badge-popular">Paling Populer</div>
-                
+                <p class="plan-label">PLAN</p>
                 <h3 class="plan-title">Business</h3>
                 <p class="plan-desc">Website bisnis untuk berkembang</p>
                 <div class="plan-price">Rp 3.900.000</div>
