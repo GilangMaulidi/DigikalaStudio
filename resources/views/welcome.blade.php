@@ -204,28 +204,28 @@
                             <button type="button" class="cat-item active" data-category="all" role="tab" aria-selected="true">
                                 <span class="cat-label">Semua Proyek</span>
                                 <div class="cat-meta">
-                                    <span class="cat-count">6</span>
+                                    <span class="cat-count">{{ $portfolios->count() }}</span>
                                     <span class="cat-dot"></span>
                                 </div>
                             </button>
                             <button type="button" class="cat-item" data-category="saas" role="tab" aria-selected="false">
                                 <span class="cat-label">Platform SaaS & Web App</span>
                                 <div class="cat-meta">
-                                    <span class="cat-count">2</span>
+                                    <span class="cat-count">{{ $portfolios->where('category', 'saas')->count() }}</span>
                                     <span class="cat-dot"></span>
                                 </div>
                             </button>
                             <button type="button" class="cat-item" data-category="branding" role="tab" aria-selected="false">
                                 <span class="cat-label">E-Commerce & Branding</span>
                                 <div class="cat-meta">
-                                    <span class="cat-count">1</span>
+                                    <span class="cat-count">{{ $portfolios->where('category', 'branding')->count() }}</span>
                                     <span class="cat-dot"></span>
                                 </div>
                             </button>
                             <button type="button" class="cat-item" data-category="academic" role="tab" aria-selected="false">
                                 <span class="cat-label">Sistem Riset & Edukasi</span>
                                 <div class="cat-meta">
-                                    <span class="cat-count">3</span>
+                                    <span class="cat-count">{{ $portfolios->where('category', 'academic')->count() }}</span>
                                     <span class="cat-dot"></span>
                                 </div>
                             </button>
@@ -241,11 +241,8 @@
                         
                         <!-- Wadah Aliran Kartu Sticky Scroll Pinning (Menumpuk Otomatis Saat Di-Scroll) -->
                         <div class="portfolio-cards-stream" id="portfolioCardsStream">
-                            
-                            <!-- ========================================== -->
-                            <!-- CARD 1: Lunar Analytics (SaaS) -->
-                            <!-- ========================================== -->
-                            <article class="portfolio-card" data-category="saas" data-index="0">
+                            @forelse($portfolios as $index => $portfolio)
+                            <article class="portfolio-card" data-category="{{ $portfolio->category }}" data-index="{{ $index }}">
                                 <!-- Top Browser Chrome Mockup -->
                                 <div class="mockup-browser-header">
                                     <div class="mockup-dots">
@@ -257,305 +254,64 @@
                                         <span class="lock-icon">
                                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                                         </span>
-                                        <span class="address-text">lunar-analytics.enterprise.app</span>
+                                        <span class="address-text">{{ $portfolio->browser_url ?: 'digikalastudio.com' }}</span>
                                     </div>
-                                    <span class="mockup-window-tag">SaaS Platform</span>
+                                    <span class="mockup-window-tag">{{ $portfolio->window_tag ?: 'Live Project' }}</span>
                                 </div>
 
                                 <div class="portfolio-card-img-wrap">
-                                    <img src="{{ asset('images/portfolio1.jpg') }}" alt="Lunar Analytics Platform SaaS" loading="lazy">
+                                    <img src="{{ $portfolio->image_url }}" alt="{{ $portfolio->title }}" loading="lazy">
                                 </div>
 
                                 <div class="portfolio-card-meta">
+                                    @if(!empty($portfolio->tags))
                                     <div class="card-tags">
-                                        <span class="tag-pill">SaaS Platform</span>
-                                        <span class="tag-pill">Laravel & React</span>
-                                        <span class="tag-pill">Dark Mode UI</span>
+                                        @foreach($portfolio->tags as $tag)
+                                            <span class="tag-pill">{{ $tag }}</span>
+                                        @endforeach
                                     </div>
-                                    <h3>Lunar Analytics — High Scale Intelligence Dashboard</h3>
-                                    <p>Platform analitik data enterprise dengan visualisasi real-time, arsitektur microservices, dan antarmuka gelap yang ergonomis untuk pengguna intensif.</p>
-                                </div>
+                                    @endif
+                                    <h3>{{ $portfolio->title }}</h3>
 
-                                <!-- Floating Bottom Action Bar (Uncut CTA & Status) -->
-                                <div class="card-bottom-bar backdrop-blur-md">
-                                    <div class="bottom-bar-info">
-                                        <span class="badge-status">
-                                            <span class="status-dot"></span>
-                                            Tahun 2026
-                                        </span>
-                                    </div>
-                                    <div class="bottom-bar-action">
-                                        <a href="#kolaborasi" class="btn-card-action">
-                                            <span>Eksplorasi Proyek</span>
-                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
+                                    @php
+                                        $paragraphs = array_values(array_filter(array_map('trim', explode("\n", str_replace("\r", "", $portfolio->description)))));
+                                    @endphp
 
-                            <!-- ========================================== -->
-                            <!-- CARD 2: Sistem Administrasi Seragam TU SMP (Academic) -->
-                            <!-- ========================================== -->
-                            <article class="portfolio-card" data-category="academic" data-index="1">
-                                <!-- Top Browser Chrome Mockup -->
-                                <div class="mockup-browser-header">
-                                    <div class="mockup-dots">
-                                        <span class="mockup-dot red"></span>
-                                        <span class="mockup-dot yellow"></span>
-                                        <span class="mockup-dot green"></span>
-                                    </div>
-                                    <div class="mockup-address-bar">
-                                        <span class="lock-icon">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                                        </span>
-                                        <span class="address-text">sim-seragam.smpn3rajadesa.sch.id</span>
-                                    </div>
-                                    <span class="mockup-window-tag">Academic System</span>
-                                </div>
-
-                                <div class="portfolio-card-img-wrap">
-                                    <img src="{{ asset('images/portofolio_Sangga.jpeg') }}" alt="Sistem Informasi Administrasi Tata Usaha Seragam" loading="lazy">
-                                </div>
-
-                                <div class="portfolio-card-meta">
-                                    <div class="card-tags">
-                                        <span class="tag-pill">Laravel</span>
-                                        <span class="tag-pill">MySql</span>
-                                        <span class="tag-pill">Api WhatsApp</span>
-                                    </div>
-                                    <h3>Sistem Informasi Administrasi Tata Usaha Seragam — WhatsApp Gateway - QrCode Pengambilan</h3>
-
-                                    <div id="desc-card-2" class="card-desc-container collapsible-text">
-                                        <p>Tugas akhir ini berfokus pada pengembangan sistem informasi berbasis website untuk mempermudah dan meningkatkan efisiensi proses administrasi seragam siswa di SMP Negeri 3 Rajadesa. Sistem ini memiliki dua jenis pengguna, yaitu Tata Usaha (TU) dan siswa.</p>
-                                        <p>Siswa dapat mengajukan kebutuhan seragam serta memantau status pengajuannya, sedangkan petugas TU dapat mengelola data siswa, memeriksa dan menyetujui pengajuan, serta mengelola laporan administrasi.</p>
-                                        <p class="more-paragraphs">Sistem ini juga terintegrasi dengan WhatsApp Gateway menggunakan Fonnte untuk notifikasi otomatis, dilengkapi QR Code dinamis untuk mendukung proses verifikasi pengambilan seragam, serta fitur impor data siswa melalui Excel dan ekspor laporan. Pengujian sistem menggunakan Black Box Testing terhadap 48 skenario pengujian dengan hasil valid 100%.</p>
-                                    </div>
-
-                                    <span class="btn-read-more" onclick="toggleReadMore('desc-card-2', this)">Baca Selengkapnya ↓</span>
+                                    @if(count($paragraphs) > 2)
+                                        <div id="desc-card-{{ $index }}" class="card-desc-container collapsible-text">
+                                            <p>{{ $paragraphs[0] }}</p>
+                                            <p>{{ $paragraphs[1] }}</p>
+                                            <p class="more-paragraphs">{{ implode(' ', array_slice($paragraphs, 2)) }}</p>
+                                        </div>
+                                        <span class="btn-read-more" onclick="toggleReadMore('desc-card-{{ $index }}', this)">Baca Selengkapnya ↓</span>
+                                    @else
+                                        <p>{{ $portfolio->description }}</p>
+                                    @endif
                                 </div>
 
                                 <!-- Floating Bottom Action Bar -->
                                 <div class="card-bottom-bar backdrop-blur-md">
                                     <div class="bottom-bar-info">
-                                        <span class="badge-status">
-                                            <span class="status-dot live-pulse"></span>
-                                            Live Website
+                                        <span class="badge-status {{ $portfolio->is_live ? 'live' : '' }}">
+                                            <span class="status-dot {{ $portfolio->is_live ? 'live-pulse' : '' }}"></span>
+                                            {{ $portfolio->badge_status ?? ($portfolio->is_live ? 'Live Website' : 'Tahun 2026') }}
                                         </span>
                                     </div>
                                     <div class="bottom-bar-action">
-                                        <a href="https://sanggam13.github.io/root-hosting/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="btn-card-action">
-                                            <span>Eksplorasi Proyek</span>
-                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>                            <!-- ========================================== -->
-                            <!-- CARD 3: Ken's Coffee House (Branding) -->
-                            <!-- ========================================== -->
-                            <article class="portfolio-card" data-category="branding" data-index="2">
-                                <!-- Top Browser Chrome Mockup -->
-                                <div class="mockup-browser-header">
-                                    <div class="mockup-dots">
-                                        <span class="mockup-dot red"></span>
-                                        <span class="mockup-dot yellow"></span>
-                                        <span class="mockup-dot green"></span>
-                                    </div>
-                                    <div class="mockup-address-bar">
-                                        <span class="lock-icon">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                                        </span>
-                                        <span class="address-text">ferdianbimastya.ifree.page</span>
-                                    </div>
-                                    <span class="mockup-window-tag">Live Showcase</span>
-                                </div>
-
-                                <div class="portfolio-card-img-wrap">
-                                    <img src="{{ asset('images/portfolio-kopi.jpg') }}" alt="Ken's Coffee House — Artisan Roastery & Coffee Shop" loading="lazy">
-                                </div>
-
-                                <div class="portfolio-card-meta">
-                                    <div class="card-tags">
-                                        <span class="tag-pill">Coffee Shop & Roastery</span>
-                                        <span class="tag-pill">Personal Branding</span>
-                                        <span class="tag-pill">Online Booking</span>
-                                    </div>
-                                    <h3>Ken's Coffee House — Artisan Roastery & Personal Brand</h3>
-                                    <p>Platform digital eksklusif untuk coffee house & artisan roastery Master Barista Ken. Menampilkan kurasi biji kopi single origin, signature cold brew showcase, menu interaktif, serta sistem reservasi meja dan kelas barista profesional.</p>
-                                </div>
-
-                                <!-- Floating Bottom Action Bar -->
-                                <div class="card-bottom-bar backdrop-blur-md">
-                                    <div class="bottom-bar-info">
-                                        <span class="badge-status live">
-                                            <span class="status-dot live-pulse"></span>
-                                            Live Website
-                                        </span>
-                                    </div>
-                                    <div class="bottom-bar-action">
-                                        <a href="https://ferdianbimastya.ifree.page/" target="_blank" rel="noopener noreferrer" class="btn-card-action">
-                                            <span>Kunjungi Website</span>
+                                        <a href="{{ $portfolio->project_url ?? '#kolaborasi' }}" 
+                                           @if(str_starts_with($portfolio->project_url ?? '', 'http')) target="_blank" rel="noopener noreferrer" @endif
+                                           class="btn-card-action">
+                                            <span>{{ $portfolio->action_label ?? 'Eksplorasi Proyek' }}</span>
                                             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                                         </a>
                                     </div>
                                 </div>
                             </article>
-
-                            <!-- ========================================== -->
-                            <!-- CARD 4: Pondok Pesantren Hidayatul Muhajirin (Academic) -->
-                            <!-- ========================================== -->
-                            <article class="portfolio-card" data-category="academic" data-index="3">
-                                <!-- Top Browser Chrome Mockup -->
-                                <div class="mockup-browser-header">
-                                    <div class="mockup-dots">
-                                        <span class="mockup-dot red"></span>
-                                        <span class="mockup-dot yellow"></span>
-                                        <span class="mockup-dot green"></span>
-                                    </div>
-                                    <div class="mockup-address-bar">
-                                        <span class="lock-icon">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                                        </span>
-                                        <span class="address-text">pondokmumodern.iblogger.org</span>
-                                    </div>
-                                    <span class="mockup-window-tag">Live Showcase</span>
-                                </div>
-
-                                <div class="portfolio-card-img-wrap">
-                                    <img src="{{ asset('images/portfolio-pesantren.png') }}" alt="Pondok Pesantren Hidayatul Muhajirin — Portal Resmi & PSB Online" loading="lazy">
-                                </div>
-
-                                <div class="portfolio-card-meta">
-                                    <div class="card-tags">
-                                        <span class="tag-pill">Pondok Pesantren</span>
-                                        <span class="tag-pill">PSB Online</span>
-                                        <span class="tag-pill">Tahfizh Al-Qur'an</span>
-                                    </div>
-                                    <h3>Pondok Pesantren Hidayatul Muhajirin — Portal Resmi & PSB Online</h3>
-                                    <p>Website resmi lembaga pendidikan Islam terpadu yang memadukan kurikulum Tahfizh Al-Qur'an 30 Juz dan Kitab Kuning. Dilengkapi modul Pendaftaran Santri Baru (PSB Online), informasi kurikulum, publikasi kegiatan, galeri santri, dan kontak asrama.</p>
-                                </div>
-
-                                <!-- Floating Bottom Action Bar -->
-                                <div class="card-bottom-bar backdrop-blur-md">
-                                    <div class="bottom-bar-info">
-                                        <span class="badge-status live">
-                                            <span class="status-dot live-pulse"></span>
-                                            Live Website
-                                        </span>
-                                    </div>
-                                    <div class="bottom-bar-action">
-                                        <a href="https://pondokmumodern.iblogger.org/" target="_blank" rel="noopener noreferrer" class="btn-card-action">
-                                            <span>Kunjungi Website</span>
-                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <!-- ========================================== -->
-                            <!-- CARD 5: SD Negeri 258/VI Rejo Sari (Academic) -->
-                            <!-- ========================================== -->
-                            <article class="portfolio-card" data-category="academic" data-index="4">
-                                <!-- Top Browser Chrome Mockup -->
-                                <div class="mockup-browser-header">
-                                    <div class="mockup-dots">
-                                        <span class="mockup-dot red"></span>
-                                        <span class="mockup-dot yellow"></span>
-                                        <span class="mockup-dot green"></span>
-                                    </div>
-                                    <div class="mockup-address-bar">
-                                        <span class="lock-icon">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                                        </span>
-                                        <span class="address-text">sekolahdasarnegeri.free.je</span>
-                                    </div>
-                                    <span class="mockup-window-tag">Live Showcase</span>
-                                </div>
-
-                                <div class="portfolio-card-img-wrap">
-                                    <img src="{{ asset('images/portfolio-sekolah.png') }}" alt="SD Negeri 258/VI Rejo Sari — Portal Resmi Akademik" loading="lazy">
-                                </div>
-
-                                <div class="portfolio-card-meta">
-                                    <div class="card-tags">
-                                        <span class="tag-pill">Sekolah Dasar Negeri</span>
-                                        <span class="tag-pill">Portal Akademik</span>
-                                        <span class="tag-pill">Kurikulum Merdeka</span>
-                                    </div>
-                                    <h3>SD Negeri 258/VI Rejo Sari — Portal Informasi Akademik Terpadu</h3>
-                                    <p>Portal web resmi sekolah dasar negeri untuk media publikasi kegiatan belajar mengajar, pengumuman akademik berkala, portal berita sekolah, galeri prestasi siswa, informasi dewan guru, dan integrasi akses administrasi Tata Usaha.</p>
-                                </div>
-
-                                <!-- Floating Bottom Action Bar -->
-                                <div class="card-bottom-bar backdrop-blur-md">
-                                    <div class="bottom-bar-info">
-                                        <span class="badge-status live">
-                                            <span class="status-dot live-pulse"></span>
-                                            Live Website
-                                        </span>
-                                    </div>
-                                    <div class="bottom-bar-action">
-                                        <a href="https://sekolahdasarnegeri.free.je/" target="_blank" rel="noopener noreferrer" class="btn-card-action">
-                                            <span>Kunjungi Website</span>
-                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <!-- ========================================== -->
-                            <!-- CARD 6: ScholarSphere (SaaS) -->
-                            <!-- ========================================== -->
-                            <article class="portfolio-card" data-category="saas" data-index="5">
-                                <!-- Top Browser Chrome Mockup -->
-                                <div class="mockup-browser-header">
-                                    <div class="mockup-dots">
-                                        <span class="mockup-dot red"></span>
-                                        <span class="mockup-dot yellow"></span>
-                                        <span class="mockup-dot green"></span>
-                                    </div>
-                                    <div class="mockup-address-bar">
-                                        <span class="lock-icon">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                                        </span>
-                                        <span class="address-text">scholarsphere.edu.id</span>
-                                    </div>
-                                    <span class="mockup-window-tag">Academic SaaS</span>
-                                </div>
-
-                                <div class="portfolio-card-img-wrap">
-                                    <img src="{{ asset('images/portfolio3.jpg') }}" alt="ScholarSphere Academic Repository" loading="lazy">
-                                </div>
-
-                                <div class="portfolio-card-meta">
-                                    <div class="card-tags">
-                                        <span class="tag-pill">Sistem Skripsi / Riset</span>
-                                        <span class="tag-pill">Machine Learning</span>
-                                        <span class="tag-pill">RESTful API</span>
-                                    </div>
-                                    <h3>ScholarSphere — Sistem Informasi & Manajemen Tesis</h3>
-                                    <p>Sistem bimbingan dan pelacakan riset akademik yang dilengkapi algoritma pencocokan topik cerdas, validasi dokumen instan, dan antarmuka ramah mahasiswa/dosen.</p>
-                                </div>
-
-                                <!-- Floating Bottom Action Bar -->
-                                <div class="card-bottom-bar backdrop-blur-md">
-                                    <div class="bottom-bar-info">
-                                        <span class="badge-status">
-                                            <span class="status-dot"></span>
-                                            Tahun 2026
-                                        </span>
-                                    </div>
-                                    <div class="bottom-bar-action">
-                                        <a href="#kolaborasi" class="btn-card-action">
-                                            <span>Eksplorasi Proyek</span>
-                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-
+                            @empty
+                            <div style="padding: 40px; text-align: center; color: #888;">
+                                Belum ada portofolio yang dipublikasikan. Tambahkan melalui panel admin.
+                            </div>
+                            @endforelse
                         </div>
 
                     </div>
@@ -577,73 +333,29 @@
                 </div>
 
                 <div class="services-grid">
-                    <!-- Service 1 -->
+                    @forelse($services as $service)
                     <div class="service-card">
                         <div class="service-header">
-                            <div class="service-icon">🌐</div>
-                            <span class="service-number">01</span>
+                            <div class="service-icon">{{ $service->icon ?: '🌐' }}</div>
+                            <span class="service-number">{{ $service->step_number }}</span>
                         </div>
-                        <h3 class="service-title">Website Bisnis & Korporat</h3>
+                        <h3 class="service-title">{{ $service->title }}</h3>
                         <p class="service-desc">
-                            Membangun landing page dan company profile berkecepatan tinggi yang mengonversi pengunjung menjadi klien setia, dengan reputasi brand yang kuat.
+                            {{ $service->description }}
                         </p>
+                        @if(!empty($service->features))
                         <ul class="service-features">
-                            <li>Desain eksklusif tanpa template generik</li>
-                            <li>Optimalisasi SEO On-Page dan Core Web Vitals</li>
-                            <li>Responsif sempurna di iOS, Android, dan Desktop</li>
+                            @foreach($service->features as $feature)
+                                <li>{{ $feature }}</li>
+                            @endforeach
                         </ul>
+                        @endif
                     </div>
-
-                    <!-- Service 2 -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-icon">⚙️</div>
-                            <span class="service-number">02</span>
-                        </div>
-                        <h3 class="service-title">Aplikasi Web & Sistem Kustom</h3>
-                        <p class="service-desc">
-                            Pengembangan software berbasis web dengan logika backend kompleks, arsitektur database terukur, dan dashboard admin yang aman.
-                        </p>
-                        <ul class="service-features">
-                            <li>Laravel framework dengan struktur clean code</li>
-                            <li>Integrasi Payment Gateway, WhatsApp API, dan CRM</li>
-                            <li>Proteksi keamanan data dan backup otomatis</li>
-                        </ul>
+                    @empty
+                    <div style="padding: 40px; text-align: center; color: #888; grid-column: 1 / -1;">
+                        Belum ada layanan yang ditambahkan. Tambahkan melalui panel admin.
                     </div>
-
-                    <!-- Service 3 -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-icon">🎓</div>
-                            <span class="service-number">03</span>
-                        </div>
-                        <h3 class="service-title">Pendampingan Riset & Skripsi IT</h3>
-                        <p class="service-desc">
-                            Bimbingan intensif dan implementasi algoritma pemrograman untuk mahasiswa tingkat akhir dalam menyelesaikan proyek perangkat lunak ilmiah.
-                        </p>
-                        <ul class="service-features">
-                            <li>Implementasi AI, SPK, GIS, Data Mining, atau Web System</li>
-                            <li>Bimbingan arsitektur kode dan persiapan sidang teknis</li>
-                            <li>Dokumentasi flowchart, ERD, dan struktur database</li>
-                        </ul>
-                    </div>
-
-                    <!-- Service 4 -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-icon">🚀</div>
-                            <span class="service-number">04</span>
-                        </div>
-                        <h3 class="service-title">UI/UX Design & Prototyping</h3>
-                        <p class="service-desc">
-                            Riset antarmuka pengguna, perancangan user journey terarah, dan pembuatan interactive high-fidelity prototype menggunakan Figma.
-                        </p>
-                        <ul class="service-features">
-                            <li>Design system terstandarisasi dan komponen reusable</li>
-                            <li>Usability testing dan visual hierarchy yang presisi</li>
-                            <li>Aset siap serah terima bagi tim developer internal</li>
-                        </ul>
-                    </div>
+                    @endforelse
                 </div>
             </div>
         </section>
@@ -666,67 +378,22 @@
                     <div class="timeline-track-line"></div>
 
                     <div class="timeline-steps-grid">
-                        
-                        <!-- Step 1 -->
+                        @forelse($workProcesses as $process)
                         <div class="timeline-step-item">
                             <div class="step-marker-container">
-                                <div class="step-circle">01</div>
+                                <div class="step-circle">{{ $process->step_number }}</div>
                             </div>
                             <div class="step-card">
-                                <span class="step-phase-tag">Fase 1</span>
-                                <h3 class="step-title">Discovery & Brief</h3>
-                                <p class="step-desc">Membedah tujuan bisnis atau skripsi, memahami profil audiens, serta memetakan batasan proyek.</p>
+                                <span class="step-phase-tag">{{ $process->phase_tag }}</span>
+                                <h3 class="step-title">{{ $process->title }}</h3>
+                                <p class="step-desc">{{ $process->description }}</p>
                             </div>
                         </div>
-
-                        <!-- Step 2 -->
-                        <div class="timeline-step-item">
-                            <div class="step-marker-container">
-                                <div class="step-circle">02</div>
-                            </div>
-                            <div class="step-card">
-                                <span class="step-phase-tag">Fase 2</span>
-                                <h3 class="step-title">Wireframe & Alur</h3>
-                                <p class="step-desc">Menyusun struktur informasi, skema database (ERD), dan tata letak dasar sebelum mendesain visual.</p>
-                            </div>
+                        @empty
+                        <div style="padding: 40px; text-align: center; color: #888; grid-column: 1 / -1;">
+                            Belum ada proses kerja yang ditambahkan.
                         </div>
-
-                        <!-- Step 3 -->
-                        <div class="timeline-step-item">
-                            <div class="step-marker-container">
-                                <div class="step-circle">03</div>
-                            </div>
-                            <div class="step-card">
-                                <span class="step-phase-tag">Fase 3</span>
-                                <h3 class="step-title">Desain UI/UX</h3>
-                                <p class="step-desc">Merancang estetika visual monokrom modern dan prototipe interaktif untuk divalidasi bersama Anda.</p>
-                            </div>
-                        </div>
-
-                        <!-- Step 4 -->
-                        <div class="timeline-step-item">
-                            <div class="step-marker-container">
-                                <div class="step-circle">04</div>
-                            </div>
-                            <div class="step-card">
-                                <span class="step-phase-tag">Fase 4</span>
-                                <h3 class="step-title">Pengembangan & QA</h3>
-                                <p class="step-desc">Pengkodean standar tinggi, optimalisasi kecepatan respon, dan serangkaian uji coba fungsional.</p>
-                            </div>
-                        </div>
-
-                        <!-- Step 5 -->
-                        <div class="timeline-step-item">
-                            <div class="step-marker-container">
-                                <div class="step-circle">05</div>
-                            </div>
-                            <div class="step-card">
-                                <span class="step-phase-tag">Fase 5</span>
-                                <h3 class="step-title">Deploy & Garansi</h3>
-                                <p class="step-desc">Peluncuran live ke cloud server, serah terima berkas/source code, dan garansi pemeliharaan berkala.</p>
-                            </div>
-                        </div>
-
+                        @endforelse
                     </div>
                 </div>
             </div>
@@ -757,57 +424,21 @@
                 </div>
 
                 <div class="faq-accordion-list">
-                    
-                    <details class="faq-card" open>
+                    @forelse($faqs as $faq)
+                    <details class="faq-card" {{ $faq->is_open_default ? 'open' : '' }}>
                         <summary class="faq-summary">
-                            <span>Berapa lama rata-rata waktu pengerjaan sebuah proyek website?</span>
+                            <span>{{ $faq->question }}</span>
                             <span class="faq-toggle-icon">+</span>
                         </summary>
                         <div class="faq-answer">
-                            Untuk landing page atau company profile standar, pengerjaan memakan waktu sekitar 1 hingga 2 minggu. Untuk sistem kustom yang lebih kompleks atau sistem bimbingan skripsi berbasis algoritma khusus, waktu berkisar antara 3 hingga 6 minggu dengan timeline yang disepakati di awal.
+                            {!! $faq->answer !!}
                         </div>
                     </details>
-
-                    <details class="faq-card">
-                        <summary class="faq-summary">
-                            <span>Bagaimana cara kerja efek Sticky Scroll Pinning pada website ini?</span>
-                            <span class="faq-toggle-icon">+</span>
-                        </summary>
-                        <div class="faq-answer">
-                            Efek ini murni memanfaatkan properti modern CSS <code>position: sticky</code> dan manipulasi <code>top</code> serta hierarki <code>z-index</code>. Saat halaman di-scroll ke bawah, kartu wishlist atau sidebar portofolio tetap terpaku di layar sementara konten berikutnya meluncur naik menumpuknya seperti halaman lembaran baru.
-                        </div>
-                    </details>
-
-                    <details class="faq-card">
-                        <summary class="faq-summary">
-                            <span>Apakah Digikala Studio melayani pembuatan sistem untuk skripsi/tesis mahasiswa?</span>
-                            <span class="faq-toggle-icon">+</span>
-                        </summary>
-                        <div class="faq-answer">
-                            Ya, kami memiliki divisi khusus pendampingan teknis bagi mahasiswa yang membutuhkan bimbingan rekayasa perangkat lunak, integrasi algoritma kecerdasan buatan, SPK, maupun aplikasi web terintegrasi secara profesional dan edukatif.
-                        </div>
-                    </details>
-
-                    <details class="faq-card">
-                        <summary class="faq-summary">
-                            <span>Apakah saya akan mendapatkan kepemilikan penuh terhadap source code?</span>
-                            <span class="faq-toggle-icon">+</span>
-                        </summary>
-                        <div class="faq-answer">
-                            Tentu. Seluruh aset kode sumber (source code), desain Figma, dan basis data diserahkan 100% kepada Anda setelah proyek tuntas dan disahkan. Anda memegang hak cipta penuh tanpa keterikatan lisensi tersembunyi.
-                        </div>
-                    </details>
-
-                    <details class="faq-card">
-                        <summary class="faq-summary">
-                            <span>Bagaimana skema pembayaran dan kontrak kerja?</span>
-                            <span class="faq-toggle-icon">+</span>
-                        </summary>
-                        <div class="faq-answer">
-                            Pembayaran dibagi menjadi termin transparan: Down Payment (DP) 40% di awal sebelum riset dimulai, 30% setelah tahap preview/approval, dan 30% pelunasan saat sistem siap di-deploy secara resmi.
-                        </div>
-                    </details>
-
+                    @empty
+                    <div style="padding: 30px; text-align: center; color: #888;">
+                        Belum ada FAQ yang ditambahkan.
+                    </div>
+                    @endforelse
                 </div>
             </div>
         </section>
@@ -823,87 +454,41 @@
                 </div>
 
                 <div class="testimonial-carousel" id="testimonialCarousel">
-                    <!-- Slide 1 -->
-                    <div class="testimonial-slide active" data-index="0">
+                    @forelse($testimonials as $index => $testimonial)
+                    <div class="testimonial-slide {{ $index === 0 ? 'active' : '' }}" data-index="{{ $index }}">
                         <div class="testimonial-card">
                             <div class="testimonial-grid">
                                 <div class="testimonial-photo-wrap">
                                     <div class="testimonial-photo">
-                                        <img src="{{ asset('images/client-andi.jpg') }}" alt="Andi Pratama, CEO Recore Tech">
+                                        <img src="{{ $testimonial->avatar_url }}" alt="{{ $testimonial->client_name }}">
                                     </div>
-                                    <span class="testimonial-badge">VERIFIED CLIENT</span>
+                                    <span class="testimonial-badge">{{ $testimonial->verified_badge }}</span>
                                 </div>
                                 <div class="testimonial-body">
-                                    <div class="testimonial-stars">★★★★★</div>
+                                    <div class="testimonial-stars">{{ str_repeat('★', (int) $testimonial->rating) }}</div>
                                     <blockquote class="testimonial-quote">
-                                        "Digikala Studio mentransformasi total identitas digital kami. Sejak peluncuran website baru, kepercayaan mitra internasional meningkat drastis dan konversi prospek enterprise naik lebih dari 200%."
+                                        "{{ $testimonial->quote }}"
                                     </blockquote>
                                     <div class="testimonial-meta">
                                         <div>
-                                            <h4>Andi Pratama</h4>
-                                            <p>Chief Executive Officer — Recore Cloud Solutions</p>
+                                            <h4>{{ $testimonial->client_name }}</h4>
+                                            <p>{{ $testimonial->client_role }}</p>
                                         </div>
-                                        <span class="tag-pill">Website Bisnis & UI/UX</span>
+                                        @if($testimonial->project_tag)
+                                            <span class="tag-pill">{{ $testimonial->project_tag }}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Slide 2 -->
-                    <div class="testimonial-slide" data-index="1">
-                        <div class="testimonial-card">
-                            <div class="testimonial-grid">
-                                <div class="testimonial-photo-wrap">
-                                    <div class="testimonial-photo">
-                                        <img src="{{ asset('images/client-rina.jpg') }}" alt="Rina Kusuma, Managing Director Sarait Emeror">
-                                    </div>
-                                    <span class="testimonial-badge">VERIFIED CLIENT</span>
-                                </div>
-                                <div class="testimonial-body">
-                                    <div class="testimonial-stars">★★★★★</div>
-                                    <blockquote class="testimonial-quote">
-                                        "Detail visual dan kepekaan estetika tim Digikala luar biasa. Mereka berhasil menerjemahkan nilai kemewahan brand kami ke dalam pengalaman website yang begitu elegan dan fluid."
-                                    </blockquote>
-                                    <div class="testimonial-meta">
-                                        <div>
-                                            <h4>Rina Kusuma</h4>
-                                            <p>Managing Director — Emeror Architectural Atelier</p>
-                                        </div>
-                                        <span class="tag-pill">Luxury Editorial Page</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    @empty
+                    <div style="padding: 40px; text-align: center; color: #888;">
+                        Belum ada testimoni yang ditambahkan.
                     </div>
+                    @endforelse
 
-                    <!-- Slide 3 -->
-                    <div class="testimonial-slide" data-index="2">
-                        <div class="testimonial-card">
-                            <div class="testimonial-grid">
-                                <div class="testimonial-photo-wrap">
-                                    <div class="testimonial-photo">
-                                        <img src="{{ asset('images/client-budi.jpg') }}" alt="Budi Setiawan, Co-Founder KepiTalia">
-                                    </div>
-                                    <span class="testimonial-badge">VERIFIED CLIENT</span>
-                                </div>
-                                <div class="testimonial-body">
-                                    <div class="testimonial-stars">★★★★★</div>
-                                    <blockquote class="testimonial-quote">
-                                        "Kecepatan dan performa website baru kami luar biasa cepat. Alur pemesanan jauh lebih seamless, dan tingkat konversi penjualan melonjak signifikan di bulan pertama peluncuran."
-                                    </blockquote>
-                                    <div class="testimonial-meta">
-                                        <div>
-                                            <h4>Budi Setiawan</h4>
-                                            <p>Co-Founder & COO — KepiTalia Artisan Group</p>
-                                        </div>
-                                        <span class="tag-pill">D2C E-Commerce</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    @if(isset($testimonials) && $testimonials->count() > 0)
                     <!-- Navigation -->
                     <div class="testimonial-nav">
                         <button type="button" class="testimonial-arrow" onclick="prevTestimonial()" aria-label="Sebelumnya">
@@ -912,9 +497,9 @@
                             </svg>
                         </button>
                         <div class="testimonial-dots">
-                            <button type="button" class="testimonial-dot active" onclick="goToTestimonial(0)" aria-label="Slide 1"></button>
-                            <button type="button" class="testimonial-dot" onclick="goToTestimonial(1)" aria-label="Slide 2"></button>
-                            <button type="button" class="testimonial-dot" onclick="goToTestimonial(2)" aria-label="Slide 3"></button>
+                            @foreach($testimonials as $index => $testimonial)
+                                <button type="button" class="testimonial-dot {{ $index === 0 ? 'active' : '' }}" onclick="goToTestimonial({{ $index }})" aria-label="Slide {{ $index + 1 }}"></button>
+                            @endforeach
                         </div>
                         <button type="button" class="testimonial-arrow" onclick="nextTestimonial()" aria-label="Berikutnya">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -922,6 +507,7 @@
                             </svg>
                         </button>
                     </div>
+                    @endif
                 </div>
             </div>
         </section>
