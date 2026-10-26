@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Jika dimasukkan, akan konflik (opacity: 0 dari reveal).
     // =====================================================================
     const revealTargets = document.querySelectorAll(
-        '.section-header-center, .portfolio-pinned-sidebar, .portfolio-card, ' +
+        '.section-header-center, .portfolio-card, ' +
         '.service-card, .timeline-step-item, .wishlist-header, .pricing-card, ' +
         '.about-box, .collab-form-card, .cta-banner'
     );
@@ -357,8 +357,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (isMatch) {
                     card.style.display = 'block';
                     card.style.opacity = '1';
-                    // Hitung urutan bertumpuk dinamis untuk kartu yang tampil
-                    card.style.top = `calc(var(--header-height) + ${20 + visibleCount * 18}px)`;
+                    // Hitung urutan bertumpuk dinamis untuk kartu yang tampil (berada di bawah showcase-nav-bar)
+                    card.style.top = `calc(var(--header-height, 80px) + ${84 + visibleCount * 18}px)`;
                     card.style.zIndex = 11 + visibleCount;
                     visibleCount++;
                 } else {
@@ -403,6 +403,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Inisialisasi awal
         filterPortfolio('all');
+
+        // =====================================================================
+        // SINKRONISASI SCROLL KELUAR (EXIT LOCKSTEP)
+        // Mencegah kartu menabrak/melebihi showcase-nav-bar saat mencapai batas akhir section
+        // =====================================================================
+        const showcaseNavBar = document.querySelector('.showcase-nav-bar');
+        const siteHeader = document.querySelector('.site-header');
+
+        if (showcaseNavBar) {
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const visibleCards = allPortfolioCards.filter(c => c.style.display !== 'none');
+                        if (visibleCards.length > 0) {
+                            const lastCard = visibleCards[visibleCards.length - 1];
+                            const headerH = siteHeader ? siteHeader.offsetHeight : 80;
+                            // Target posisi sticky kartu terakhir
+                            const expectedStickyTop = headerH + 84 + (visibleCards.length - 1) * 18;
+                            const actualTop = lastCard.getBoundingClientRect().top;
+                            const delta = expectedStickyTop - actualTop;
+
+                            if (delta > 0 && actualTop > -lastCard.offsetHeight) {
+                                // Geser navbar ke atas berbarengan dengan dorongan kartu
+                                showcaseNavBar.style.transform = `translateY(-${delta}px)`;
+                            } else if (delta <= 0) {
+                                if (showcaseNavBar.style.transform !== '') {
+                                    showcaseNavBar.style.transform = '';
+                                }
+                            }
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
     }
 
     // Global toggleReadMore function

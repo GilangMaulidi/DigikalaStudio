@@ -386,7 +386,7 @@ select {
     gap: 20px;
 }
 
-.btn {
+.hero-cta .btn {
     padding: 15px 30px;
     text-decoration: none;
     font-weight: 600;
@@ -394,22 +394,22 @@ select {
     transition: all 0.3s ease;
 }
 
-.btn-primary {
+.hero-cta .btn-primary {
     background-color: #ffffff;
     color: #000000;
 }
 
-.btn-primary:hover {
+.hero-cta .btn-primary:hover {
     background-color: #cccccc;
     transform: translateY(-3px);
 }
 
-.btn-outline {
+.hero-cta .btn-outline {
     border: 2px solid #ffffff;
     color: #ffffff;
 }
 
-.btn-outline:hover {
+.hero-cta .btn-outline:hover {
     background-color: #ffffff;
     color: #000000;
     transform: translateY(-3px);
@@ -430,7 +430,7 @@ select {
         flex-direction: column;
     }
 
-    .btn {
+    .hero-cta .btn {
         text-align: center;
     }
 }
@@ -440,10 +440,19 @@ select {
    -------------------------------------------------------------------------- */
 .portfolio-section {
     position: relative;
-    padding: 90px 0 110px 0;
+    padding: 90px 0 120px 0;
     background-color: var(--bg-surface);
     border-bottom: 1px solid var(--border-subtle);
-    scroll-margin-top: 100px;
+    scroll-margin-top: 10px;
+}
+
+.portfolio-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 24px;
+    padding-top: 24px;
+    box-sizing: border-box;
 }
 
 .portfolio-layout {
@@ -452,40 +461,47 @@ select {
     gap: 48px;
     align-items: start;
     position: relative;
+    width: 100%;
 }
 
-/* Sisi Kiri: Pinning / Sticky Sidebar */
+/* Sisi Kiri: Pinning / Sticky Sidebar (Bebas Animasi Scroll, Ukuran Pas di Viewport) */
 .portfolio-pinned-sidebar {
+    position: -webkit-sticky;
     position: sticky;
-    top: calc(var(--header-height) + 30px);
+    top: calc(var(--header-height) + 84px);
     display: flex;
     flex-direction: column;
-    gap: 22px;
-    padding: 32px;
+    gap: 14px;
+    padding: 24px 22px;
     background-color: #ffffff;
     border: 1px solid var(--border-subtle);
     border-radius: 24px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    z-index: 10;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
 }
 
 .portfolio-pinned-sidebar .sidebar-badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.72rem;
+    gap: 6px;
+    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     color: var(--text-secondary);
     background-color: var(--bg-surface);
-    padding: 6px 12px;
+    padding: 4px 10px;
     border-radius: 999px;
     border: 1px solid var(--border-subtle);
     align-self: flex-start;
 }
 
 .portfolio-pinned-sidebar .sidebar-title {
-    font-size: 2.2rem;
+    font-size: 1.85rem;
     font-weight: 800;
     letter-spacing: -0.02em;
     line-height: 1.15;
@@ -493,31 +509,31 @@ select {
 }
 
 .portfolio-pinned-sidebar .sidebar-desc {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     color: var(--text-secondary);
-    line-height: 1.6;
+    line-height: 1.45;
 }
 
 /* Category Filter Buttons (Interactive, Accessible, Visual Feedback) */
 .portfolio-categories-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 6px;
+    gap: 8px;
+    margin-top: 2px;
 }
 
 .cat-item {
     width: 100%;
     border: 1.5px solid rgba(228, 228, 231, 0.9);
     background-color: #ffffff;
-    border-radius: 14px;
-    padding: 13px 18px;
+    border-radius: 12px;
+    padding: 10px 14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
     font-family: inherit;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: #52525b;
     text-align: left;
@@ -581,8 +597,39 @@ select {
     box-shadow: 0 0 0 3px rgba(9, 9, 11, 0.15);
 }
 
-.sidebar-cta-wrap {
-    margin-top: 10px;
+/* Sidebar CTA Link (Konsultasi Desain Serupa) - Tampil Jelas & Menonjol */
+.portfolio-pinned-sidebar .sidebar-cta-wrap {
+    margin-top: 6px;
+    width: 100%;
+}
+
+.portfolio-pinned-sidebar .sidebar-cta-wrap .btn,
+.portfolio-pinned-sidebar .sidebar-cta-wrap a {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 16px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    border-radius: 12px;
+    background-color: #f4f4f5;
+    border: 1.5px solid #d4d4d8;
+    color: #18181b !important;
+    text-decoration: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portfolio-pinned-sidebar .sidebar-cta-wrap .btn:hover,
+.portfolio-pinned-sidebar .sidebar-cta-wrap a:hover {
+    background-color: #09090b;
+    border-color: #09090b;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
 /* ==========================================================================
@@ -592,14 +639,25 @@ select {
     display: flex;
     flex-direction: column;
     width: 100%;
+    clip-path: inset(0px -40px 0px -40px);
 }
 
 .showcase-nav-bar {
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 18px;
-    padding: 0 4px;
+    margin-bottom: 24px;
+    padding: 12px 24px;
+    background: #ffffff;
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    position: -webkit-sticky;
+    position: sticky;
+    top: calc(var(--header-height) + 10px);
+    z-index: 30;
 }
 
 .showcase-category-tag {
@@ -677,7 +735,7 @@ select {
     gap: 40px;
     width: 100%;
     position: relative;
-    padding-bottom: 50px;
+    padding-bottom: 240px;
 }
 
 .portfolio-card {
@@ -697,34 +755,34 @@ select {
     will-change: transform, top;
 }
 
-/* Animasi Stay Sticky Scroll Pinning - Tingkatan Top & Z-Index Menumpuk */
+/* Animasi Stay Sticky Scroll Pinning - Tingkatan Top & Z-Index Menumpuk (Selalu di bawah showcase-nav-bar) */
 .portfolio-card:nth-child(1) {
-    top: calc(var(--header-height) + 20px);
+    top: calc(var(--header-height) + 84px);
     z-index: 11;
 }
 
 .portfolio-card:nth-child(2) {
-    top: calc(var(--header-height) + 38px);
+    top: calc(var(--header-height) + 102px);
     z-index: 12;
 }
 
 .portfolio-card:nth-child(3) {
-    top: calc(var(--header-height) + 56px);
+    top: calc(var(--header-height) + 120px);
     z-index: 13;
 }
 
 .portfolio-card:nth-child(4) {
-    top: calc(var(--header-height) + 74px);
+    top: calc(var(--header-height) + 138px);
     z-index: 14;
 }
 
 .portfolio-card:nth-child(5) {
-    top: calc(var(--header-height) + 92px);
+    top: calc(var(--header-height) + 156px);
     z-index: 15;
 }
 
 .portfolio-card:nth-child(6) {
-    top: calc(var(--header-height) + 110px);
+    top: calc(var(--header-height) + 174px);
     z-index: 16;
 }
 
@@ -871,8 +929,11 @@ select {
 
 .portfolio-card-meta p#desc-card-2.expanded,
 .portfolio-card-meta p.collapsible-text.expanded {
-    display: block;
-    -webkit-line-clamp: unset;
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    max-height: 85px !important;
+    overflow-y: auto !important;
+    padding-right: 6px;
 }
 
 .btn-read-more {
@@ -1143,6 +1204,7 @@ select {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
+    align-items: stretch;
     position: relative;
     z-index: 2;
 }
@@ -1152,7 +1214,8 @@ select {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 0 10px;
+    padding: 0 6px;
+    height: 100%;
 }
 
 .step-marker-container {
@@ -1189,9 +1252,10 @@ select {
     background-color: #ffffff;
     border: 1px solid var(--border-subtle);
     border-radius: 16px;
-    padding: 24px 20px;
+    padding: 24px 18px;
     width: 100%;
-    min-height: 200px;
+    height: 100%;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     transition: all var(--transition-fast);
@@ -1215,15 +1279,16 @@ select {
 
 .step-title {
     font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--text-primary);
+    font-weight: 750;
     margin-bottom: 10px;
+    color: var(--text-primary);
 }
 
 .step-desc {
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     color: var(--text-secondary);
     line-height: 1.55;
+    flex-grow: 1;
 }
 
 /* ==========================================================================
@@ -3414,12 +3479,12 @@ body.is-nav-open .floating-wa-btn {
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
-    .portfolio-card:nth-child(1) { top: calc(var(--header-height) + 12px); }
-    .portfolio-card:nth-child(2) { top: calc(var(--header-height) + 24px); }
-    .portfolio-card:nth-child(3) { top: calc(var(--header-height) + 36px); }
-    .portfolio-card:nth-child(4) { top: calc(var(--header-height) + 48px); }
-    .portfolio-card:nth-child(5) { top: calc(var(--header-height) + 60px); }
-    .portfolio-card:nth-child(6) { top: calc(var(--header-height) + 72px); }
+    .portfolio-card:nth-child(1) { top: calc(var(--header-height) + 84px); }
+    .portfolio-card:nth-child(2) { top: calc(var(--header-height) + 98px); }
+    .portfolio-card:nth-child(3) { top: calc(var(--header-height) + 112px); }
+    .portfolio-card:nth-child(4) { top: calc(var(--header-height) + 126px); }
+    .portfolio-card:nth-child(5) { top: calc(var(--header-height) + 140px); }
+    .portfolio-card:nth-child(6) { top: calc(var(--header-height) + 154px); }
 
     .portfolio-card-img-wrap {
         height: clamp(160px, 46vw, 200px);
