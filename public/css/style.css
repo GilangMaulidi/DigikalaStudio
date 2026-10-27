@@ -233,7 +233,7 @@ select {
     border-radius: 6px;
     /* Invert logo hitam agar menjadi teks & icon hitam di atas navbar putih */
     filter: invert(1);
-    mix-blend-mode: multiply;       
+    mix-blend-mode: multiply;
     margin-top: auto;
 }
 
@@ -442,7 +442,8 @@ select {
     position: relative;
     padding: 90px 0 120px 0;
     background-color: var(--bg-surface);
-    border-bottom: 1px solid var(--border-subtle);
+    border: none;
+    border-bottom: none;
     scroll-margin-top: 10px;
 }
 
@@ -754,8 +755,8 @@ select {
     display: flex;
     flex-direction: column;
     transition: box-shadow 0.3s ease,
-                border-color 0.3s ease,
-                opacity 0.3s ease;
+        border-color 0.3s ease,
+        opacity 0.3s ease;
     will-change: transform, top;
 }
 
@@ -827,9 +828,17 @@ select {
     display: inline-block;
 }
 
-.mockup-dot.red { background-color: #ff5f56; }
-.mockup-dot.yellow { background-color: #ffbd2e; }
-.mockup-dot.green { background-color: #27c93f; }
+.mockup-dot.red {
+    background-color: #ff5f56;
+}
+
+.mockup-dot.yellow {
+    background-color: #ffbd2e;
+}
+
+.mockup-dot.green {
+    background-color: #27c93f;
+}
 
 .mockup-address-bar {
     display: inline-flex;
@@ -1046,10 +1055,12 @@ select {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
     }
+
     70% {
         transform: scale(1);
         box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
     }
+
     100% {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
@@ -1094,7 +1105,8 @@ select {
     position: relative;
     padding: 100px 0;
     background-color: var(--bg-base);
-    border-bottom: 1px solid var(--border-subtle);
+    border: none;
+    border-bottom: none;
 }
 
 .services-grid {
@@ -1216,21 +1228,56 @@ select {
 /* --------------------------------------------------------------------------
    5. PROSES KERJA KAMI (Horizontal Timeline / Step-by-Step)
    -------------------------------------------------------------------------- */
+.process-pin-wrapper {
+    position: relative;
+    width: 100%;
+}
+
 .process-section {
-    position: relative;            /* ← sticky dihapus, jadi aliran normal */
+    position: relative;
     z-index: 10;
     background-color: var(--bg-surface);
-    border-bottom: 1px solid var(--border-subtle);
-    min-height: 80vh;             /* ← tinggi pas 1 layar */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;       /* ← konten di tengah vertikal */
-    padding: calc(var(--header-height) + 20px) 0 40px;  /* padding atas beri ruang header */
+    border: none;
+    border-bottom: none;
     box-sizing: border-box;
+    scroll-margin-top: calc(var(--header-height) + 12px);
+    padding: calc(var(--header-height) + 20px) 0 40px;
 }
+
+@media (min-width: 769px) {
+    .process-section {
+        position: -webkit-sticky;
+        position: sticky;
+        top: var(--header-height);
+        min-height: calc(100vh - var(--header-height));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 30px 0 50px;
+    }
+
+    .process-section .section-header-center {
+        margin-bottom: 36px;
+    }
+
+    .process-section .section-title {
+        font-size: 2.4rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-bottom: 10px;
+    }
+
+    .process-section .section-desc {
+        font-size: 0.95rem;
+        max-width: 680px;
+        line-height: 1.6;
+        margin: 0 auto;
+    }
+}
+
 .timeline-horizontal-wrapper {
     position: relative;
-    padding: 40px 0 20px 0;
+    padding: 24px 0 10px 0;
 }
 
 /* Garis Horizontal Penghubung */
@@ -1263,7 +1310,7 @@ select {
 }
 
 .step-marker-container {
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     position: relative;
 }
 
@@ -1336,128 +1383,148 @@ select {
 }
 
 /* ==========================================================================
-   WISHLIST SECTION (STICKY SCROLL & LIGHT STREAK)
+   WISHLIST SECTION (STICKY SCROLL & PINNING EFFECT - FULL WIDTH SELAYAR)
    ========================================================================== */
 
-/* 1. Wrapper untuk Efek Menimpa dari Bawah (Sticky Pinning) */
+/* 1. Wrapper untuk Efek Menimpa dari Bawah (Sticky Pinning & Overlapping FAQ) */
 .wishlist-wrapper-astro {
     position: relative;
     z-index: 30;
     margin-top: 0;
+    box-sizing: border-box;
+    scroll-margin-top: calc(var(--header-height) + 16px);
 }
 
-/* Responsif untuk Mobile */
+@media (min-width: 769px) {
+    .wishlist-wrapper-astro {
+        position: relative;
+        z-index: 30;
+        margin-top: 0;
+        margin-bottom: 0;
+        min-height: 100vh;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+}
+
 @media (max-width: 768px) {
     .wishlist-wrapper-astro {
-        margin-top: -180px;
+        position: relative;
+        top: auto;
+        min-height: auto;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 18px;
+        width: 100%;
     }
 }
 
-/* 2. Light Streak (Garis Cahaya Horizontal di Atas Kotak) */
-.light-streak-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding-top: 1.5rem;
-    /* pt-6 */
-    z-index: 30;
-}
-
-@media (min-width: 768px) {
-    .light-streak-container {
-        padding-top: 2rem;
-        /* md:pt-8 */
-    }
-}
-
-.light-streak {
-    width: 80%;
-    max-width: 56rem;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-}
-
-/* 3. Container Utama Wishlist */
+/* 3. Container Utama Wishlist (Full Width Selayar Kiri-Kanan) */
 .wishlist-container {
     position: relative;
+    z-index: 2;
     background-color: #0a0a0a;
-    border-top-left-radius: 3rem;
-    border-top-right-radius: 3rem;
-    padding-top: 6rem;
-    padding-bottom: 0rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    min-height: 100vh;
-    box-shadow: none;
-    border-top: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-top-left-radius: 2.5rem;
+    border-top-right-radius: 2.5rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.7);
+    padding: 2.5rem 2rem 2.8rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
     overflow: hidden;
-    /* TAMBAHKAN INI agar elemen fade tidak keluar dari kotak */
 }
 
-.wishlist-fade-bottom {
+@media (min-width: 769px) {
+    .wishlist-container {
+        min-height: 100vh;
+        height: 100vh;
+    }
+}
+
+/* Efek Gradasi & Blur Fade-Out Putih di Bagian Paling Bawah Wishlist (Menyatu Seamless ke FAQ) */
+.wishlist-container::after {
+    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
+    right: 0;
     width: 100%;
-    height: 60px; /* Ubah dari 150px menjadi lebih tipis */
-    background: linear-gradient(to bottom, rgba(10, 10, 10, 0) 0%, var(--bg-surface) 100%);
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, #ffffff);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     pointer-events: none;
     z-index: 10;
 }
 
 .wishlist-inner {
-    max-width: 80rem;
+    max-width: 1240px;
     margin: 0 auto;
+    width: 100%;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
 }
 
-/* 4. Header Wishlist */
+/* 4. Header Wishlist (Sesuai Desain website_full_page_complete.png) */
 .wishlist-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 1.8rem;
 }
 
 .wishlist-header h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+    font-size: clamp(1.9rem, 2.7vw, 2.5rem);
+    font-weight: 800;
+    margin-bottom: 0.4rem;
     letter-spacing: -0.025em;
     color: #ffffff;
 }
 
 .wishlist-header p {
     color: #9ca3af;
-    font-size: 1.125rem;
-    max-width: 36rem;
+    font-size: 0.92rem;
+    max-width: 32rem;
     margin: 0 auto;
+    line-height: 1.45;
 }
 
-/* 5. Grid Layout */
+/* 5. Grid Layout Paket Harga (Flat 3-Kolom Sesuai Mockup) */
 .wishlist-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
     align-items: stretch;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
     .wishlist-grid {
         grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
         align-items: stretch;
     }
 }
 
-/* 6. Kartu Pricing (Default) - Ukuran & Dimensi Seragam */
+/* 6. Kartu Pricing (Default - Dark Card Sesuai Mockup) */
 .pricing-card {
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 2.25rem 2rem 2rem;
-    border-radius: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    background: #11141a;
+    padding: 1.75rem 1.6rem 1.5rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -1466,56 +1533,67 @@ select {
 }
 
 .pricing-card:hover {
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.55);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .plan-label {
-    font-family: monospace;
-    font-size: 0.875rem;
-    letter-spacing: 0.1em;
-    color: #6b7280;
-    margin-bottom: 0.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #71717a;
+    margin-bottom: 0.65rem;
 }
 
 .plan-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+    font-size: 1.45rem;
+    font-weight: 750;
+    margin-bottom: 0.3rem;
     color: #ffffff;
 }
 
 .plan-desc {
     color: #9ca3af;
-    font-size: 0.875rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.84rem;
+    margin-bottom: 1.35rem;
+    line-height: 1.35;
+    min-height: 2.2rem;
 }
 
 .plan-price {
-    font-size: 1.875rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
+    font-size: 1.7rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
     color: #ffffff;
+    letter-spacing: -0.02em;
 }
 
 .plan-features {
     list-style: none;
     padding: 0;
-    margin-bottom: 2rem;
-    font-size: 0.875rem;
+    margin: 0 0 1.6rem 0;
+    font-size: 0.86rem;
     color: #d1d5db;
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
 }
 
 .plan-features li {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
+    gap: 0.6rem;
+    line-height: 1.35;
 }
 
 .plan-features li span {
     color: #ffffff;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 0.88rem;
+    flex-shrink: 0;
 }
 
 /* 7. Tombol Khusus Wishlist */
@@ -1524,53 +1602,52 @@ select {
     width: 100%;
     text-align: center;
     font-weight: 600;
-    padding: 0.85rem 1rem;
+    padding: 0.72rem 1.25rem;
+    font-size: 0.88rem;
     border-radius: 9999px;
     text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
-    border: none;
+    transition: all 0.25s ease;
     cursor: pointer;
     margin-top: auto;
     box-sizing: border-box;
 }
 
-.plan-btn-white,
-.btn-plan.btn-outline {
+.plan-btn-white {
     background-color: transparent;
     color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.22);
 }
 
-.btn-plan.btn-outline:hover {
-    background-color: #ffffff;
-    color: #000000;
+.plan-btn-white:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.45);
+    color: #ffffff;
 }
 
-.plan-btn-black,
-.btn-plan.btn-solid {
+.plan-btn-black {
     background-color: #000000;
     color: #ffffff;
     border: 1px solid #000000;
 }
 
-.btn-plan.btn-solid:hover {
-    background-color: #262626;
+.plan-btn-black:hover {
+    background-color: #1f2937;
+    border-color: #1f2937;
     color: #ffffff;
 }
 
-/* 8. Kartu Populer (Tengah) - Sama Ukuran & Sejajar Rata */
+/* 8. Kartu Populer (Tengah - Putih Sesuai Mockup) */
 .pricing-card.popular {
-    background-color: #ffffff;
+    background: #ffffff;
     color: #000000;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
     position: relative;
-    transform: none;
 }
 
-@media (min-width: 768px) {
-    .pricing-card.popular {
-        transform: none;
-    }
+.pricing-card.popular:hover {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 .pricing-card.popular .plan-label {
@@ -1600,41 +1677,110 @@ select {
     top: 0;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #0a0a0a;
+    background-color: #000000;
     color: #ffffff;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    padding: 0.25rem 1rem;
+    padding: 0.28rem 1.05rem;
     border-radius: 9999px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     white-space: nowrap;
+    letter-spacing: 0.04em;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Optimasi 1 Layar Penuh Khusus Laptop (Tinggi Layar <= 860px seperti 1366x768 dan 1440x900) */
+@media (min-width: 769px) and (max-height: 860px) {
+    .wishlist-wrapper-astro {
+        min-height: 100vh;
+        height: 100vh;
+        justify-content: center;
+        padding-top: calc(var(--header-height) + 10px);
+        padding-bottom: 16px;
+        scroll-margin-top: calc(var(--header-height) + 16px);
+        box-sizing: border-box;
+    }
+
+    .wishlist-container {
+        min-height: 100vh;
+        height: 100vh;
+        padding: 1.1rem 1.6rem 1.25rem;
+        box-sizing: border-box;
+    }
+
+    .wishlist-header {
+        margin-bottom: 0.85rem;
+    }
+
+    .wishlist-header h2 {
+        font-size: 1.55rem;
+        margin-bottom: 0.12rem;
+    }
+
+    .wishlist-header p {
+        font-size: 0.82rem;
+        line-height: 1.25;
+        max-width: 28rem;
+    }
+
+    .pricing-card {
+        padding: 1.05rem 1rem 1rem;
+        border-radius: 1rem;
+    }
+
+    .plan-label {
+        font-size: 0.65rem;
+        margin-bottom: 0.15rem;
+    }
+
+    .plan-title {
+        font-size: 1.15rem;
+        margin-bottom: 0.1rem;
+    }
+
+    .plan-desc {
+        font-size: 0.74rem;
+        margin-bottom: 0.5rem;
+        min-height: 1.9rem;
+    }
+
+    .plan-price {
+        font-size: 1.25rem;
+        margin-bottom: 0.65rem;
+    }
+
+    .plan-features {
+        margin-bottom: 0.85rem;
+        font-size: 0.75rem;
+        gap: 0.35rem;
+    }
+
+    .plan-features li {
+        gap: 0.35rem;
+        line-height: 1.2;
+    }
+
+    .btn-plan {
+        padding: 0.5rem 0.85rem;
+        font-size: 0.78rem;
+    }
 }
 
 /* --------------------------------------------------------------------------
-   7. FAQ (Menumpuk Wishlist via z-index & Relative Positioning)
+   7. FAQ (Berada di Bawah Wishlist - Ditutupi Wishlist dari Atas)
    -------------------------------------------------------------------------- */
 .faq-section {
     position: relative;
     z-index: 20;
     background-color: var(--bg-surface);
-
-    /* Hilangkan border */
     border-top: none;
-
-    /* Tetap beri lengkungan */
-    border-top-left-radius: 3rem;
-    border-top-right-radius: 3rem;
-
-    /* Tarik ke atas agar menutupi sisa kotak wishlist */
-    margin-top: -20px;
-
-    /* UBAH BAYANGAN: Gunakan bayangan hitam sangat tipis agar terlihat natural, 
-       bukan bayangan putih tebal */
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05); 
-
-    /* Padding */
-    padding: 100px 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: -30px;
+    box-shadow: none;
+    padding: 120px 0 100px;
 }
+
 .faq-accordion-list {
     max-width: 860px;
     margin: 0 auto;
@@ -2105,6 +2251,7 @@ select {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 }
+
 /* Header saat di-scroll (lebih solid) */
 .site-header.is-scrolled .header-container {
     background: rgba(9, 9, 11, 0.92);
@@ -2121,17 +2268,17 @@ select {
     align-items: center;
     gap: 10px;
     text-decoration: none;
-    width: auto;              
-    height: 48px;             
-    overflow: visible;        
-    border-radius: 0;         
+    width: auto;
+    height: 48px;
+    overflow: visible;
+    border-radius: 0;
     background: transparent;
 }
 
 /* Gambar Logo D */
 .header-logo img {
     height: 100%;
-    width: auto;              
+    width: auto;
     object-fit: contain;
     filter: none;
     mix-blend-mode: normal;
@@ -2161,6 +2308,7 @@ select {
     text-transform: uppercase;
     color: #a1a1aa;
 }
+
 .header-nav {
     display: flex;
     align-items: center;
@@ -2201,8 +2349,10 @@ select {
     color: #09090b;
     background: #ffffff;
     border-color: #ffffff;
-        border-radius: 12px;       /* ← TAMBAH INI */
-    padding: 8px 20px;        /* ← opsional: atur padding */
+    border-radius: 12px;
+    /* ← TAMBAH INI */
+    padding: 8px 20px;
+    /* ← opsional: atur padding */
 }
 
 .header-action .btn-outline:hover {
@@ -2210,17 +2360,26 @@ select {
     background: transparent;
 }
 
-/* Light blueprint grid with a restrained glow on service cards. */
-.services-section {
+/* Blueprint grid pattern jelas & elegan untuk Layanan Kami, Portofolio, dan Proses Kerja (Bergerak ikut scroll section) */
+.services-section,
+.portfolio-section,
+.process-section {
     background-color: #f7f7f8;
     background-image:
-        radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.95), transparent 68%),
-        linear-gradient(rgba(24, 24, 27, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(24, 24, 27, 0.025) 1px, transparent 1px);
+        radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.95), transparent 70%),
+        linear-gradient(rgba(24, 24, 27, 0.065) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(24, 24, 27, 0.065) 1px, transparent 1px);
     background-size: auto, 48px 48px, 48px 48px;
+    border: none;
+    border-top: none;
+    border-bottom: none;
+    /* Pola menempel pada background section dan bergerak bersama section saat di-scroll */
 }
 
-.services-section > .container {
+.services-section > .container,
+.portfolio-section > .container,
+.portfolio-container,
+.process-section > .container {
     position: relative;
     z-index: 1;
 }
@@ -2228,16 +2387,6 @@ select {
 .service-card:hover {
     border-color: rgba(39, 39, 42, 0.28);
     box-shadow: 0 18px 42px rgba(0, 0, 0, 0.09), 0 0 30px rgba(82, 82, 91, 0.16);
-}
-
-/* White process canvas with a fine grain and dotted step connector. */
-.process-section {
-    background-color: #ffffff;
-    background-image:
-        radial-gradient(rgba(24, 24, 27, 0.045) 0.55px, transparent 0.55px),
-        radial-gradient(rgba(24, 24, 27, 0.025) 0.5px, transparent 0.5px);
-    background-size: 9px 9px, 17px 17px;
-    background-position: 0 0, 4px 5px;
 }
 
 .timeline-track-line {
@@ -2404,6 +2553,7 @@ select {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -2438,6 +2588,7 @@ select {
     padding: calc(var(--header-height) + 20px) 0 40px;
     box-sizing: border-box;
 }
+
 .testimonial-carousel {
     max-width: 1000px;
     margin: 0 auto;
@@ -2794,6 +2945,7 @@ select {
         justify-content: center;
     }
 }
+
 /* ==========================================================================
    HERO SECTION TEXTURES (DOT PATTERN & NOISE) - TAMBAHAN
    ========================================================================== */
@@ -2802,18 +2954,18 @@ select {
 .hero-dot-pattern {
     position: absolute;
     inset: 0;
-    
+
     /* Titik putih dengan opasitas 40%, ukuran 2px, jarak 24px */
     background-image: radial-gradient(rgba(255, 255, 255, 0.4) 2px, transparent 2px);
-    background-size: 24px 24px; 
-    
+    background-size: 24px 24px;
+
     /* Efek memudar dari kiri (terlihat) ke kanan (menghilang) */
     mask-image: linear-gradient(to right, black 20%, transparent 70%);
     -webkit-mask-image: linear-gradient(to right, black 20%, transparent 70%);
-    
+
     pointer-events: none;
     /* Berada di atas overlay bawaan (yang z-index-nya 1), tapi di bawah teks (z-index 2) */
-    z-index: 1; 
+    z-index: 1;
 }
 
 /* 2. Tekstur Noise / Grain (Kesan Film) */
@@ -2823,7 +2975,7 @@ select {
     opacity: 0.04;
     pointer-events: none;
     /* Berada di atas titik-titik */
-    z-index: 1; 
+    z-index: 1;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
@@ -2832,6 +2984,7 @@ select {
     position: relative;
     z-index: 2;
 }
+
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -2842,6 +2995,7 @@ select {
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
     z-index: 1;
 }
+
 /* ==========================================================================
    PENYESUAIAN HERO: TITIK LEBIH LEMBUT & TRANSISI KE PORTOFOLIO
    ========================================================================== */
@@ -2852,12 +3006,12 @@ select {
     inset: 0;
     /* Turunkan opasitas dari 0.4 menjadi 0.15 atau 0.2 */
     background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1.5px, transparent 1.5px);
-    background-size: 24px 24px; 
+    background-size: 24px 24px;
     /* Fokuskan titik di area kiri, memudar ke kanan */
     mask-image: linear-gradient(to right, black 20%, transparent 60%);
     -webkit-mask-image: linear-gradient(to right, black 20%, transparent 60%);
     pointer-events: none;
-    z-index: 1; 
+    z-index: 1;
 }
 
 /* 2. Gradien pemudar (Fade Bottom) ke warna putih Portofolio */
@@ -2886,7 +3040,7 @@ select {
 }
 
 /* Memastikan konten di dalam section tetap di atas pola */
-.has-pattern > .container {
+.has-pattern>.container {
     position: relative;
     z-index: 2;
 }
@@ -2895,15 +3049,19 @@ select {
 .pattern-circles-tl::before {
     content: '';
     position: absolute;
-    top: -300px; left: -300px; /* Posisi di Kiri Atas */
-    width: 1000px; height: 1000px;
-    background: repeating-radial-gradient(
-        circle at center,
-        transparent,
-        transparent 50px,
-        rgba(0, 0, 0, 0.06) 50px, /* Warna garis */
-        rgba(0, 0, 0, 0.06) 53px  /* Ketebalan garis */
-    );
+    top: -300px;
+    left: -300px;
+    /* Posisi di Kiri Atas */
+    width: 1000px;
+    height: 1000px;
+    background: repeating-radial-gradient(circle at center,
+            transparent,
+            transparent 50px,
+            rgba(0, 0, 0, 0.06) 50px,
+            /* Warna garis */
+            rgba(0, 0, 0, 0.06) 53px
+            /* Ketebalan garis */
+        );
     pointer-events: none;
     z-index: 1;
     mask-image: radial-gradient(circle at center, black 20%, transparent 80%);
@@ -2913,15 +3071,16 @@ select {
 .pattern-circles-br::before {
     content: '';
     position: absolute;
-    bottom: -300px; right: -300px; /* Posisi di Kanan Bawah */
-    width: 1000px; height: 1000px;
-    background: repeating-radial-gradient(
-        circle at center,
-        transparent,
-        transparent 50px,
-        rgba(0, 0, 0, 0.06) 50px,
-        rgba(0, 0, 0, 0.06) 53px
-    );
+    bottom: -300px;
+    right: -300px;
+    /* Posisi di Kanan Bawah */
+    width: 1000px;
+    height: 1000px;
+    background: repeating-radial-gradient(circle at center,
+            transparent,
+            transparent 50px,
+            rgba(0, 0, 0, 0.06) 50px,
+            rgba(0, 0, 0, 0.06) 53px);
     pointer-events: none;
     z-index: 1;
     mask-image: radial-gradient(circle at center, black 20%, transparent 80%);
@@ -2932,9 +3091,11 @@ select {
 .pattern-mesh-tr::before {
     content: '';
     position: absolute;
-    top: -200px; right: -200px;
-    width: 800px; height: 800px;
-    background-image: 
+    top: -200px;
+    right: -200px;
+    width: 800px;
+    height: 800px;
+    background-image:
         repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0.05) 2px, transparent 2px, transparent 40px),
         repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0.05) 2px, transparent 2px, transparent 40px);
     pointer-events: none;
@@ -2947,9 +3108,11 @@ select {
 .pattern-grid-bl::before {
     content: '';
     position: absolute;
-    bottom: -100px; left: -100px;
-    width: 800px; height: 800px;
-    background-image: 
+    bottom: -100px;
+    left: -100px;
+    width: 800px;
+    height: 800px;
+    background-image:
         linear-gradient(to right, rgba(0, 0, 0, 0.04) 2px, transparent 2px),
         linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 2px, transparent 2px);
     background-size: 50px 50px;
@@ -2963,13 +3126,16 @@ select {
 .pattern-glow-center::after {
     content: '';
     position: absolute;
-    top: 50%; left: 50%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    width: 1200px; height: 1200px;
+    width: 1200px;
+    height: 1200px;
     background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, transparent 60%);
     pointer-events: none;
     z-index: 0;
 }
+
 /* ==========================================================================
    POLA SEGITIGA (MESH / ISOMETRIC) UNTUK TESTIMONI
    ========================================================================== */
@@ -2977,20 +3143,21 @@ select {
 .pattern-triangles-br::before {
     content: '';
     position: absolute;
-    bottom: -200px; 
-    right: -200px; /* Posisi di Kanan Bawah */
-    width: 1000px; 
+    bottom: -200px;
+    right: -200px;
+    /* Posisi di Kanan Bawah */
+    width: 1000px;
     height: 1000px;
-    
+
     /* Pola garis diagonal silang membentuk ilusi segitiga/diamond */
-    background-image: 
+    background-image:
         repeating-linear-gradient(30deg, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0.05) 2px, transparent 2px, transparent 40px),
         repeating-linear-gradient(150deg, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0.05) 2px, transparent 2px, transparent 40px),
         repeating-linear-gradient(270deg, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0.05) 2px, transparent 2px, transparent 40px);
-    
+
     pointer-events: none;
     z-index: 1;
-    
+
     /* Memudarkan pola di ujungnya agar natural */
     mask-image: radial-gradient(circle at bottom right, black 20%, transparent 70%);
     -webkit-mask-image: radial-gradient(circle at bottom right, black 20%, transparent 70%);
@@ -3000,16 +3167,16 @@ select {
 .pattern-triangles-tl::before {
     content: '';
     position: absolute;
-    top: -200px; 
+    top: -200px;
     left: -200px;
-    width: 1000px; 
+    width: 1000px;
     height: 1000px;
-    
-    background-image: 
+
+    background-image:
         repeating-linear-gradient(30deg, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0.05) 2px, transparent 2px, transparent 40px),
         repeating-linear-gradient(150deg, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0.05) 2px, transparent 2px, transparent 40px),
         repeating-linear-gradient(270deg, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0.05) 2px, transparent 2px, transparent 40px);
-    
+
     pointer-events: none;
     z-index: 1;
     mask-image: radial-gradient(circle at top left, black 20%, transparent 70%);
@@ -3024,15 +3191,15 @@ select {
 .faq-combo-left::before {
     content: '';
     position: absolute;
-    top: -300px; left: -300px;
-    width: 1000px; height: 1000px;
-    background: repeating-radial-gradient(
-        circle at center,
-        transparent,
-        transparent 50px,
-        rgba(0, 0, 0, 0.05) 50px,
-        rgba(0, 0, 0, 0.05) 53px
-    );
+    top: -300px;
+    left: -300px;
+    width: 1000px;
+    height: 1000px;
+    background: repeating-radial-gradient(circle at center,
+            transparent,
+            transparent 50px,
+            rgba(0, 0, 0, 0.05) 50px,
+            rgba(0, 0, 0, 0.05) 53px);
     pointer-events: none;
     z-index: 1;
     mask-image: radial-gradient(circle at center, black 20%, transparent 80%);
@@ -3043,9 +3210,11 @@ select {
 .faq-combo-right::after {
     content: '';
     position: absolute;
-    top: -200px; right: -200px;
-    width: 1000px; height: 1000px;
-    background-image: 
+    top: -200px;
+    right: -200px;
+    width: 1000px;
+    height: 1000px;
+    background-image:
         repeating-linear-gradient(30deg, rgba(0, 0, 0, 0.04) 0, rgba(0, 0, 0, 0.04) 2px, transparent 2px, transparent 40px),
         repeating-linear-gradient(150deg, rgba(0, 0, 0, 0.04) 0, rgba(0, 0, 0, 0.04) 2px, transparent 2px, transparent 40px),
         repeating-linear-gradient(270deg, rgba(0, 0, 0, 0.04) 0, rgba(0, 0, 0, 0.04) 2px, transparent 2px, transparent 40px);
@@ -3054,6 +3223,7 @@ select {
     mask-image: radial-gradient(circle at top right, black 20%, transparent 70%);
     -webkit-mask-image: radial-gradient(circle at top right, black 20%, transparent 70%);
 }
+
 /* ==========================================================================
    MOBILE NAVIGATION DRAWER & QUICK ACTION BUTTON (BASE STYLES)
    ========================================================================== */
@@ -3345,7 +3515,8 @@ body.is-nav-open .floating-wa-btn {
         --header-height: 72px;
     }
 
-    html, body {
+    html,
+    body {
         overflow-x: hidden;
         max-width: 100vw;
     }
@@ -3547,12 +3718,29 @@ body.is-nav-open .floating-wa-btn {
         min-height: unset;
     }
 
-    .portfolio-card:nth-child(1) { top: calc(var(--header-height) + 84px); }
-    .portfolio-card:nth-child(2) { top: calc(var(--header-height) + 98px); }
-    .portfolio-card:nth-child(3) { top: calc(var(--header-height) + 112px); }
-    .portfolio-card:nth-child(4) { top: calc(var(--header-height) + 126px); }
-    .portfolio-card:nth-child(5) { top: calc(var(--header-height) + 140px); }
-    .portfolio-card:nth-child(6) { top: calc(var(--header-height) + 154px); }
+    .portfolio-card:nth-child(1) {
+        top: calc(var(--header-height) + 84px);
+    }
+
+    .portfolio-card:nth-child(2) {
+        top: calc(var(--header-height) + 98px);
+    }
+
+    .portfolio-card:nth-child(3) {
+        top: calc(var(--header-height) + 112px);
+    }
+
+    .portfolio-card:nth-child(4) {
+        top: calc(var(--header-height) + 126px);
+    }
+
+    .portfolio-card:nth-child(5) {
+        top: calc(var(--header-height) + 140px);
+    }
+
+    .portfolio-card:nth-child(6) {
+        top: calc(var(--header-height) + 154px);
+    }
 
     .portfolio-card-img-wrap {
         height: clamp(160px, 46vw, 200px);
@@ -3700,26 +3888,48 @@ body.is-nav-open .floating-wa-btn {
 
     /* 6. Wishlist / Pricing Section */
     .wishlist-wrapper-astro {
+        position: relative;
+        top: auto;
+        min-height: auto;
         margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 18px;
+    }
+
+    .wishlist-back-card {
+        width: calc(100% - 36px);
+        left: 50%;
+        transform: translateX(-50%);
+        height: 70px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        box-shadow: 0 -12px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .light-streak-container {
+        top: 18px;
     }
 
     .wishlist-container {
+        width: calc(100% - 24px);
         min-height: 0;
-        padding: 60px 18px 48px;
-        border-top-left-radius: 28px;
-        border-top-right-radius: 28px;
+        padding: 36px 18px 40px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
     }
 
     .wishlist-header {
-        margin-bottom: 28px;
+        margin-bottom: 24px;
     }
 
     .wishlist-header h2 {
-        font-size: clamp(1.85rem, 7.5vw, 2.35rem);
+        font-size: clamp(1.75rem, 7vw, 2.2rem);
     }
 
     .wishlist-header p {
-        font-size: 0.94rem;
+        font-size: 0.92rem;
     }
 
     .wishlist-grid {
@@ -3730,6 +3940,7 @@ body.is-nav-open .floating-wa-btn {
     .pricing-card {
         padding: 24px 18px;
         border-radius: 20px;
+        transform: none !important;
     }
 
     .pricing-card.popular {
@@ -3761,12 +3972,15 @@ body.is-nav-open .floating-wa-btn {
         font-size: 0.92rem;
     }
 
-    /* 7. FAQ Section */
+    /* 7. FAQ Section (Berada di Bawah Wishlist) */
     .faq-section {
-        margin-top: -16px;
+        margin-top: -24px;
         padding: 58px 18px;
-        border-top-left-radius: 28px;
-        border-top-right-radius: 28px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        box-shadow: none;
+        position: relative;
+        z-index: 20;
     }
 
     .faq-accordion-list {
@@ -4041,64 +4255,65 @@ body.is-nav-open .floating-wa-btn {
         font-size: 0.58rem;
     }
 
-/* --- STYLING BACA SELENGKAPNYA --- */
-.portfolio-card-meta p {
-    /* Batasi teks menjadi 3 baris */
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
+    /* --- STYLING BACA SELENGKAPNYA --- */
+    .portfolio-card-meta p {
+        /* Batasi teks menjadi 3 baris */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
 
-/* Class saat teks dibuka */
-.portfolio-card-meta p.expanded {
-    display: block;
-    -webkit-line-clamp: unset;
-}
+    /* Class saat teks dibuka */
+    .portfolio-card-meta p.expanded {
+        display: block;
+        -webkit-line-clamp: unset;
+    }
 
-/* Tombol Baca Selengkapnya */
-.btn-read-more {
-    display: inline-block;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--accent-black);
-    cursor: pointer;
-    margin-top: 8px;
-    text-decoration: underline;
-}
+    /* Tombol Baca Selengkapnya */
+    .btn-read-more {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--accent-black);
+        cursor: pointer;
+        margin-top: 8px;
+        text-decoration: underline;
+    }
 
-.btn-read-more:hover {
-    color: #4b5563;
-}
-/* --- STYLING BACA SELENGKAPNYA --- */
-.portfolio-card-meta p {
-    /* Batasi teks menjadi 3 baris */
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
+    .btn-read-more:hover {
+        color: #4b5563;
+    }
 
-/* Class saat teks dibuka */
-.portfolio-card-meta p.expanded {
-    display: block;
-    -webkit-line-clamp: unset;
-}
+    /* --- STYLING BACA SELENGKAPNYA --- */
+    .portfolio-card-meta p {
+        /* Batasi teks menjadi 3 baris */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
 
-/* Tombol Baca Selengkapnya */
-.btn-read-more {
-    display: inline-block;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--accent-black);
-    cursor: pointer;
-    margin-top: 8px;
-    text-decoration: underline;
-}
+    /* Class saat teks dibuka */
+    .portfolio-card-meta p.expanded {
+        display: block;
+        -webkit-line-clamp: unset;
+    }
 
-.btn-read-more:hover {
-    color: #4b5563;
-}
+    /* Tombol Baca Selengkapnya */
+    .btn-read-more {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--accent-black);
+        cursor: pointer;
+        margin-top: 8px;
+        text-decoration: underline;
+    }
+
+    .btn-read-more:hover {
+        color: #4b5563;
+    }
 }

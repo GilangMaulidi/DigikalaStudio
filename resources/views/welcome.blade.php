@@ -363,60 +363,56 @@
         <!-- =======================================================================
              5. PROSES KERJA KAMI (Horizontal Timeline / Step-by-Step Timeline)
              ======================================================================= -->
-    <div class="process-pin-wrapper">
-        <section class="process-section" id="proses">
-            <div class="container">
-                <div class="section-header-center">
-                    <h2 class="section-title">Proses Kerja</h2>
-                    <p class="section-desc">
-                        Alur pengembangan terstruktur dan transparan dengan tahapan terukur dari riset awal hingga peluncuran live dan garansi sistem.
-                    </p>
-                </div>
+        <div class="process-pin-wrapper">
+            <section class="process-section" id="proses">
+                <div class="container">
+                    <div class="section-header-center">
+                        <h2 class="section-title">Proses Kerja</h2>
+                        <p class="section-desc">
+                            Alur pengembangan terstruktur dan transparan dengan tahapan terukur dari riset awal hingga peluncuran live dan garansi sistem.
+                        </p>
+                    </div>
 
-                <div class="timeline-horizontal-wrapper">
-                    {{-- Garis penanda horizontal yang membentang dari kiri ke kanan --}}
-                    <div class="timeline-track-line"></div>
+                    <div class="timeline-horizontal-wrapper">
+                        {{-- Garis penanda horizontal yang membentang dari kiri ke kanan --}}
+                        <div class="timeline-track-line"></div>
 
-                    <div class="timeline-steps-grid">
-                        @forelse($workProcesses as $process)
-                        <div class="timeline-step-item">
-                            <div class="step-marker-container">
-                                <div class="step-circle">{{ $process->step_number }}</div>
+                        <div class="timeline-steps-grid">
+                            @forelse($workProcesses as $process)
+                            <div class="timeline-step-item">
+                                <div class="step-marker-container">
+                                    <div class="step-circle">{{ $process->step_number }}</div>
+                                </div>
+                                <div class="step-card">
+                                    <span class="step-phase-tag">{{ $process->phase_tag }}</span>
+                                    <h3 class="step-title">{{ $process->title }}</h3>
+                                    <p class="step-desc">{{ $process->description }}</p>
+                                </div>
                             </div>
-                            <div class="step-card">
-                                <span class="step-phase-tag">{{ $process->phase_tag }}</span>
-                                <h3 class="step-title">{{ $process->title }}</h3>
-                                <p class="step-desc">{{ $process->description }}</p>
+                            @empty
+                            <div style="padding: 40px; text-align: center; color: #888; grid-column: 1 / -1;">
+                                Belum ada proses kerja yang ditambahkan.
                             </div>
+                            @endforelse
                         </div>
-                        @empty
-                        <div style="padding: 40px; text-align: center; color: #888; grid-column: 1 / -1;">
-                            Belum ada proses kerja yang ditambahkan.
-                        </div>
-                        @endforelse
                     </div>
                 </div>
+            </section>
+            <!-- =======================================================================
+                 7. WISH LIST (MENIMPA DARI BAWAH & STICKY SCROLL - FULL WIDTH SELAYAR)
+                 ======================================================================= -->
+            <div class="wishlist-wrapper-astro" id="wishlist">
+                {{-- Memanggil file wishlist --}}
+                @include('wishlist')
             </div>
-        </section>
-        <!-- =======================================================================
-             7. WISH LIST (MENIMPA DARI BAWAH & STICKY SCROLL)
-             ======================================================================= -->
-        <div class="wishlist-wrapper-astro">
-            <!-- LIGHT STREAK: Garis cahaya di atas Wishlist -->
-            <div class="light-streak-container">
-                <div class="light-streak"></div>
-            </div>
-            
-            {{-- Memanggil file wishlist --}}
-            @include('wishlist')
         </div>
-    </div>
 
         <!-- =======================================================================
              8. FAQ (Menumpuk di atas Wishlist saat di-scroll)
              ======================================================================= -->        
-<section class="faq-section has-pattern faq-combo-left faq-combo-right" id="faq">               
-     <div class="section-header-center">
+        <section class="faq-section has-pattern faq-combo-left faq-combo-right" id="faq">
+            <div class="container">
+                <div class="section-header-center">
                     <h2 class="section-title">FAQ</h2>
                     <p class="section-desc">
                         Pertanyaan yang paling sering diajukan seputar alur kerja, spesifikasi teknis, dan jaminan layanan di Digikala Studio.
@@ -712,7 +708,7 @@
                     <a href="#" aria-label="LinkedIn">LinkedIn</a>
                     <a href="#" aria-label="Instagram">Instagram</a>
                     <a href="#" aria-label="GitHub">GitHub</a>
-                    <a href="#" aria-label="Dribbble">Dribbble</a>
+                    <a href="#" aria-label="Email">Email</a>
                 </div>
             </div>
         </div>

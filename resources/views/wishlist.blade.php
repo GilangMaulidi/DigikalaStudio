@@ -1,15 +1,14 @@
 {{-- resources/views/wishlist.blade.php --}}
 
-<!-- Background diubah menjadi hitam (#0a0a0a) -->
-<div class="wishlist-container" id="wishlist">
+<!-- Container Utama Wishlist -->
+<div class="wishlist-container">
     <div class="wishlist-inner">
-        <div class="wishlist-fade-bottom"></div>
         <div class="wishlist-header">
             <h2>Pilih Level Website</h2>
             <p>Sesuaikan dengan kebutuhan bisnis Anda. Transparan, tanpa biaya tersembunyi.</p>
         </div>
 
-        <!-- Grid Paket Harga -->
+        <!-- Grid Paket Harga (Sesuai Desain website_full_page_complete.png) -->
         <div class="wishlist-grid">
             @forelse($pricingPlans ?? [] as $plan)
                 <div class="pricing-card {{ $plan->is_popular ? 'popular' : '' }}">
