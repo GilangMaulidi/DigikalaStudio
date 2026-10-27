@@ -233,24 +233,48 @@ document.addEventListener('DOMContentLoaded', () => {
     updateScrollReveals();
 
     // =====================================================================
-    // 4. COLLAB FORM DEMO FEEDBACK
+    // 4. COLLAB FORM (FORMSPREE REAL SUBMISSION)
     // =====================================================================
     const collabForm = document.getElementById('collab-form');
     if (collabForm) {
-        collabForm.addEventListener('submit', (e) => {
+        collabForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = collabForm.querySelector('.form-submit-btn');
+            const originalText = submitBtn ? submitBtn.textContent : 'Kirim Pengajuan Kolaborasi';
+
             if (submitBtn) {
-                const originalText = submitBtn.textContent;
                 submitBtn.textContent = 'Mengirim Pesan...';
                 submitBtn.disabled = true;
+            }
 
-                setTimeout(() => {
-                    alert('Terima kasih! Pesan kolaborasi Anda telah kami terima. Tim Digikala Studio akan segera menghubungi Anda.');
+            try {
+                const formData = new FormData(collabForm);
+                const response = await fetch(collabForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    alert('Terima kasih! Pesan kolaborasi Anda telah berhasil terkirim. Tim Digikala Studio akan segera menghubungi Anda.');
                     collabForm.reset();
+                } else {
+                    const data = await response.json();
+                    if (data && data.errors) {
+                        alert('Gagal mengirim: ' + data.errors.map(err => err.message).join(', '));
+                    } else {
+                        alert('Maaf, terjadi kendala saat mengirim pesan. Silakan hubungi kami via WhatsApp.');
+                    }
+                }
+            } catch (error) {
+                alert('Terjadi kesalahan jaringan. Silakan hubungi kami via WhatsApp atau coba lagi.');
+            } finally {
+                if (submitBtn) {
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
-                }, 800);
+                }
             }
         });
     }
