@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =====================================================================
     const revealTargets = document.querySelectorAll(
         '.section-header-center, .portfolio-card, ' +
-        '.service-card, .timeline-step-item, .wishlist-header, .pricing-card, ' +
+        '.service-card, .services-bottom-banner, .timeline-step-item, .wishlist-header, .pricing-card, ' +
         '.about-box, .collab-form-card, .cta-banner'
     );
 
@@ -488,4 +488,102 @@ document.addEventListener('DOMContentLoaded', () => {
             btnElement.textContent = 'Baca Selengkapnya ↓';
         }
     };
+
+    // =====================================================================
+    // 7. SERVICE CARDS INTERACTIVE SPOTLIGHT & FORM PRE-SELECT
+    // =====================================================================
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
+    const serviceSelectLinks = document.querySelectorAll('[data-select-service]');
+    const serviceTypeSelect = document.getElementById('service-type');
+    if (serviceSelectLinks.length > 0 && serviceTypeSelect) {
+        serviceSelectLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const targetVal = link.getAttribute('data-select-service');
+                if (targetVal) {
+                    serviceTypeSelect.value = targetVal;
+                }
+            });
+        });
+    }
+
+    // =====================================================================
+    // 8. HERO 3D LAPTOP & PHONE PORTFOLIO SHOWCASE SWITCHER
+    // =====================================================================
+    const heroSwitchBtns = document.querySelectorAll('.hero-switch-btn');
+    const heroLaptopImgs = document.querySelectorAll('.hero-screen-img');
+    const heroPhoneImgs = document.querySelectorAll('.hero-phone-img');
+    const heroLaptopUrl = document.getElementById('heroLaptopUrl');
+    const heroFloatingTitle = document.getElementById('heroFloatingTitle');
+    const heroDeviceStage = document.getElementById('heroDeviceStage');
+
+    if (heroSwitchBtns.length > 0 && heroLaptopImgs.length > 0) {
+        let currentHeroSlide = 0;
+        let heroAutoTimer = null;
+
+        function setHeroPortfolioSlide(index) {
+            if (index < 0) index = heroSwitchBtns.length - 1;
+            if (index >= heroSwitchBtns.length) index = 0;
+            currentHeroSlide = index;
+
+            heroSwitchBtns.forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+
+            heroLaptopImgs.forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+            });
+
+            heroPhoneImgs.forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+            });
+
+            const activeBtn = heroSwitchBtns[index];
+            if (activeBtn) {
+                const urlText = activeBtn.getAttribute('data-url');
+                const titleText = activeBtn.getAttribute('data-title');
+                if (heroLaptopUrl && urlText) heroLaptopUrl.textContent = urlText;
+                if (heroFloatingTitle && titleText) heroFloatingTitle.textContent = titleText;
+            }
+        }
+
+        function startHeroAutoSlide() {
+            stopHeroAutoSlide();
+            heroAutoTimer = setInterval(() => {
+                if (!document.hidden) {
+                    setHeroPortfolioSlide(currentHeroSlide + 1);
+                }
+            }, 4500);
+        }
+
+        function stopHeroAutoSlide() {
+            if (heroAutoTimer) {
+                clearInterval(heroAutoTimer);
+                heroAutoTimer = null;
+            }
+        }
+
+        heroSwitchBtns.forEach((btn, idx) => {
+            btn.addEventListener('click', () => {
+                setHeroPortfolioSlide(idx);
+                startHeroAutoSlide();
+            });
+        });
+
+        if (heroDeviceStage) {
+            heroDeviceStage.addEventListener('mouseenter', stopHeroAutoSlide);
+            heroDeviceStage.addEventListener('mouseleave', startHeroAutoSlide);
+        }
+
+        startHeroAutoSlide();
+    }
 });

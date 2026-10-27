@@ -137,34 +137,132 @@
 
     <main>
 <!-- =======================================================================
-     2. BERANDA (Hero Section)
+     2. BERANDA (Hero Section - Minimal Copy & 3D Floating Portfolio Devices)
      ======================================================================= -->
-<section class="hero-section" id="beranda" style="background-image: url('{{ asset('images/bg_branda.png') }}');">
-    
-    <!-- 1. Overlay Gelap Bawaan -->
+<section class="hero-section" id="beranda">
+
+    <!-- 1. Overlay Gelap, Grid & Sorotan Ambient -->
     <div class="hero-overlay"></div>
-    
-    <!-- 2. Pola & Tekstur Tambahan -->
+    <div class="hero-ambient-spotlight"></div>
     <div class="hero-dot-pattern"></div>
     <div class="hero-noise-texture"></div>
-    
-    <!-- 3. Gradien pemudar ke Portofolio (Putih) -->
 
-    <!-- 4. Konten Teks (Tetap sama seperti aslinya) -->
+    <!-- 2. Konten Beranda (2 Kolom: Teks Ringkas di Kiri + 3D Laptop & HP Portofolio di Kanan) -->
     <div class="container hero-container">
-        <div class="hero-content">
-            <h1 class="hero-headline">
-                Kami merancang website yang membuat brand Anda lebih bernilai.
-            </h1>
+        <div class="hero-grid-layout">
 
-            <p class="hero-subheadline">
-                Kami membantu bisnis membangun kehadiran digital yang profesional dan mendampingi mahasiswa dalam menyelesaikan proses penelitian dan penulisan skripsi dengan layanan yang terarah, transparan, dan berkualitas.
-            </p>
+            <!-- SISI KIRI: Teks Utama yang Bersih & Tidak Penuh -->
+            <div class="hero-content">
+                <div class="hero-status-pill">
+                    <span class="hero-status-dot"></span>
+                    <span class="hero-status-code">DIGIKALA STUDIO</span>
+                </div>
 
-            <div class="hero-cta">
-                <a href="#kolaborasi" class="btn btn-primary">Mulai Proyek </a>
-                <a href="#portofolio" class="btn btn-outline">Lihat Portofolio </a>
+                <h1 class="hero-headline">
+                    Kami merancang website yang membuat <span class="hero-headline-highlight">brand Anda lebih bernilai.</span>
+                </h1>
+
+                <p class="hero-subheadline">
+                    Solusi pengembangan website bisnis, sistem informasi kustom, serta pendampingan riset &amp; skripsi IT secara terarah, transparan, dan berkualitas.
+                </p>
+
+                <div class="hero-cta">
+                    <a href="#kolaborasi" class="btn btn-primary hero-btn-primary">
+                        <span>Mulai Proyek</span>
+                        <span class="hero-btn-arrow">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </span>
+                    </a>
+                    <a href="#portofolio" class="btn btn-outline hero-btn-glass">
+                        <span>Lihat Portofolio</span>
+                    </a>
+                </div>
             </div>
+
+            <!-- SISI KANAN: Mockup 3D Timbul (Laptop & Handphone Berisi Gambar Portofolio Kita) -->
+            <div class="hero-device-stage" id="heroDeviceStage">
+                <!-- Cahaya Belakang (Backlight Glow agar Laptop & HP makin timbul) -->
+                <div class="hero-device-glow"></div>
+
+                <div class="hero-devices-3d-wrap" id="heroDevices3dWrap">
+
+                    <!-- 1. MOCKUP LAPTOP (Utama - Timbul 3D) -->
+                    <div class="hero-laptop-mockup">
+                        <div class="hero-laptop-lid">
+                            <div class="hero-laptop-camera"></div>
+                            <!-- Browser Header di Dalam Layar Laptop -->
+                            <div class="hero-laptop-browser">
+                                <div class="hero-browser-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="hero-browser-url">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                    <span id="heroLaptopUrl">sim-seragam.smpn3rajadesa.sch.id</span>
+                                </div>
+                                <span class="hero-browser-badge" id="heroLaptopBadge">LIVE PORTOFOLIO</span>
+                            </div>
+
+                            <!-- Layar Laptop (Berisi Slide Gambar Portofolio Asli) -->
+                            <div class="hero-laptop-screen">
+                                <img src="{{ asset('images/portofolio_Sangga.jpeg') }}" alt="Sistem Informasi Seragam SMPN 3 Rajadesa" class="hero-screen-img active" data-slide="0">
+                                <img src="{{ asset('images/portfolio-kopi.jpg') }}" alt="Ken's Coffee House Roastery" class="hero-screen-img" data-slide="1">
+                                <img src="{{ asset('images/portfolio-pesantren.png') }}" alt="Pondok Pesantren Hidayatul Muhajirin" class="hero-screen-img" data-slide="2">
+                                <img src="{{ asset('images/portfolio-sekolah.png') }}" alt="SD Negeri 258/VI Rejo Sari" class="hero-screen-img" data-slide="3">
+                            </div>
+                        </div>
+                        <!-- Bibir Bawah / Keyboard Base Laptop -->
+                        <div class="hero-laptop-base">
+                            <div class="hero-laptop-notch"></div>
+                        </div>
+                    </div>
+
+                    <!-- 2. MOCKUP HANDPHONE / SMARTPHONE (Timbul di Depan Kanan Bawah) -->
+                    <div class="hero-phone-mockup">
+                        <div class="hero-phone-notch">
+                            <span class="hero-phone-speaker"></span>
+                            <span class="hero-phone-cam"></span>
+                        </div>
+                        <div class="hero-phone-screen">
+                            <img src="{{ asset('images/portfolio-kopi.jpg') }}" alt="Mobile Preview Ken's Coffee" class="hero-phone-img active" data-phone-slide="0">
+                            <img src="{{ asset('images/portfolio-pesantren.png') }}" alt="Mobile Preview Pondok Pesantren" class="hero-phone-img" data-phone-slide="1">
+                            <img src="{{ asset('images/portfolio-sekolah.png') }}" alt="Mobile Preview Portal Sekolah" class="hero-phone-img" data-phone-slide="2">
+                            <img src="{{ asset('images/portofolio_Sangga.jpeg') }}" alt="Mobile Preview SIM Seragam" class="hero-phone-img" data-phone-slide="3">
+                        </div>
+                        <div class="hero-phone-home-bar"></div>
+                    </div>
+
+                    <!-- Floating Label Proyek Aktif (Timbul di Kiri Bawah Laptop) -->
+                    <a href="#portofolio" class="hero-floating-project-card" id="heroFloatingCard">
+                        <span class="hero-floating-dot"></span>
+                        <div class="hero-floating-info">
+                            <span class="hero-floating-label">KARYA UNGGULAN</span>
+                            <strong class="hero-floating-title" id="heroFloatingTitle">SIM Seragam &amp; WA Gateway</strong>
+                        </div>
+                        <span class="hero-floating-arrow">↗</span>
+                    </a>
+                </div>
+
+                <!-- Navigasi Pemilih Proyek Portofolio di Mockup -->
+                <div class="hero-mockup-switcher" role="tablist" aria-label="Pilih Tampilan Portofolio">
+                    <button type="button" class="hero-switch-btn active" data-hero-slide="0" data-url="sim-seragam.smpn3rajadesa.sch.id" data-title="SIM Seragam &amp; WA Gateway">
+                        <span class="switch-num">01</span>
+                        <span class="switch-name">SIM Seragam</span>
+                    </button>
+                    <button type="button" class="hero-switch-btn" data-hero-slide="1" data-url="ferdianbimastya.ifree.page" data-title="Ken's Coffee House">
+                        <span class="switch-num">02</span>
+                        <span class="switch-name">Ken's Coffee</span>
+                    </button>
+                    <button type="button" class="hero-switch-btn" data-hero-slide="2" data-url="pondokmumodern.iblogger.org" data-title="Ponpes Modern PSB">
+                        <span class="switch-num">03</span>
+                        <span class="switch-name">Ponpes PSB</span>
+                    </button>
+                    <button type="button" class="hero-switch-btn" data-hero-slide="3" data-url="sekolahdasarnegeri.free.je" data-title="Portal Akademik SDN">
+                        <span class="switch-num">04</span>
+                        <span class="switch-name">Portal Sekolah</span>
+                    </button>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -568,81 +666,395 @@
              4. LAYANAN KAMI
              ======================================================================= -->
         <section class="services-section" id="layanan">
+            <div class="services-ambient-glow"></div>
             <div class="container">
                 <div class="section-header-center">
-                    <h2 class="section-title">Layanan Kami</h2>
+                    <div class="services-pill-badge">
+                        <span class="services-pill-dot"></span>
+                        <span>[ 04 // CAPABILITIES & ARCHITECTURE ]</span>
+                    </div>
+                    <h2 class="section-title">Solusi & Layanan Spesialis</h2>
                     <p class="section-desc">
-                        Solusi rekayasa digital end-to-end yang disesuaikan dengan kebutuhan spesifik pertumbuhan bisnis dan akselerasi riset Anda.
+                        Rekayasa digital end-to-end berstandar industri modern untuk akselerasi pertumbuhan bisnis dan penyelesaian riset teknologi Anda secara terukur.
                     </p>
+
+                    <!-- Trust & Capability Highlights Strip -->
+                    <div class="services-trust-strip">
+                        <div class="services-trust-item">
+                            <span class="services-trust-icon">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                            </span>
+                            <span>100% Custom Architecture</span>
+                        </div>
+                        <div class="services-trust-item">
+                            <span class="services-trust-icon">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                            </span>
+                            <span>99+ Core Web Vitals</span>
+                        </div>
+                        <div class="services-trust-item">
+                            <span class="services-trust-icon">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            </span>
+                            <span>Clean & Documented Code</span>
+                        </div>
+                        <div class="services-trust-item">
+                            <span class="services-trust-icon">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            </span>
+                            <span>Garansi & Support Teknis</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="services-grid">
                     <!-- Service 1 -->
-                    <div class="service-card">
+                    <div class="service-card" data-service-target="website-bisnis">
+                        <div class="service-card-glow"></div>
+                        <div class="service-card-topline"></div>
+
                         <div class="service-header">
-                            <div class="service-icon">🌐</div>
-                            <span class="service-number">01</span>
+                            <div class="service-header-left">
+                                <div class="service-icon-box">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                    </svg>
+                                </div>
+                                <span class="service-tier-badge">BRAND & CORPORATE</span>
+                            </div>
+                            <div class="service-index-wrap">
+                                <span class="service-code">SRV // 01</span>
+                                <span class="service-number">01</span>
+                            </div>
                         </div>
-                        <h3 class="service-title">Website Bisnis & Korporat</h3>
-                        <p class="service-desc">
-                            Membangun landing page dan company profile berkecepatan tinggi yang mengonversi pengunjung menjadi klien setia, dengan reputasi brand yang kuat.
-                        </p>
+
+                        <div class="service-body">
+                            <span class="service-category">WEB ARCHITECTURE</span>
+                            <h3 class="service-title">Website Bisnis & Korporat</h3>
+                            <p class="service-desc">
+                                Membangun landing page dan company profile berkecepatan tinggi yang mengonversi pengunjung menjadi klien setia, dengan reputasi brand yang kuat.
+                            </p>
+                        </div>
+
+                        <!-- Key Deliverable Metrics -->
+                        <div class="service-metrics-grid">
+                            <div class="service-metric-box">
+                                <span class="service-metric-label">ESTIMASI RILIS</span>
+                                <span class="service-metric-value">1 – 3 Minggu</span>
+                            </div>
+                            <div class="service-metric-box">
+                                <span class="service-metric-label">TARGET PERFORMA</span>
+                                <span class="service-metric-value">99+ PageSpeed</span>
+                            </div>
+                        </div>
+
+                        <!-- Tech Stack Pills -->
+                        <div class="service-tech-stack">
+                            <span class="service-tech-pill">Laravel</span>
+                            <span class="service-tech-pill">Custom UI</span>
+                            <span class="service-tech-pill">Technical SEO</span>
+                            <span class="service-tech-pill">CMS Ready</span>
+                        </div>
+
                         <ul class="service-features">
-                            <li>Desain eksklusif tanpa template generik</li>
-                            <li>Optimalisasi SEO On-Page dan Core Web Vitals</li>
-                            <li>Responsif sempurna di iOS, Android, dan Desktop</li>
+                            <li>
+                                <span class="service-check-badge">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </span>
+                                <span>Desain eksklusif tanpa template generik</span>
+                            </li>
+                            <li>
+                                <span class="service-check-badge">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </span>
+                                <span>Optimalisasi SEO On-Page & Core Web Vitals</span>
+                            </li>
+                            <li>
+                                <span class="service-check-badge">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </span>
+                                <span>Responsif sempurna di iOS, Android, & Desktop</span>
+                            </li>
                         </ul>
+
+                        <div class="service-card-footer">
+                            <a href="#wishlist" class="service-link-action">
+                                <div class="service-link-text">
+                                    <span class="service-link-main">Jelajahi Paket Website</span>
+                                    <span class="service-link-sub">Lihat rincian modul & investasi</span>
+                                </div>
+                                <span class="service-link-arrow">→</span>
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- Service 2 -->
-                    <div class="service-card">
+                    <!-- Service 2 (Featured / High Demand) -->
+                    <div class="service-card service-card-featured" data-service-target="aplikasi-web">
+                        <div class="service-card-glow"></div>
+                        <div class="service-card-topline"></div>
+
                         <div class="service-header">
-                            <div class="service-icon">⚙️</div>
-                            <span class="service-number">02</span>
+                            <div class="service-header-left">
+                                <div class="service-icon-box">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                        <polyline points="2 17 12 22 22 17"></polyline>
+                                        <polyline points="2 12 12 17 22 12"></polyline>
+                                    </svg>
+                                </div>
+                                <span class="service-tier-badge service-tier-popular">
+                                    <span class="tier-star">★</span> PALING DIMINATI
+                                </span>
+                            </div>
+                            <div class="service-index-wrap">
+                                <span class="service-code">SRV // 02</span>
+                                <span class="service-number">02</span>
+                            </div>
                         </div>
-                        <h3 class="service-title">Aplikasi Web & Sistem Kustom</h3>
-                        <p class="service-desc">
-                            Pengembangan software berbasis web dengan logika backend kompleks, arsitektur database terukur, dan dashboard admin yang aman.
-                        </p>
+
+                        <div class="service-body">
+                            <span class="service-category">FULL-STACK SYSTEM</span>
+                            <h3 class="service-title">Aplikasi Web & Sistem Kustom</h3>
+                            <p class="service-desc">
+                                Pengembangan software berbasis web dengan logika backend kompleks, arsitektur database terukur, dan dashboard admin yang intuitif serta aman.
+                            </p>
+                        </div>
+
+                        <!-- Key Deliverable Metrics -->
+                        <div class="service-metrics-grid">
+                            <div class="service-metric-box">
+                                <span class="service-metric-label">ARSITEKTUR</span>
+                                <span class="service-metric-value">Modular & Scalable</span>
+                            </div>
+                            <div class="service-metric-box">
+                                <span class="service-metric-label">INTEGRASI</span>
+                                <span class="service-metric-value">REST API & Gateway</span>
+                            </div>
+                        </div>
+
+                        <!-- Tech Stack Pills -->
+                        <div class="service-tech-stack">
+                            <span class="service-tech-pill">Laravel 13</span>
+                            <span class="service-tech-pill">MySQL / PostgreSQL</span>
+                            <span class="service-tech-pill">WhatsApp API</span>
+                            <span class="service-tech-pill">Payment Gateway</span>
+                        </div>
+
                         <ul class="service-features">
-                            <li>Laravel framework dengan struktur clean code</li>
-                            <li>Integrasi Payment Gateway, WhatsApp API, dan CRM</li>
-                            <li>Proteksi keamanan data dan backup otomatis</li>
+                            <li>
+                                <span class="service-check-badge">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </span>
+                                <span>Laravel & Modern Stack dengan clean code</span>
+                            </li>
+                            <li>
+                                <span class="service-check-badge">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </span>
+                                <span>Integrasi Payment Gateway, WA API, & RESTful API</span>
+                            </li>
+                            <li>
+                                <span class="service-check-badge">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </span>
+                                <span>Proteksi keamanan data, multi-role & automated backup</span>
+                            </li>
                         </ul>
+
+                        <div class="service-card-footer">
+                            <a href="#wishlist" class="service-link-action">
+                                <div class="service-link-text">
+                                    <span class="service-link-main">Jelajahi Paket Sistem</span>
+                                    <span class="service-link-sub">Lihat skala sistem & spesifikasi</span>
+                                </div>
+                                <span class="service-link-arrow">→</span>
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Service 3 -->
-                    <div class="service-card">
+                    <div class="service-card" data-service-target="riset-skripsi">
+                        <div class="service-card-glow"></div>
+                        <div class="service-card-topline"></div>
+
                         <div class="service-header">
-                            <div class="service-icon">🎓</div>
-                            <span class="service-number">03</span>
+                            <div class="service-header-left">
+                                <div class="service-icon-box">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                                    </svg>
+                                </div>
+                                <span class="service-tier-badge">ACADEMIC & R&D</span>
+                            </div>
+                            <div class="service-index-wrap">
+                                <span class="service-code">SRV // 03</span>
+                                <span class="service-number">03</span>
+                            </div>
                         </div>
-                        <h3 class="service-title">Pendampingan Riset & Skripsi IT</h3>
-                        <p class="service-desc">
-                            Bimbingan intensif dan implementasi algoritma pemrograman untuk mahasiswa tingkat akhir dalam menyelesaikan proyek perangkat lunak ilmiah.
-                        </p>
+
+                        <div class="service-body">
+                            <span class="service-category">ACADEMIC & R&D</span>
+                            <h3 class="service-title">Pendampingan Riset & Skripsi IT</h3>
+                            <p class="service-desc">
+                                Bimbingan intensif dan implementasi algoritma pemrograman untuk mahasiswa tingkat akhir dalam menyelesaikan proyek perangkat lunak ilmiah.
+                            </p>
+                        </div>
+
+                        <!-- Key Deliverable Metrics -->
+                        <div class="service-metrics-grid">
+                            <div class="service-metric-box">
+                                <span class="service-metric-label">METODE BIMBINGAN</span>
+                                <span class="service-metric-value">1-on-1 & Bedah Kode</span>
+                            </div>
+                            <div class="service-metric-box">
+                                <span class="service-metric-label">KELENGKAPAN</span>
+                                <span class="service-metric-value">App + UML & Pengujian</span>
+                            </div>
+                        </div>
+
+                        <!-- Tech Stack Pills -->
+                        <div class="service-tech-stack">
+                            <span class="service-tech-pill">Machine Learning / AI</span>
+                            <span class="service-tech-pill">SPK & Data Mining</span>
+                            <span class="service-tech-pill">UML & ERD</span>
+                            <span class="service-tech-pill">Black-Box Testing</span>
+                        </div>
+
                         <ul class="service-features">
-                            <li>Implementasi AI, SPK, GIS, Data Mining, atau Web System</li>
-                            <li>Bimbingan arsitektur kode dan persiapan sidang teknis</li>
-                            <li>Dokumentasi flowchart, ERD, dan struktur database</li>
+                            <li>
+                                <span class="service-check-badge">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </span>
+                                <span>Implementasi AI, SPK, GIS, Data Mining, Web/Mobile</span>
+                            </li>
+                            <li>
+                                <span class="service-check-badge">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </span>
+                                <span>Bimbingan arsitektur kode & persiapan sidang teknis</span>
+                            </li>
+                            <li>
+                                <span class="service-check-badge">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </span>
+                                <span>Dokumentasi flowchart, UML, ERD, & basis data</span>
+                            </li>
                         </ul>
+
+                        <div class="service-card-footer">
+                            <a href="#kolaborasi" class="service-link-action" data-select-service="riset-skripsi">
+                                <div class="service-link-text">
+                                    <span class="service-link-main">Konsultasi Topik Skripsi</span>
+                                    <span class="service-link-sub">Diskusikan judul, metode & alur</span>
+                                </div>
+                                <span class="service-link-arrow">→</span>
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Service 4 -->
-                    <div class="service-card">
+                    <div class="service-card" data-service-target="ui-ux">
+                        <div class="service-card-glow"></div>
+                        <div class="service-card-topline"></div>
+
                         <div class="service-header">
-                            <div class="service-icon">🚀</div>
-                            <span class="service-number">04</span>
+                            <div class="service-header-left">
+                                <div class="service-icon-box">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                                    </svg>
+                                </div>
+                                <span class="service-tier-badge">INTERFACE STUDIO</span>
+                            </div>
+                            <div class="service-index-wrap">
+                                <span class="service-code">SRV // 04</span>
+                                <span class="service-number">04</span>
+                            </div>
                         </div>
-                        <h3 class="service-title">UI/UX Design & Prototyping</h3>
-                        <p class="service-desc">
-                            Riset antarmuka pengguna, perancangan user journey terarah, dan pembuatan interactive high-fidelity prototype menggunakan Figma.
-                        </p>
+
+                        <div class="service-body">
+                            <span class="service-category">PRODUCT DESIGN</span>
+                            <h3 class="service-title">UI/UX Design & Prototyping</h3>
+                            <p class="service-desc">
+                                Riset antarmuka pengguna, perancangan user journey terarah, dan pembuatan interactive high-fidelity prototype menggunakan Figma berstandar enterprise.
+                            </p>
+                        </div>
+
+                        <!-- Key Deliverable Metrics -->
+                        <div class="service-metrics-grid">
+                            <div class="service-metric-box">
+                                <span class="service-metric-label">DELIVERABLE</span>
+                                <span class="service-metric-value">Interactive Figma</span>
+                            </div>
+                            <div class="service-metric-box">
+                                <span class="service-metric-label">STANDAR ASET</span>
+                                <span class="service-metric-value">Design System Ready</span>
+                            </div>
+                        </div>
+
+                        <!-- Tech Stack Pills -->
+                        <div class="service-tech-stack">
+                            <span class="service-tech-pill">Figma Auto-Layout</span>
+                            <span class="service-tech-pill">Design Tokens</span>
+                            <span class="service-tech-pill">Interactive Prototype</span>
+                            <span class="service-tech-pill">Dev Handoff</span>
+                        </div>
+
                         <ul class="service-features">
-                            <li>Design system terstandarisasi dan komponen reusable</li>
-                            <li>Usability testing dan visual hierarchy yang presisi</li>
-                            <li>Aset siap serah terima bagi tim developer internal</li>
+                            <li>
+                                <span class="service-check-badge">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </span>
+                                <span>Design system scalable & komponen reusable</span>
+                            </li>
+                            <li>
+                                <span class="service-check-badge">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </span>
+                                <span>Usability testing & visual hierarchy presisi</span>
+                            </li>
+                            <li>
+                                <span class="service-check-badge">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </span>
+                                <span>Aset siap serah terima bagi developer (Handoff)</span>
+                            </li>
                         </ul>
+
+                        <div class="service-card-footer">
+                            <a href="#kolaborasi" class="service-link-action" data-select-service="uiux-design">
+                                <div class="service-link-text">
+                                    <span class="service-link-main">Konsultasi Desain UI/UX</span>
+                                    <span class="service-link-sub">Wujudkan produk digital ergonomis</span>
+                                </div>
+                                <span class="service-link-arrow">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Custom Consultation Strip -->
+                <div class="services-bottom-banner">
+                    <div class="services-banner-content">
+                        <div class="services-banner-badge">
+                            <span class="services-banner-dot"></span>
+                            <span>CUSTOM ENGINEERING</span>
+                        </div>
+                        <div class="services-banner-text">
+                            <h4>Butuh spesifikasi khusus atau kombinasi dari beberapa layanan di atas?</h4>
+                            <p>Tim engineer kami siap membedah kebutuhan arsitektur sistem maupun riset Anda tanpa biaya konsultasi awal.</p>
+                        </div>
+                    </div>
+                    <div class="services-banner-action">
+                        <a href="#kolaborasi" class="services-banner-btn">
+                            <span>Diskusikan Kebutuhan Kustom</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -651,7 +1063,6 @@
         <!-- =======================================================================
              5. PROSES KERJA KAMI (Horizontal Timeline / Step-by-Step Timeline)
              ======================================================================= -->
-    <div class="process-pin-wrapper">
         <section class="process-section" id="proses">
             <div class="container">
                 <div class="section-header-center">
@@ -732,7 +1143,7 @@
             </div>
         </section>
         <!-- =======================================================================
-             7. WISH LIST (MENIMPA DARI BAWAH & STICKY SCROLL)
+             7. WISH LIST (PAKET & STRUKTUR LAYANAN)
              ======================================================================= -->
         <div class="wishlist-wrapper-astro">
             <!-- LIGHT STREAK: Garis cahaya di atas Wishlist -->
@@ -743,7 +1154,6 @@
             {{-- Memanggil file wishlist --}}
             @include('wishlist')
         </div>
-    </div>
 
         <!-- =======================================================================
              8. FAQ (Menumpuk di atas Wishlist saat di-scroll)
