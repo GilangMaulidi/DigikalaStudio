@@ -127,7 +127,7 @@
 
                 <div class="mobile-nav-footer">
                     <a href="#kolaborasi" class="btn btn-primary btn-mobile-cta">Mulai Proyek Sekarang </a>
-                    <a href="https://wa.me/6281234567890?text=Halo%20Digikala%20Studio" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-mobile-wa">
+                    <a href="https://wa.me/6285252170250?text=Halo%20Digikala%20Studio" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-mobile-wa">
                         💬 WhatsApp Fast Chat
                     </a>
                 </div>
@@ -421,7 +421,7 @@
 
                 <div class="faq-accordion-list">
                     @forelse($faqs as $faq)
-                    <details class="faq-card" {{ $faq->is_open_default ? 'open' : '' }}>
+                    <details class="faq-card">
                         <summary class="faq-summary">
                             <span>{{ $faq->question }}</span>
                             <span class="faq-toggle-icon">+</span>
@@ -527,7 +527,7 @@
                                 <a href="#kolaborasi" class="btn btn-primary">
                                     Diskusikan Proyek Sekarang 
                                 </a>
-                                <a href="https://wa.me/6281234567890?text=Halo%20Digikala%20Studio" 
+                                <a href="https://wa.me/6285252170250?text=Halo%20Digikala%20Studio" 
                                    target="_blank" rel="noopener noreferrer" 
                                    class="btn btn-outline">
                                     💬 Fast Chat WhatsApp
@@ -543,11 +543,11 @@
                             </div>
                             <div class="cta-info-item">
                                 <span class="cta-info-label">Telepon & WhatsApp</span>
-                                <a href="tel:+6281234567890">+62 812 3456 7890</a>
+                                <a href="tel:+6285252170250">+62 852-5217-0250</a>
                             </div>
                             <div class="cta-info-item">
                                 <span class="cta-info-label">Email</span>
-                                <a href="mailto:digikalastudio2026@digikalastudio.com">digikalastudio2026@digikalastudio.com</a>
+                                <a href="mailto:digikalastudio2026@gmail.com">digikalastudio2026@gmail.com</a>
                             </div>
                             <div class="cta-info-footer">
                                 <span>Waktu Respon Rata-rata:</span>
@@ -607,8 +607,7 @@
                             <p>Ceritakan ide atau proyek Anda. Kami akan merespon dengan estimasi rencana dalam waktu 1x24 jam.</p>
                         </div>
 
-                        <form id="collab-form" class="collab-form" action="#" method="POST">
-                            @csrf
+                        <form id="collab-form" class="collab-form" action="https://formspree.io/f/xwllljgl" method="POST">
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="name">Nama Lengkap / Instansi</label>
@@ -695,8 +694,8 @@
                 <div class="footer-col">
                     <h4>Kontak Kami</h4>
                     <ul class="footer-links">
-                        <li><a href="mailto:digikalastudio2026@digikalastudio.com">digikalastudio2026@digikalastudio.com</a></li>
-                        <li><a href="https://wa.me/6281234567890" target="_blank">+62 812 3456 7890</a></li>
+                        <li><a href="mailto:digikalastudio2026@gmail.com">digikalastudio2026@gmail.com</a></li>
+                        <li><a href="https://wa.me/6285252170250" target="_blank">+62 852-5217-0250</a></li>
                         <li><span class="footer-location">Sleman / Yogyakarta, Indonesia</span></li>
                     </ul>
                 </div>
@@ -705,17 +704,15 @@
             <div class="footer-bottom">
                 <p>&copy; {{ date('Y') }} DIGIKALA STUDIO. Seluruh hak cipta dilindungi undang-undang.</p>
                 <div class="footer-bottom-socials">
-                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                    <a href="#" aria-label="Instagram">Instagram</a>
-                    <a href="#" aria-label="GitHub">GitHub</a>
-                    <a href="#" aria-label="Email">Email</a>
+                    <a href="https://www.instagram.com/digikala.studio/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+                    <a href="mailto:digikalastudio2026@gmail.com" aria-label="Email">Email</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Floating Quick Action Button (Mobile WhatsApp / Konsultasi) -->
-    <a href="https://wa.me/6281234567890?text=Halo%20Digikala%20Studio%2C%20saya%20ingin%20konsultasi%20pembuatan%20website" 
+    <a href="https://wa.me/6285252170250?text=Halo%20Digikala%20Studio%2C%20saya%20ingin%20konsultasi%20pembuatan%20website" 
        class="floating-wa-btn" 
        target="_blank" 
        rel="noopener noreferrer" 
@@ -723,7 +720,6 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.05 7.47C8.84 7.47 8.5 7.55 8.21 7.86C7.92 8.18 7.11 8.94 7.11 10.48C7.11 12.02 8.23 13.51 8.39 13.72C8.55 13.93 10.54 17.16 13.68 18.39C16.3 19.41 16.83 19.21 17.39 19.16C17.96 19.1 19.2 18.42 19.46 17.7C19.72 16.98 19.72 16.36 19.64 16.23C19.56 16.1 19.35 16.03 19.04 15.87C18.73 15.71 17.22 14.97 16.94 14.87C16.66 14.77 16.46 14.72 16.25 15.03C16.04 15.34 15.45 16.03 15.27 16.24C15.09 16.45 14.91 16.47 14.6 16.32C14.29 16.16 13.29 15.84 12.11 14.78C11.19 13.96 10.57 12.95 10.41 12.69C10.25 12.43 10.39 12.28 10.55 12.13C10.69 12 10.86 11.77 11.02 11.58C11.18 11.39 11.23 11.26 11.33 11.05C11.43 10.84 11.38 10.66 11.3 10.51C11.22 10.35 10.63 8.87 10.37 8.25C10.12 7.64 9.87 7.72 9.69 7.71C9.52 7.7 9.32 7.47 9.05 7.47Z"/>
         </svg>
-        <span class="floating-wa-text">Konsultasi</span>
     </a>
 
     {{-- Pemanggilan Script Interaktif (Terpisah) --}}

@@ -1782,11 +1782,12 @@ select {
 }
 
 .faq-accordion-list {
-    max-width: 860px;
+    max-width: 1180px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: start;
 }
 
 .faq-card {
@@ -2112,6 +2113,7 @@ select {
 .footer-bottom-socials {
     display: flex;
     gap: 20px;
+    padding-right: 130px;
 }
 
 .footer-bottom-socials a {
@@ -3886,38 +3888,38 @@ body.is-nav-open .floating-wa-btn {
         line-height: 1.52;
     }
 
-    /* 6. Wishlist / Pricing Section */
+    /* 6. Wishlist / Pricing Section (Full Width Selayar Kiri-Kanan di Mobile) */
     .wishlist-wrapper-astro {
         position: relative;
         top: auto;
         min-height: auto;
         margin-top: 0;
         margin-bottom: 0;
-        padding-top: 18px;
-    }
-
-    .wishlist-back-card {
-        width: calc(100% - 36px);
-        left: 50%;
-        transform: translateX(-50%);
-        height: 70px;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        box-shadow: 0 -12px 25px rgba(0, 0, 0, 0.5);
-    }
-
-    .light-streak-container {
-        top: 18px;
+        padding-top: 0;
+        width: 100%;
     }
 
     .wishlist-container {
-        width: calc(100% - 24px);
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
         min-height: 0;
-        padding: 36px 18px 40px;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
+        padding: 48px 16px 130px;
+        border-top-left-radius: 28px;
+        border-top-right-radius: 28px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+        box-sizing: border-box;
+    }
+
+    .wishlist-inner {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        box-sizing: border-box;
     }
 
     .wishlist-header {
@@ -3974,7 +3976,7 @@ body.is-nav-open .floating-wa-btn {
 
     /* 7. FAQ Section (Berada di Bawah Wishlist) */
     .faq-section {
-        margin-top: -24px;
+        margin-top: 0;
         padding: 58px 18px;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
@@ -3984,6 +3986,7 @@ body.is-nav-open .floating-wa-btn {
     }
 
     .faq-accordion-list {
+        grid-template-columns: 1fr;
         gap: 12px;
     }
 
@@ -4214,6 +4217,7 @@ body.is-nav-open .floating-wa-btn {
     .footer-bottom-socials {
         justify-content: center;
         gap: 16px;
+        padding-right: 0;
     }
 
     /* 12. Floating Action Button */

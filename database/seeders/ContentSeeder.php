@@ -327,6 +327,27 @@ class ContentSeeder extends Seeder
                 'sort_order' => 5,
                 'is_active' => true,
             ],
+            [
+                'question' => 'Apakah website yang dibuat sudah responsif di perangkat mobile dan tablet?',
+                'answer' => 'Tentu saja. Seluruh website dan sistem yang kami rancang mengusung prinsip mobile-first dan responsive design. Tampilan akan secara otomatis menyesuaikan dengan sempurna di smartphone, tablet, laptop, hingga layar monitor desktop lebar.',
+                'is_open_default' => false,
+                'sort_order' => 6,
+                'is_active' => true,
+            ],
+            [
+                'question' => 'Apakah sudah termasuk penyediaan domain, hosting, dan sertifikat SSL?',
+                'answer' => 'Ya, paket pembuatan website kami dapat mencakup domain kustom pilihan (.com, .id, dll), konfigurasi cloud hosting berkecepatan tinggi, dan instalasi sertifikat keamanan SSL (HTTPS) resmi untuk menjamin keamanan data.',
+                'is_open_default' => false,
+                'sort_order' => 7,
+                'is_active' => true,
+            ],
+            [
+                'question' => 'Bagaimana dengan garansi dan pemeliharaan (maintenance) setelah website selesai?',
+                'answer' => 'Kami memberikan garansi perbaikan bug gratis pasca peluncuran serta menyediakan layanan maintenance berkala untuk pembaruan sistem, backup basis data otomatis, dan optimasi performa berkelanjutan.',
+                'is_open_default' => false,
+                'sort_order' => 8,
+                'is_active' => true,
+            ],
         ];
 
         foreach ($faqs as $data) {
